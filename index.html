@@ -12,29 +12,98 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #ffffff;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             color: #f7931a;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
         }
 
         h1 {
             text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 1em;
+            border-bottom: 2px solid #f7931a;
+            padding-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid #f7931a;
+            padding-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5em;
+            padding-left: 2em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
         }
 
         img {
             max-width: 100%;
             height: auto;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         a {
             color: #f7931a;
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
         a:hover {
+            color: #e67e00;
             text-decoration: underline;
+        }
+
+        strong {
+            color: #f7931a;
+        }
+
+        .tip {
+            background-color: #fff3cd;
+            border-left: 4px solid #f7931a;
+            padding: 1em;
+            margin: 1em 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
