@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - Valet App Documentation</title>
+    <style>
+        :root {
+            --primary-color: #f7931a;
+            --text-color: #333;
+            --background-color: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 1em;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5em;
+            padding-left: 2em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #e67e00;
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .tip {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--primary-color);
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-menu {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.5rem;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .nav-menu ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Getting Started with Valet</h1>
+
+    <div class="nav-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lightning.html">Lightning Network</a></li>
+            <li><a href="receiving.html">Receiving Bitcoin</a></li>
+            <li><a href="sending.html">Sending Bitcoin</a></li>
+            <li><a href="settings.html">Wallet Settings</a></li>
+        </ul>
+    </div>
+
+    <h2>Step 1: Download & Install Valet</h2>
+    <ol>
+        <li>Android devices only - Click <a href="https://f-droid.org/packages/com.valet.wallet/" target="_blank">here</a> to download or download from <a href="https://f-droid.org/" target="_blank">FDroid</a></li>
+        <li>Tap on Install to install the app.</li>
+        <li>Go back to your home screen and open the app after installation.</li>
+    </ol>
+
+    <h3>Requirements</h3>
+    <p>Valet is a lightweight application that consumes small memory resources on your mobile device.</p>
+    <ul>
+        <li>Android Version = 8.0 or higher</li>
+        <li>Storage space = 30 mb space.</li>
+    </ul>
+
+    <h2>Step 2: Create Your Wallet</h2>
+    <ol>
+        <li>Tap on the Vallet app on your homescreen to launch.</li>
+        <li>Tap Create New Wallet—As soon as you tap on "Create New Wallet," a new home screen will appear. It is that fast and simple to create a wallet.</li>
+    </ol>
+
+    <img src="img1.png" alt="Create New Wallet screen showing the initial setup interface">
+
+    <ol start="3">
+        <li>Write down your 12-word recovery phrase - On the homescreen, you'll see a short message in a green card: "Tap to save your recovery phrase…". Click on that card and write down the 12 words in order, from left to right, with the word at the top left position as number 1.</li>
+    </ol>
+
+    <img src="img2.png" alt="Recovery phrase screen showing the 12-word backup phrase">
+
+    <h3>What is the 12-word recovery phrase?</h3>
+    <p>The Valet wallet is a non-custodial Bitcoin wallet. The term non-custodial or self-custodial means that you don't rely on any company/third party to protect your wallet and prevent unauthorized access. Also, you can do whatever you want with your wallet and the funds in it. So, with Valet, you have full control of your wallet's private keys represented by a random 12 English phrase, which gives access to your wallet and all the funds in it.</p>
+
+    <ul>
+        <li>This phrase is your wallet backup.</li>
+        <li>Do not share or store it online. You're to write it down and keep it in a safe and secure place.</li>
+    </ul>
+
+    <ol start="4">
+        <li>Confirm the phrase to complete the setup - After writing down your 12 phrase keys, verify that you copied them correctly by entering them in the space provided on the app.</li>
+        <li>Set a wallet PIN - This is optional, but recommended to prevent anyone from accessing your wallet if they get your device. (You can do this from the "Settings" page. Keep reading to learn how to set up a PIN for your app.)</li>
+    </ol>
+
+    <div class="tip">
+        <strong>Tip:</strong> Losing your recovery phrase means losing your Bitcoin. Keep it safe!
+    </div>
+</body>
+</html> 

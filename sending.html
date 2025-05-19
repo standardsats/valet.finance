@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sending Bitcoin - Valet App Documentation</title>
+    <style>
+        :root {
+            --primary-color: #f7931a;
+            --text-color: #333;
+            --background-color: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 1em;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5em;
+            padding-left: 2em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #e67e00;
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .tip {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--primary-color);
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-menu {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.5rem;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .nav-menu ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Sending Bitcoin</h1>
+
+    <div class="nav-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="lightning.html">Lightning Network</a></li>
+            <li><a href="receiving.html">Receiving Bitcoin</a></li>
+            <li><a href="settings.html">Wallet Settings</a></li>
+        </ul>
+    </div>
+
+    <h2>Step 5: Send Bitcoin</h2>
+    <p>You can send Bitcoin in two ways: on-chain or through the Lightning Network. Choose the method that best suits your needs.</p>
+
+    <h3>Sending On-Chain Bitcoin</h3>
+    <ol>
+        <li>From the home screen, tap on the "Send" tab at the bottom of the screen.</li>
+        <li>Enter the recipient's Bitcoin address or scan their QR code.</li>
+        <li>Enter the amount you want to send (in BTC or your local currency).</li>
+        <li>Review the transaction fee and total amount.</li>
+        <li>Add a description (optional).</li>
+        <li>Confirm the transaction.</li>
+    </ol>
+
+    <img src="img6.png" alt="Send screen showing transaction interface">
+
+    <div class="tip">
+        <strong>Tip:</strong> Double-check the recipient's address before sending. Bitcoin transactions cannot be reversed.
+    </div>
+
+    <h3>Sending Lightning Payments</h3>
+    <ol>
+        <li>From the home screen, tap on the "Lightning" tab.</li>
+        <li>Tap on "Send" or the "-" button.</li>
+        <li>Enter the Lightning invoice or scan the QR code.</li>
+        <li>Review the payment details.</li>
+        <li>Confirm the payment.</li>
+    </ol>
+
+    <img src="img7.png" alt="Lightning send screen showing payment interface">
+
+    <h3>Transaction Fees</h3>
+    <ul>
+        <li><strong>On-chain:</strong> Fees vary based on network congestion. Higher fees mean faster confirmation.</li>
+        <li><strong>Lightning:</strong> Minimal fees, typically less than 1 satoshi.</li>
+    </ul>
+
+    <h3>Transaction Status</h3>
+    <ul>
+        <li><strong>Pending:</strong> The transaction is being processed</li>
+        <li><strong>Confirmed:</strong> The transaction has been added to the blockchain</li>
+        <li><strong>Failed:</strong> The transaction could not be completed</li>
+    </ul>
+
+    <div class="tip">
+        <strong>Important:</strong> Always verify the amount and recipient before confirming any transaction.
+    </div>
+
+    <h3>Transaction History</h3>
+    <p>You can view your transaction history in the "Transactions" tab:</p>
+    <ul>
+        <li>See all your sent and received payments</li>
+        <li>View transaction details and status</li>
+        <li>Export transaction history for record-keeping</li>
+    </ul>
+</body>
+</html> 
