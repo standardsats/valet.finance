@@ -26,18 +26,36 @@
             background-color: var(--background-color);
         }
 
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.65rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-bottom: 2rem;
         }
 
         h1, h2, h3, h4 {
@@ -163,15 +181,22 @@
             h3 {
                 font-size: 1.25rem;
             }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Valet App Documentation</h1>
-            <p>Welcome to Valet — your self-custodial Bitcoin and Lightning wallet built for real-world, stable, and private transactions.</p>
-        </div>
+        <nav>
+            <a href="index.html">Valet</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="bnb.html">BnB</a>
+        </nav>
     </header>
 
     <div class="container">
