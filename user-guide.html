@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valet App Documentation</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .feature-list li {
+            background-color: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip strong {
+            color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        ol, ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .faq {
+            background-color: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .faq h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+
+        .section {
+            background-color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Valet App Documentation</h1>
+            <p>Welcome to Valet — your self-custodial Bitcoin and Lightning wallet built for real-world, stable, and private transactions.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Introduction</h2>
+            <p>Valet is a mobile Bitcoin wallet that empowers you to hold and spend Bitcoin without third-party involvement. It was designed for beginners and advanced users — offering mobile Lightning node integration, privacy-focused features, and some advanced, flexible controls, all on your palm.</p>
+
+            <h3>Key Features:</h3>
+            <ul class="feature-list">
+                <li>NON-CUSTODIAL</li>
+                <li>INTEGRATED LIGHTNING NODE</li>
+                <li>HARDWARE WALLET SUPPORT</li>
+                <li>CONNECT TO PRIVATE ELECTRUM SERVER</li>
+                <li>ADVANCED TOOLS - BATCHING & COIN CONTROL</li>
+                <li>"HOLD" LIGHTNING INVOICES</li>
+            </ul>
+
+            <p>New to Bitcoin? No worries. This guide will walk you through everything you need to know to use Valet today.</p>
+        </section>
+
+        <section class="section">
+            <h2>Getting Started</h2>
+            <h3>Step 1: Download & Install Valet</h3>
+            <ol>
+                <li>Android devices only - Click <a href="https://github.com/standardsats/valet/releases" target="_blank">here</a> to download the apk file, or download from <a href="https://f-droid.org/en/packages/org.standardsats.valet/" target="_blank">FDroid</a></li>
+                <li>Tap on Install to install the app.</li>
+                <li>Go back to your home screen and open the app after installation.</li>
+            </ol>
+
+            <p>Requirements - Valet is a lightweight application that consumes small memory resources on your mobile device.</p>
+            <ul>
+                <li>Android Version = 8.0 or higher</li>
+                <li>Storage space = 30 mb space.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h3>Step 2: Create Your Wallet</h3>
+            <ol>
+                <li>Tap on the Valet app on your homescreen to launch.</li>
+                <li>Tap Create New Wallet—As soon as you tap on "Create New Wallet," a new home screen will appear. It is that fast and simple to create a wallet.</li>
+                <li>Write down your 12-word recovery phrase - On the homescreen, you'll see a short message in a green card: "Tap to save your recovery phrase…". Click on that card and write down the 12 words in order, from left to right, with the word at the top left position as number 1.</li>
+            </ol>
+
+            <img src="img1.jpg" alt="Wallet Creation Screen">
+            <img src="img2.png" alt="Recovery Phrase Screen">
+
+            <h4>What is the 12-word recovery phrase?</h4>
+            <p>The Valet wallet is a non-custodial Bitcoin wallet. The term non-custodial or self-custodial means that you don't rely on any company/third party to protect your wallet and prevent unauthorized access. Also, you can do whatever you want with your wallet and the funds in it. So, with Valet, you have full control of your wallet's private keys represented by a random 12 English phrase, which gives access to your wallet and all the funds in it.</p>
+
+            <ul>
+                <li>This phrase is your wallet backup.</li>
+                <li>Do not share or store it online. You're to write it down and keep it in a safe and secure place.</li>
+            </ul>
+
+            <ol start="4">
+                <li>Confirm the phrase to complete the setup - After writing down your 12 phrase keys, verify that you copied them correctly by entering them in the space provided on the app.</li>
+                <li>Set a wallet PIN - This is optional, but recommended to prevent anyone from accessing your wallet if they get your device. (You can do this from the "Settings" page. Keep reading to learn how to set up a PIN for your app.)</li>
+            </ol>
+
+            <div class="tip">
+                <strong>Tip:</strong> Losing your recovery phrase means losing your Bitcoin. Keep it safe!
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Step 3: Opening A Lightning Channel</h3>
+            <p>Opening a Lightning channel is faster and easier when you have Bitcoin in your wallet. However, you can still open a Lightning channel from your node/wallet to another Lightning node even if you don't have any Bitcoins in your wallet.</p>
+
+            <p>There are several ways you can open a lightning channel on Valet.</p>
+            <ul>
+                <li>Buy from <a href="https://lnbig.com/#/open-channel" target="_blank">LNBig</a></li>
+                <li>Buy from <a href="https://bitrefill.com/lightning" target="_blank">Bitrefill</a></li>
+                <li>Manual channel opening.</li>
+            </ul>
+
+            <h4>Buy From LNBig or BitRefill:</h4>
+            <p>This method is relatively more straightforward. On your home screen</p>
+            <ul>
+                <li>On the homescreen, tap on Lightning</li>
+                <li>Select any of the options "Purchase at LNBIG.com" or "Purchase at BITREFILL.COM"</li>
+                <li>You'll be redirected to your browser, where you'll complete the remaining process, and an Inbound Channel will be opened to your node.</li>
+            </ul>
+
+            <img src="img3.jpg" alt="Lightning Channel Purchase Options">
+
+            <div class="tip">
+                <strong>Tip:</strong> In the Lightning Technology, there's something called "Inbound Liquidity Capacity" and "Outbound Liquidity Capacity". This means the amount of Sats you can receive at your lightning node and the amount you can send out of your lightning node, respectively. 
+                Since you do not currently have any Bitcoin in your wallet, you can only create inbound channels.
+            </div>
+
+            <h4>Manual Channel Opening:</h4>
+            <p>As the name implies, this process involves opening a channel to another known Lightning Bitcoin node manually. Just follow the few steps below:</p>
+
+            <ul>
+                <li>On your home screen, tap on Lightning.</li>
+                <li>Select "Scan Node QR" and scan. - At this point, you should have requested and gotten the QR code of the node you want to open a channel to.</li>
+                <li>Click "Share Node ID" to share your node ID with the person you're opening the channel with.</li>
+                <li>Please, REMAIN on the same screen until the node connection has been established - You will get a prompt when the connection has been established.</li>
+                <li>Congratulations, you have an inbound channel ready to receive Sats.</li>
+            </ul>
+
+            <img src="img4.jpg" alt="Manual Channel Opening">
+            <img src="img5.jpg" alt="Channel Connection">
+        </section>
+
+        <section class="section">
+            <h3>Step 4: Receiving Bitcoin</h3>
+            <p>Now that you have successfully opened a lightning channel with another node, either manually or via a purchase from LNBig or BitRefill, you're set to receive Bitcoin in Valet.</p>
+
+            <p>You can receive Bitcoins into your wallet either through Lightning or through the usual On-Chain wallet. On the home screen, you can either click on the orange Bitcoin card or the purple Lightning card, OR you can also access both options by clicking the Receive button at the bottom.</p>
+
+            <h4>1. Steps to receive Bitcoin On-Chain:</h4>
+            <ul>
+                <li>On the home screen, click on the "orange Bitcoin" card.</li>
+                <li>With the "Edit" button, you can insert the amount of Bitcoin you'll receive to that address. This is usually important as it makes payment easy since the amount is already filled out.</li>
+                <li>Copy the address and send it to the person you're receiving the Bitcoin from, or click on the share button to share the address through other means. You can also send a screenshot of the QR code to the other party, as this can be scanned to make a payment.</li>
+                <li>You can also generate an address by clicking on "Receive" on the home screen and selecting "Receive to Bitcoin address."</li>
+                <li>Click "More Fresh Addresses" to generate a new and different address.</li>
+            </ul>
+
+            <img src="img6.jpg" alt="On-Chain Receiving">
+            <img src="img7.jpg" alt="Address Generation">
+            <img src="img8.jpg" alt="QR Code">
+            <img src="img9.jpg" alt="Fresh Addresses">
+
+            <h4>2. Receive Bitcoin through Lightning:</h4>
+            <p>You remember that you opened a channel, and it was an inbound channel. This means that you can receive Bitcoins/Sats. Follow these steps below:</p>
+
+            <ul>
+                <li>Click the "Receive" button at the bottom of the home screen</li>
+                <li>Select "Receive to Lightning Invoice"</li>
+                <li>Click "Edit" to enter the amount of Bitcoin to be received, or you can proceed to generate the invoice without inputting an amount.</li>
+                <li>Copy or share the invoice with the other party. You can also share the screenshot of the QR code.</li>
+            </ul>
+
+            <div class="tip">
+                <strong>Tip:</strong> You can generate as many Bitcoin addresses or invoices as possible. Lightning invoices usually have an expiry time of 24 hours. When it expires, it can't be paid again.
+            </div>
+
+            <img src="img10.jpg" alt="Lightning Receiving">
+            <img src="img11.jpg" alt="Lightning Invoice">
+        </section>
+
+        <section class="section">
+            <h3>Step 5: Sending Bitcoin</h3>
+            <p>Sending Bitcoin is easy. You need to have Bitcoins or Sats in your wallet, and you can send them to anybody.</p>
+
+            <div class="note">
+                <strong>Note:</strong> If you receive Bitcoin into your normal on-chain wallet, it stays in your on-chain balance, and if you receive Bitcoin through a Lightning channel, it stays in your Lightning balance. This means you cannot use the Bitcoin on your on-chain balance for a Lightning transaction and vice versa.
+            </div>
+
+            <h4>Sending Bitcoin On Lightning:</h4>
+            <p>To send Bitcoin on the Lightning network through your Lightning channel, you need to have "Outbound liquidity," as we mentioned earlier. If you click the "purple Lightning card" on the home screen, you will see "inbound and outbound capacity". Without outbound capacity, you cannot make payments from your Lightning channel. However, you can only send the amount of Sats shown in your outbound capacity.
+            You can increase your outbound capacity by receiving more sats to that channel you opened, or by opening a new channel with the same node and increasing its outbound liquidity.</p>
+
+            <p>So when you have an outbound liquidity, you can send Sats across Lightning following these few steps:</p>
+
+            <ul>
+                <li>On the home screen, click on "Send."</li>
+                <li>Copy and paste the Lightning invoice address.</li>
+                <li>Enter the amount of sats (in a situation where the invoice does not already have an amount attached)</li>
+                <li>Send Sats. Fees will be deducted alongside the amount sent.</li>
+            </ul>
+
+            <h4>Sending Bitcoin on-chain:</h4>
+            <p>All you need to send Bitcoin on-chain is a sufficient balance in your wallet. Then proceed with these few steps</p>
+
+            <ul>
+                <li>On the home screen, click on "Send."</li>
+                <li>Paste the Bitcoin address and press "OK."</li>
+                <li>Enter the amount in Dollars or satoshi</li>
+                <li>Choose a fee rate. - While sending Bitcoin on-chain, you can choose the fee you want to pay for your transaction. You can adjust this from the green "fee rate" button</li>
+                <li>Broadcast your payment and sign it.</li>
+            </ul>
+
+            <div class="tip">
+                <strong>Tip:</strong> You can send Bitcoin via Lightning or on-chain by scanning an on-chain wallet address QR code or the QR code of a Lightning invoice.
+
+                On-chain Bitcoin transactions may be costlier in fees and take a longer time to get confirmed, while Lightning Bitcoin transactions are usually cheaper (a couple of sats) and faster (split seconds). You can learn more about Bitcoin transactions <a href="https://learnmeabitcoin.com/technical/transaction/" target="_blank">here</a>
+
+                Make sure the network type (Lightning vs On-chain) matches the recipient!
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Wallet Settings</h2>
+            <p>You can access the settings feature by clicking the "gear icon" in the top right corner of your homescreen.</p>
+
+            <ul>
+                <li><strong>Local Channel Backup</strong> — This is always automatically set to "Enabled"; however, if it is disabled, kindly set it to "Enabled". This backup helps restore your Lightning Channel states if you uninstall your wallet or lose your device.</li>
+
+                <li><strong>Where to store local Backup</strong> — This is always set to your download folder. It is important to assign this to any folder of your choice that you'll remember, because this is where the wallet backup files will be saved, and it'd be handy when you next want to recover your wallet on your mobile.</li>
+
+                <li><strong>Manage Chain wallet</strong> — This is automatically set to "BIP84 Modern Wallet". You can leave it there.</li>
+
+                <li><strong>Add Hardware Wallet</strong> — Hardware wallets are physical Bitcoin wallets that may exist as a USB drive or specialized devices designed to store Bitcoin. If you have one, you can link these devices to your Valet wallet in a Watch-Only mode, creating an extra layer of safety. Just scan the wallet and follow the prompts.</li>
+
+                <li><strong>Set Custom Electrum Node</strong> — By default, your wallet will be connected to random Electrum nodes, but through this setting, you can connect to private Electrum servers (if you have any) for easy on-chain Bitcoin blockchain access. Electrum servers are servers that intermediate between Electrum wallets and the Bitcoin network, removing the hurdles of downloading and syncing the full blockchain. More on electrum servers <a href="https://thebitcoinmanual.com/articles/btc-electrum-server/" target="_blank">here</a></li>
+
+                <li><strong>Fiat Currency</strong> — This is the local currency your balance is shown. It is set to USD by default. However, Valet supports a few popular local currencies like the US Dollar, the British Pound Sterling, the Euro, the Japanese Yen, and others.</li>
+
+                <li><strong>Bitcoin Units</strong> — This is the format in which your Bitcoin balance will be displayed. There are two formats: the Satoshi (SAT) and Bitcoin (BTC).</li>
+
+                <li><strong>Use Pin Authentication</strong> — This is a security feature that helps protect your mobile wallet application from unauthorized access. You can choose to use a PIN or your fingerprint (if your device has fingerprint technology)</li>
+
+                <li><strong>Use Tor Connection</strong> — Although Valet doesn't work with Tor natively, it is possible to use it along with the popular Orbot app, working as a VPN or Tor proxy on the smartphone.</li>
+
+                <li><strong>View BIP Recovery Phrase</strong> — This is where you can view and copy your 12-phrase keys to recover your wallet if you uninstall the Valet app or lose your device. Also note that with the 12-phrase keys, you can recover your wallet on any other Bitcoin wallet application. So, it doesn't necessarily have to be Valet, however, you may not get the same features you get in Valet on other applications.</li>
+
+                <li><strong>Usage Statistics</strong> — You can view the number of people who trust and use Valet for its robustness and flexible features.</li>
+            </ul>
+
+            <img src="img12.jpg" alt="Wallet Settings">
+        </section>
+
+        <section class="section">
+            <h2>Restoring Your Valet Wallet</h2>
+            <p>Two distinct situations could lead to losing access to your wallet, but the good news is that no matter what happens, you can still regain complete access following the next few steps below.</p>
+
+            <p>These two situations are:</p>
+            <ul>
+                <li>The event of loss or damage to your mobile phone</li>
+                <li>The event of uninstalling Valet from your phone for whatever reason.</li>
+            </ul>
+
+            <div class="note">
+                <strong>Note:</strong> We cannot overemphasize the importance of writing down your 12-word recovery phrases on paper and keeping them in a safe and private location. This is the ultimate tool for restoring your wallet, whether you lost/damaged your device or uninstalled Valet from it.
+            </div>
+
+            <h3>1. LOSS OR DAMAGE OF DEVICE</h3>
+            <p>If you lose your mobile device or it gets damaged, you can restore your wallet and regain access to your funds by following these simple steps below:</p>
+
+            <ul>
+                <li>Download Valet on your new device <a href="https://github.com/standardsats/valet/releases" target="_blank">here</a></li>
+                <li>Tap install to install the app</li>
+                <li>Open the Valet app from your device's home screen</li>
+                <li>Select "Restore Existing Wallet."</li>
+                <li>Select "Recovery Phrase Only."</li>
+                <li>Enter your 12-word recovery phrase in the correct order (1 to 12), and click "OK."</li>
+                <li>Congratulations, you're good to go!!</li>
+            </ul>
+
+            <img src="img13.jpg" alt="Restore Wallet Step 1">
+            <img src="img14.jpg" alt="Restore Wallet Step 2">
+            <img src="img15.jpg" alt="Restore Wallet Step 3">
+
+            <h3>2. UNINSTALLED VALET FROM DEVICE</h3>
+            <p>If you uninstall Valet from your device for whatever reason and want to get back to using Valet on that same device or even a new device, you may need two important tools. These tools are:</p>
+
+            <ul>
+                <li>Your 12-word recovery phrase (compulsory)</li>
+                <li>Your wallet Backup file</li>
+            </ul>
+
+            <p>Whenever you create a new wallet on Valet, your wallet data and information are automatically backed up and saved locally on your device. This wallet data usually saves your Lightning Channel state and transaction history.</p>
+
+            <p>With this backup file, you will not lose connection to any Lightning channel(s) you have open before the app uninstallation. By default, this wallet backup data is usually stored in the Downloads folder in your device's file manager, except you changed it through the app settings. Refer to the "Settings Section" above.</p>
+
+            <p>However, if you want to use Valet on another device, simply send this backup file to the device. Note where it is saved on the new device so you can properly locate it when needed.</p>
+
+            <p>Follow the steps below to restore your wallet with the backup file:</p>
+
+            <ul>
+                <li>Download Valet on your device or the new device <a href="https://github.com/standardsats/valet/releases" target="_blank">here</a></li>
+                <li>Tap install to install the app</li>
+                <li>Open the Valet app from your device's home screen</li>
+                <li>Select "Restore Existing Wallet."</li>
+                <li>Select "Backup + recovery phrase"</li>
+                <li>Navigate to the location of the backup file on your device and select it.</li>
+                <li>Enter your 12-word recovery phrase in the correct order (1 to 12), and click "OK."</li>
+                <li>Congratulations! You have restored your wallets and funds, including any open Lightning channels and transaction history.</li>
+            </ul>
+
+            <img src="img16.jpg" alt="Restore with Backup Step 1">
+            <img src="img17.jpg" alt="Restore with Backup Step 2">
+            <img src="img18.jpg" alt="Restore with Backup Step 3">
+
+            <div class="tip">
+                <strong>Tip:</strong> With only your 12-word recovery phrase, you can restore your wallet on any other Bitcoin wallet that supports the 12-word recovery phrases.
+
+                But this will restore only the funds on your on-chain balance without restoring any lightning channels. The lightning channels will be force-closed, and any balance on them will be returned to your on-chain balance.
+
+                A wallet that supports 12-word recovery phrase is said to be compatible with BIP-39. "BIP" means "Bitcoin Improvement Proposal". Read more about that <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" target="_blank">here</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Advanced Features</h2>
+            <ul>
+                <li><strong>Coin Control</strong> — Coin control lets you choose which UTXO to spend from. In layman's terms, a UTXO could be likened to different pockets that hold different amounts in a particular wallet, which collectively make up the balance of that wallet. So with coin control in Valet, when you want to send Bitcoin to someone, you can choose which pocket in your wallet to send from</li>
+
+                <li><strong>Batching</strong> — Batching is a feature that helps reduce the transaction fees paid for Bitcoin transactions. Naturally, every Bitcoin transaction carries a transaction fee, which is often dependent on the size of the transaction data and not necessarily the amount transacted. Hence, batching reduces the fees paid by grouping transactions with small data size to those with similar data size and broadcasting them as one transaction, thereby paying one fee or a structurally reduced fee for both transactions.</li>
+
+                <li><strong>Integrated Lightning Node</strong> — The Lightning Technology is a second-layer Bitcoin network that helps Bitcoin scale. It was designed to facilitate faster and micro Bitcoin transactions on top of the Bitcoin main Blockchain. Read more about Lightning Network <a href="https://lightning.network/" target="_blank">here</a></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Security Tips</h2>
+            <ul>
+                <li><strong>Store 12-Phrase Key Offline</strong> — Your 12-phrase keys are your ultimate access to your wallet in the event of a loss of your device or uninstallation of your Valet app. Please write it down on paper and keep it securely. Do not save it in your Email Draft Box or on your computer or any electronic device, as these things are susceptible to security breaches.</li>
+
+                <li><strong>Do Not Share Your 12-Phrase Keys</strong> — Do not give your 12-phrase keys to anyone. Developers of Valet will never ask you for your 12-phrase keys. Do not enter it on any website or forum. Anybody who gets your 12-phrase keys will take control of your wallet and drain your Bitcoins.</li>
+
+                <li><strong>Check for App Updates</strong> — Always check for app updates so you don't miss out on patches and bug fixes.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Contribute & Support</h2>
+            <h3>Test or Suggest Features:</h3>
+            <p>Please visit our <a href="https://github.com/standardsats/valet" target="_blank">GitHub</a> page and feel free to fork the code base to your taste, submit bug reports, open feature requests, and join roadmap discussions.
+            We are always open to getting your feedback. Kindly follow us on <a href="https://x.com/standard_sats" target="_blank">X</a>, <a href="https://stacker.news/standard_sats" target="_blank">Stacker News</a> and <a href="https://t.me/StandardSatsCommunity" target="_blank">Telegram</a> and join us in spreading the word.</p>
+
+            <h3>Donate:</h3>
+            <p>We have come a long way, but there are a lot of other outstanding features we would want to introduce in the future. So the building never stops, hence, your financial support means a lot to us. Please support Valet's development on <a href="https://geyser.fund/project/valetlightning" target="_blank">Geyser</a></p>
+        </section>
+
+        <section class="section">
+            <h2>FAQ</h2>
+            <div class="faq">
+                <h3>Q: Can I use Valet without an internet connection?</h3>
+                <p>A: No, you cannot use Valet without an internet connection. However, Valet was purposely built to use a minimal internet connection, making it suitable for users in remote areas with low internet bandwidth and latency.</p>
+            </div>
+
+            <div class="faq">
+                <h3>Q: Can I restore my wallet on another phone?</h3>
+                <p>A: Yes — with your 12-word recovery phrase, you can restore your wallet on any other device, including desktop wallets that support mnemonic key wallets</p>
+            </div>
+
+            <div class="faq">
+                <h3>Q: What happens if I uninstall Valet?</h3>
+                <p>A: Your wallet is safe as long as you copied down your 12-phrase keys and kept them safe.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
