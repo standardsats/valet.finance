@@ -3,273 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valet Features - What Can Valet Do For You?</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --background-color: #f8f9fa;
-            --text-color: #333;
-            --border-color: #e9ecef;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: 1rem 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .feature-section {
-            background-color: white;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h1, h2, h3 {
-            color: var(--primary-color);
-            margin: 1.5rem 0 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-        }
-
-        .feature-card {
-            background-color: #f8f9fa;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .feature-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .benefit-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .benefit-list li {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .benefit-list li:before {
-            content: "✓";
-            color: var(--secondary-color);
-            position: absolute;
-            left: 0;
-        }
-
-        .use-case {
-            background-color: #e3f2fd;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-        }
-
-        .use-case h4 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    <title>Features - Valet</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html">Valet</a>
-            <a href="features.html">Features</a>
-            <a href="user-guide.html">User Guide</a>
-            <a href="bnb.html">BnB</a>
+            <ul>
+                <li><a href="index.html">Valet</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="user-guide.html">User Guide</a></li>
+                <li><a href="bnb.html">BnB</a></li>
+            </ul>
         </nav>
     </header>
 
-    <div class="container">
-        <h1>What Can Valet Do For You?</h1>
+    <main>
+        <section class="hero">
+            <h1>Features</h1>
+            <p class="lead">Valet is a unique Bitcoin wallet that gives you full control of your money and your financial life. Think of it like having your bank in your pocket, where you're the only one with the key. There's nothing like waiting for bank approvals, nobody else can access your funds, and you can carry out transactions anywhere, anytime.</p>
+        </section>
 
-        <section class="feature-section">
-            <h2>Your Personal Bitcoin Wallet</h2>
-            <p>Valet is like having your own personal bank in your pocket, but for Bitcoin. Here's what makes it special:</p>
-
+        <section class="features-section">
+            <h2>Basic Features</h2>
+            
             <div class="feature-card">
-                <h4>Complete Control Over Your Money</h4>
-                <p>Unlike traditional banking apps, Valet gives you full control over your Bitcoin. Think of it as having your own personal vault where you're the only one with the key.</p>
-                <ul class="benefit-list">
-                    <li>No one else can access your funds</li>
-                    <li>No waiting for bank approvals</li>
-                    <li>Send and receive money anytime, anywhere</li>
+                <h3>Send Bitcoin</h3>
+                <p>As you should expect, you can send Bitcoin to anyone, anywhere in the world using Valet, and at any time you like. You can send Bitcoin on Valet through these several ways:</p>
+                <ul>
+                    <li><strong>Bitcoin Address:</strong> Here, you send Bitcoin to anyone through their normal Bitcoin address.</li>
+                    <li><strong>Lightning Invoice:</strong> With Lightning technology enabled on Valet, you can send Bitcoin to anyone to their generated Lightning invoice. Lightning Invoices makes it possible to send small amounts of Bitcoin that you cannot otherwise send using a Bitcoin address because Lightning transactions are cheaper and relatively faster.</li>
+                    <li><strong>Email:</strong> You can send Bitcoin to anyone with their Bitcoin accounts linked to their email. Such accounts are usually custodial accounts like Binance, Bybit, etc.</li>
                 </ul>
             </div>
 
             <div class="feature-card">
-                <h4>Lightning-Fast Payments</h4>
-                <p>Valet includes Lightning Network support, which is like having a super-fast payment system built into your wallet.</p>
-                <ul class="benefit-list">
-                    <li>Pay for coffee in seconds</li>
-                    <li>Send money to friends instantly</li>
-                    <li>Lower fees than traditional Bitcoin transactions</li>
+                <h3>Receive Bitcoin</h3>
+                <p>Just like sending Bitcoin, you can also receive Bitcoin on your Valet app anytime, anywhere in the world. You receive Bitcoin from your Valet through these ways:</p>
+                <ul>
+                    <li><strong>Bitcoin Address:</strong> Here you can generate a Bitcoin address and send it to anyone to pay you Bitcoins. It's straightforward.</li>
+                    <li><strong>Lightning Invoice:</strong> Same as sending, you can receive Bitcoin by generating a lightning invoice. You can receive small amounts of Bitcoin over Lighting.</li>
                 </ul>
+                <div class="tip">
+                    <p><strong>Tip:</strong> With lightning technology on Valet, you can pay for services that cost small amounts in Bitcoin, e.g. pay for coffee, send money to friends and family, etc. And if you're a merchant, you can receive any amount in Bitcoin for your services or goods.</p>
+                </div>
             </div>
         </section>
 
-        <section class="feature-section">
+        <section class="features-section">
+            <h2>Advanced Features</h2>
+
+            <div class="feature-card">
+                <h3>Fiat Channels</h3>
+                <p>Fiat Channels are unique Lightning channels that help Valet users protect themselves against the regular unprecedented up and down movement of Bitcoin price. This feature was designed to lock in your Bitcoins temporarily at a fixed Bitcoin price as when the deposit to the channel was made. This feature is useful to merchants who might want to receive payments in Bitcoin via lightning but do not want the value they received to fluctuate following Bitcoin's price movement.</p>
+                <p>So if you're a merchant and you want to receive payments in Bitcoin and be sure that the value you received is intact, Valet is the solution for you.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Custom Node Connection</h3>
+                <p>This feature enables users to connect their Electrum/Bitcoin nodes to Valet. Valet traditionally runs on random public electrum nodes from which your wallet interacts with the Bitcoin network. These Electrum nodes push your on-chain transactions to the Bitcoin blockchain.</p>
+                <p>With this feature, technically knowledgeable persons who run their nodes can connect them to Valet and use their nodes directly for communication with the blockchain. This provides a higher level of privacy since users may be running their nodes over the Tor network.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Transaction Batching</h3>
+                <p>Transaction batching is an advanced feature built into Valet that helps reduce the fees you pay per transaction. As the name implies, when you opt for transaction batching, the Valet app will automatically gather your transaction and that of other users and send these transactions as one transaction. The cost of that one transaction will now be split amongst everybody whose transaction was included.</p>
+                <p>This feature is particularly applied when you are sending Bitcoin through a Bitcoin address, and it is an important feature because the model through which the Bitcoin transaction fee is calculated, the amount of money (in Bitcoin) that you are sending doesn't determine the fees you pay, instead the size of the transaction data. In most cases, one transaction is constructed from so many UTXO's.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Coin Control</h3>
+                <p>We made mention of transaction construction when we were describing "Transaction batching" above. This feature will help us explain what a Bitcoin transaction looks like. Another name for this feature is UTXO control. UTXO is an acronym for the phrase "Unspent Transaction Output". Your Bitcoin wallet may have a balance of 0.5BTC on the surface, but this 0.5BTC might be a combination of three different wallet addresses, each holding 0.166BTC, or two different addresses, each holding 0.25BTC, etc. These addresses with their balances are called UTXOs.</p>
+                <p>So with coin control in Valet, you can choose which addresses you want to use its coin content for a sending transaction. If you have a 0.5BTC, being the sum of 3 different UTXOs' where 2 addresses hold 0.16BTC each and 1 holds 0.25BTC. If you want to send 0.25BTC, your wallet can automatically decide to combine the balances of the two wallets that hold 0.16BTC each to make 0.25BTC and send, however, with coin control, you will see these addresses and their balances and you can choose which one of them you want to use for the transaction.</p>
+                <p>This can also help lower the fees you pay, and prevent having what we call (Dust) balances.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Fee Control</h3>
+                <p>This is a feature that enables you to choose the amount of fees you want to pay for a transaction. With Fee Control, you may not use Transaction Batching or Coin Control. This feature enables you to choose the least amount possible as the transaction fee or increase the amount to the high side.</p>
+                <p>It is important to note that the amount you pay in fees for a transaction can determine how fast or how slow the transaction gets approved on the blockchain by the (Miners). In some cases, if you want your transaction to be prioritized by the miners and approved faster, you can increase the fees. In the same light, if you're not in a hurry and want to save on fees, you can also reduce the fee amount to the lowest and wait whenever the transaction gets picked up and approved on the blockchain.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Replace By Fee</h3>
+                <p>This wonderful feature is similar to the "Fee control" feature but applicable differently. In a typical "Fee Control" scenario, you choose the fee you want to pay before you (broadcast) the transaction to the blockchain. However, in "Replace by Fee", you change the fee amount of an already broadcasted transaction, mostly by increasing it.</p>
+                <p>This can only be done if your transaction has not gotten any (block confirmation). This feature is usually used when you want a transaction confirmed faster by the miners. Perhaps you initially paid a small or moderate fee for a transaction while broadcasting it. But the transaction is taking time to get confirmed (Mostly because there are a lot of transactions on the (mempool), and hence the miners are prioritizing transactions with higher fees). You can bump the transaction fee using the "Replace By Fee" feature, pushing it to priority for miners to pick it.</p>
+                <div class="warning">
+                    <p><strong>Important:</strong> Because of this feature, you should wait for at least one confirmation on a Bitcoin transaction to be sure it has gone through. In other words, if anybody sends Bitcoin to you through a Bitcoin address, for goods or services, you MUST not release your goods or services until the Bitcoin transaction has gotten at least 1 confirmation, which means that person cannot reverse such transaction again. If a transaction has not gotten at least one confirmation and you release your goods and services, the person can reverse such transaction to another wallet using the "Replace by Fee" feature on Valet.</p>
+                    <p>So stay alert!!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
             <h2>Security Features</h2>
-            <p>Your security is our top priority. Here's how Valet keeps your Bitcoin safe:</p>
 
             <div class="feature-card">
-                <h4>Backup and Recovery</h4>
-                <p>Lose your phone? No problem! Valet provides a simple 12-word recovery phrase that works like a master key to your wallet.</p>
-                <ul class="benefit-list">
-                    <li>Easy to write down and store safely</li>
-                    <li>Recover your wallet on any device</li>
-                    <li>Never lose access to your funds</li>
-                </ul>
+                <h3>Recovery Phrase</h3>
+                <p>The Valet app is a self-custodial wallet, which means you are completely in charge of your wallet and money. If you lose access to your wallet, maybe because of damage or loss to your device, there's nothing like a customer care representative that will help you do a login reset and get you back into your wallet.</p>
+                <p>However, by traditional designs, Valet has a technology that helps you recover your wallet if you lose access to it. This tech ensures you regain access to your wallet by providing 12 or 24 English words on creating your wallet. This phrase gives back access to your wallet if you lose or damage your device. So you must copy these 12 words out and keep them in a private and secure place. This is the key to your wallet, hence anyone who gets hold of it can enter your wallet from any device and wipe your Bitcoins.</p>
             </div>
 
             <div class="feature-card">
-                <h4>Extra Security Layers</h4>
-                <p>Add extra protection to your wallet with these security features:</p>
-                <ul class="benefit-list">
-                    <li>PIN code protection</li>
-                    <li>Fingerprint authentication (on supported devices)</li>
-                    <li>Hardware wallet support for maximum security</li>
-                </ul>
+                <h3>Back Up</h3>
+                <p>In most Lightning-enabled Bitcoin wallets, whenever you lose access to your wallets or uninstalled your app, when you reinstall it again, you'll lose all the Lightning node connections you had on. But with Valet, it is not the same. The Valet app automatically creates a backup file stored locally on your mobile device. So even if you uninstall our device, you can easily restore your Lightning channel connections by recovering your wallet using the backup file saved locally on your device and your 12-word phrases.</p>
+                <p>This gives you the confidence to use the Lightning technology on Valet, knowing even if you lose access to your wallet, as long as your wallet backup file is accessible, your Lightning connections are safe.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>PIN/Fingerprint</h3>
+                <p>Pin/Fingerprint technology is an added security feature built to help prevent unauthorized access to your Valet app in case someone steals your mobile device and somehow gets access to it. With a lock pin on fingerprint set up on your app, they cannot access the Valet app on your phone.</p>
+                <p>However, the PIN/Fingerprint is only useful while the app is on your phone. If you install Valet on another device, you should create another PIN/fingerprint to protect that APP.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Hardware Connection</h3>
+                <p>If you have a hardware wallet like the (Trezor) or (Ledger) wallets, you can connect these wallets to your Valet app on a "Watch-Only" mode. This helps you watch over your Hardware wallet to ensure no one tampers with it.</p>
+                <p>It is a security feature that helps you keep tabs on your hardware-offline Bitcoin, giving you a heads up on any security concerns like wallet breaches or any such things. Importantly, even if someone accesses your Valet app, they cannot move the Bitcoins in your hardware wallet because it is a "Watch-only" mode.</p>
+                <p>A smart security advanced feature for you to enjoy.</p>
             </div>
         </section>
+    </main>
 
-        <section class="feature-section">
-            <h2>Smart Money Management</h2>
-            <p>Valet makes managing your Bitcoin easy and efficient:</p>
-
-            <div class="feature-card">
-                <h4>Smart Transaction Features</h4>
-                <p>Save money on fees and manage your transactions better:</p>
-                <ul class="benefit-list">
-                    <li>Batch multiple payments together to save on fees</li>
-                    <li>Choose which coins to spend from</li>
-                    <li>Set custom transaction fees</li>
-                </ul>
-            </div>
-
-            <div class="feature-card">
-                <h4>Easy to Use Interface</h4>
-                <p>Valet is designed to be user-friendly:</p>
-                <ul class="benefit-list">
-                    <li>Clear balance display</li>
-                    <li>Simple send and receive buttons</li>
-                    <li>Transaction history at your fingertips</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="feature-section">
-            <h2>Real-World Use Cases</h2>
-            <p>Here are some ways people use Valet in their daily lives:</p>
-
-            <div class="use-case">
-                <h4>For Daily Purchases</h4>
-                <p>Use Valet to pay for your morning coffee or lunch using Lightning Network - it's faster than using a credit card!</p>
-            </div>
-
-            <div class="use-case">
-                <h4>For International Payments</h4>
-                <p>Send money to family abroad without expensive wire transfer fees or long waiting times.</p>
-            </div>
-
-            <div class="use-case">
-                <h4>For Savings</h4>
-                <p>Use Valet as your personal Bitcoin savings account, with complete control over your funds.</p>
-            </div>
-        </section>
-
-        <section class="feature-section">
-            <h2>Advanced Features for Power Users</h2>
-            <p>For those who want more control, Valet offers advanced features:</p>
-
-            <div class="feature-card">
-                <h4>Custom Node Connection</h4>
-                <p>Connect to your own Bitcoin node for maximum privacy and control.</p>
-            </div>
-
-            <div class="feature-card">
-                <h4>Lightning Channel Management</h4>
-                <p>Open and manage your own Lightning channels for the best payment experience.</p>
-            </div>
-
-            <div class="feature-card">
-                <h4>Multiple Currency Support</h4>
-                <p>View your balance in your preferred currency, from USD to EUR and more.</p>
-            </div>
-        </section>
-    </div>
+    <footer>
+        <p>&copy; 2024 Valet. All rights reserved.</p>
+    </footer>
 </body>
 </html> 
