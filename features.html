@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valet Features - What Can Valet Do For You?</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .feature-section {
+            background-color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .feature-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefit-list li:before {
+            content: "✓";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .use-case {
+            background-color: #e3f2fd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .use-case h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Valet</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="features.html">Features</a>
+            <a href="bnb.html">BnB</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>What Can Valet Do For You?</h1>
+
+        <section class="feature-section">
+            <h2>Your Personal Bitcoin Wallet</h2>
+            <p>Valet is like having your own personal bank in your pocket, but for Bitcoin. Here's what makes it special:</p>
+
+            <div class="feature-card">
+                <h4>Complete Control Over Your Money</h4>
+                <p>Unlike traditional banking apps, Valet gives you full control over your Bitcoin. Think of it as having your own personal vault where you're the only one with the key.</p>
+                <ul class="benefit-list">
+                    <li>No one else can access your funds</li>
+                    <li>No waiting for bank approvals</li>
+                    <li>Send and receive money anytime, anywhere</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>Lightning-Fast Payments</h4>
+                <p>Valet includes Lightning Network support, which is like having a super-fast payment system built into your wallet.</p>
+                <ul class="benefit-list">
+                    <li>Pay for coffee in seconds</li>
+                    <li>Send money to friends instantly</li>
+                    <li>Lower fees than traditional Bitcoin transactions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Security Features</h2>
+            <p>Your security is our top priority. Here's how Valet keeps your Bitcoin safe:</p>
+
+            <div class="feature-card">
+                <h4>Backup and Recovery</h4>
+                <p>Lose your phone? No problem! Valet provides a simple 12-word recovery phrase that works like a master key to your wallet.</p>
+                <ul class="benefit-list">
+                    <li>Easy to write down and store safely</li>
+                    <li>Recover your wallet on any device</li>
+                    <li>Never lose access to your funds</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>Extra Security Layers</h4>
+                <p>Add extra protection to your wallet with these security features:</p>
+                <ul class="benefit-list">
+                    <li>PIN code protection</li>
+                    <li>Fingerprint authentication (on supported devices)</li>
+                    <li>Hardware wallet support for maximum security</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Smart Money Management</h2>
+            <p>Valet makes managing your Bitcoin easy and efficient:</p>
+
+            <div class="feature-card">
+                <h4>Smart Transaction Features</h4>
+                <p>Save money on fees and manage your transactions better:</p>
+                <ul class="benefit-list">
+                    <li>Batch multiple payments together to save on fees</li>
+                    <li>Choose which coins to spend from</li>
+                    <li>Set custom transaction fees</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>Easy to Use Interface</h4>
+                <p>Valet is designed to be user-friendly:</p>
+                <ul class="benefit-list">
+                    <li>Clear balance display</li>
+                    <li>Simple send and receive buttons</li>
+                    <li>Transaction history at your fingertips</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Real-World Use Cases</h2>
+            <p>Here are some ways people use Valet in their daily lives:</p>
+
+            <div class="use-case">
+                <h4>For Daily Purchases</h4>
+                <p>Use Valet to pay for your morning coffee or lunch using Lightning Network - it's faster than using a credit card!</p>
+            </div>
+
+            <div class="use-case">
+                <h4>For International Payments</h4>
+                <p>Send money to family abroad without expensive wire transfer fees or long waiting times.</p>
+            </div>
+
+            <div class="use-case">
+                <h4>For Savings</h4>
+                <p>Use Valet as your personal Bitcoin savings account, with complete control over your funds.</p>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Advanced Features for Power Users</h2>
+            <p>For those who want more control, Valet offers advanced features:</p>
+
+            <div class="feature-card">
+                <h4>Custom Node Connection</h4>
+                <p>Connect to your own Bitcoin node for maximum privacy and control.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Lightning Channel Management</h4>
+                <p>Open and manage your own Lightning channels for the best payment experience.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Multiple Currency Support</h4>
+                <p>View your balance in your preferred currency, from USD to EUR and more.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
