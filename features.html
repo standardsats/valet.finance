@@ -58,12 +58,76 @@
             padding: 2rem;
         }
 
-        .feature-list li {
-            background-color: white;
-            padding: 1rem;
-            margin: 0.5rem 0;
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features-section {
+            margin: 3rem 0;
+        }
+
+        .features-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+
+        .feature-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
         }
 
         .back-to-top {
@@ -103,6 +167,9 @@
                 align-items: center;
                 gap: 1rem;
             }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -116,7 +183,7 @@
         </nav>
     </header>
 
-    <main>
+    <div class="container">
         <section class="hero">
             <h1>Features</h1>
             <p class="lead">Valet is a unique Bitcoin wallet that gives you full control of your money and your financial life. Think of it like having your bank in your pocket, where you're the only one with the key. There's nothing like waiting for bank approvals, nobody else can access your funds, and you can carry out transactions anywhere, anytime.</p>
@@ -221,7 +288,7 @@
                 <p>A smart security advanced feature for you to enjoy.</p>
             </div>
         </section>
-    </main>
+    </div>
 
     <footer>
         <p>&copy; 2024 Valet. All rights reserved.</p>
