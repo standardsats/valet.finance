@@ -99,6 +99,42 @@
                 gap: 1rem;
             }
         }
+
+        .challenge-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .challenge-box h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .challenge-box p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -115,6 +151,18 @@
         <section class="hero">
             <h1>VALET</h1>
             <p>Built for today, ready for tomorrow - A lightweight Non-custodial Bitcoin wallet, built to work where others don't.</p>
+        </section>
+
+        <section class="challenge-box">
+            <h2>THE CHALLENGE</h2>
+            <p>A significant portion of the world's population, approximately 1.7 billion adults, remains unbanked globally. This is usually because traditional banking infrastructures are inaccessible in many regions. Individuals are also often discouraged from opening bank accounts because it's usually a tedious task, especially the Know Your Customer (KYC) procedures.</p>
+            
+            <p>Bitcoin, as an inclusive financial technology, has solved this problem. However, there is still a challenge: Bitcoin is quite technical, and a majority of people lack the technical know-how to navigate traditional command-line Bitcoin usage. Progressively, Bitcoin developers have built many end-user solutions (wallets), but a majority of these solutions often require high system and internet resources, have poor UI/UX designs, resulting in slow/limited adoption of Bitcoin.</p>
+            
+            <p>This is why we have build Valet, a Simple Bitcoin Wallet that simplifies the use of Bitcoin and can work in conditions where others cannot!</p>
+            
+            <p>Join us today!!!</p>
+            <a href="https://f-droid.org/en/packages/finance.valet/" class="download-button">Start here</a>
         </section>
     </div>
 </body>
