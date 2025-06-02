@@ -165,6 +165,34 @@
             border-radius: 0 8px 8px 0;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -222,7 +250,7 @@
             <h2>Getting Started</h2>
             <h3>Step 1: Download & Install Valet</h3>
             <ol>
-                <li>Android devices only - Click <a href="https://github.com/standardsats/valet/releases" target="_blank">here</a> to download the apk file, or download from <a href="https://f-droid.org/en/packages/org.standardsats.valet/" target="_blank">FDroid</a></li>
+                <li>Android devices only - Click <a href="https://github.com/standardsats/valet/releases" target="_blank">here</a> to download the apk file, or download from <a href="https://f-droid.org/en/packages/finance.valet/" target="_blank">F-Droid</a></li>
                 <li>Tap on Install to install the app.</li>
                 <li>Go back to your home screen and open the app after installation.</li>
             </ol>
@@ -232,9 +260,7 @@
                 <li>Android Version = 8.0 or higher</li>
                 <li>Storage space = 30 mb space.</li>
             </ul>
-        </section>
 
-        <section class="section">
             <h3>Step 2: Create Your Wallet</h3>
             <ol>
                 <li>Tap on the Valet app on your homescreen to launch.</li>
@@ -535,5 +561,28 @@
             </div>
         </section>
     </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html> 
