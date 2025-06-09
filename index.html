@@ -11,6 +11,8 @@
             --background-color: #f8f9fa;
             --text-color: #333;
             --border-color: #e9ecef;
+            --gradient-start: #2c3e50;
+            --gradient-end: #3498db;
         }
 
         * {
@@ -37,9 +39,14 @@
         }
 
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -55,115 +62,95 @@
             font-size: 1.1rem;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            color: var(--text-color);
+            font-size: 1.8rem;
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
+            line-height: 1.4;
         }
 
         .challenge-box {
-            background: linear-gradient(to right, #ffffff, #f8f9fa);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             margin: 2rem auto;
-            border-left: 5px solid var(--secondary-color);
+            max-width: 1000px;
         }
 
         .challenge-box h2 {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
         .challenge-box p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            color: var(--text-color);
-            font-size: 1.1rem;
-        }
-
-        .challenge-box p:last-of-type {
-            color: var(--secondary-color);
-            font-weight: bold;
             font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #555;
         }
 
         .download-button {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             padding: 1rem 2rem;
-            border-radius: 4px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .download-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
+            font-size: 1.5rem;
         }
 
         .back-to-top.visible {
@@ -171,8 +158,44 @@
         }
 
         .back-to-top:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            .challenge-box {
+                padding: 2rem;
+            }
+
+            .challenge-box h2 {
+                font-size: 2rem;
+            }
+
+            .challenge-box p {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -189,7 +212,7 @@
     <div class="container">
         <section class="hero">
             <h1>VALET</h1>
-            <p>Built for today, ready for tomorrow - A lightweight Non-custodial Bitcoin wallet, built to work where others don't.</p>
+            <p>A lightweight non-custodial Bitcoin wallet, built to work where others don't</p>
         </section>
 
         <section class="challenge-box">
@@ -208,7 +231,6 @@
     <a href="#" class="back-to-top" id="backToTop">↑</a>
 
     <script>
-        // Back to top button functionality
         const backToTopButton = document.getElementById('backToTop');
         
         window.addEventListener('scroll', () => {
