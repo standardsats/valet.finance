@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valet - Bitcoin Wallet</title>
+    <title>Valet - Simple Bitcoin Wallet</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --background-color: #f8f9fa;
+            --primary-color: #FF6B00;
+            --secondary-color: #FF8C00;
             --text-color: #333;
-            --border-color: #e9ecef;
-            --gradient-start: #2c3e50;
-            --gradient-end: #3498db;
+            --background-color: #f5f5f5;
         }
 
         * {
@@ -25,73 +22,67 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background: var(--background-color);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            flex: 1;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            padding: 1rem 0;
+        /* Navigation */
+        .nav-container {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        nav {
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
             gap: 2rem;
-            padding: 1rem 0;
         }
 
-        nav a {
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            color: var(--text-color);
+            font-weight: 500;
         }
 
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
+        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 8rem 0 4rem;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
             margin-bottom: 3rem;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
         }
 
         .hero p {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.4;
         }
 
+        /* Problem Section */
         .problem-section {
             background: white;
             padding: 4rem 0;
@@ -118,13 +109,16 @@
             line-height: 1.8;
         }
 
-        .problem-content p:last-of-type {
-            margin-bottom: 2rem;
-        }
-
-        .features-section {
+        /* Features Section */
+        .features {
             padding: 4rem 0;
             background: white;
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .features-grid {
@@ -137,8 +131,8 @@
         .feature-card {
             background: white;
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
@@ -148,35 +142,106 @@
 
         .feature-card h3 {
             color: var(--primary-color);
-            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .feature-card p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        .download-section {
-            text-align: center;
+        /* Earn Section */
+        .earn-section {
             padding: 4rem 0;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: #f8f9fa;
+        }
+
+        .earn-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .earn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .earn-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .testimonials-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .download-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .download-button {
@@ -184,176 +249,239 @@
             background: white;
             color: var(--primary-color);
             padding: 1rem 2rem;
-            border-radius: 50px;
+            border-radius: 30px;
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: bold;
             margin-top: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
         }
 
         .download-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: scale(1.05);
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        /* Footer */
+        footer {
+            background: #333;
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: white;
             text-decoration: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            font-size: 1.5rem;
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 6rem 1rem 3rem;
+            .nav-links {
+                display: none;
             }
 
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .hero p {
-                font-size: 1.4rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Valet</a>
-            <a href="features.html">Features</a>
-            <a href="user-guide.html">User Guide</a>
-            <a href="bnb.html">BnB</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <section class="hero">
-            <h1>VALET</h1>
-            <p>A lightweight non-custodial Bitcoin wallet, built to work where others don't</p>
-        </section>
-
-        <section class="problem-section">
-            <div class="problem-content">
-                <h2>THE CHALLENGE</h2>
-                <p>A significant portion of the world's population, approximately 1.7 billion adults, remains unbanked globally. This is usually because traditional banking infrastructures are inaccessible in many regions. Individuals are also often discouraged from opening bank accounts because it's usually a tedious task, especially the Know Your Customer (KYC) procedures.</p>
-                
-                <p>Bitcoin, as an inclusive financial technology, has solved this problem. However, there is still a challenge: Bitcoin is quite technical, and a majority of people lack the technical know-how to navigate traditional command-line Bitcoin usage. Progressively, Bitcoin developers have built many end-user solutions (wallets), but a majority of these solutions often require high system and internet resources, have poor UI/UX designs, resulting in slow/limited adoption of Bitcoin.</p>
-                
-                <p>This is why we have build Valet, a Simple Bitcoin Wallet that simplifies the use of Bitcoin and can work in conditions where others cannot!</p>
-                
-                <p>Join us today!!!</p>
-                <a href="https://f-droid.org/en/packages/finance.valet/" class="download-button">Start here</a>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">VALET</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#earn">Earn</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <section class="features-section">
-            <h2 class="section-title">Why Choose Valet?</h2>
-            <p class="section-subtitle">Experience the power of a truly lightweight and efficient Bitcoin wallet</p>
+    <section class="hero">
+        <h1>VALET</h1>
+        <p>A lightweight non-custodial Bitcoin wallet, built to work where others don't</p>
+    </section>
+
+    <section class="problem-section">
+        <div class="problem-content">
+            <h2>THE CHALLENGE</h2>
+            <p>A significant portion of the world's population, approximately 1.7 billion adults, remains unbanked globally. This is usually because traditional banking infrastructures are inaccessible in many regions. Individuals are also often discouraged from opening bank accounts because it's usually a tedious task, especially the Know Your Customer (KYC) procedures.</p>
             
+            <p>Bitcoin, as an inclusive financial technology, has solved this problem. However, there is still a challenge: Bitcoin is quite technical, and a majority of people lack the technical know-how to navigate traditional command-line Bitcoin usage. Progressively, Bitcoin developers have built many end-user solutions (wallets), but a majority of these solutions often require high system and internet resources, have poor UI/UX designs, resulting in slow/limited adoption of Bitcoin.</p>
+            
+            <p>This is why we have build Valet, a Simple Bitcoin Wallet that simplifies the use of Bitcoin and can work in conditions where others cannot!</p>
+            
+            <p>Join us today!!!</p>
+            <a href="https://f-droid.org/en/packages/finance.valet/" class="download-button">Start here</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-content">
+            <h2>Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>Lightweight & Efficient</h3>
-                    <p>Built to work in conditions where other wallets fail. Minimal resource usage means you can use Bitcoin even with limited internet connectivity.</p>
+                    <h3>Lightweight</h3>
+                    <p>Runs smoothly on low-end devices with minimal resource usage</p>
                 </div>
-
+                <div class="feature-card">
+                    <h3>Offline Capable</h3>
+                    <p>Works in areas with poor or no internet connectivity</p>
+                </div>
                 <div class="feature-card">
                     <h3>Non-Custodial</h3>
-                    <p>You're in complete control of your funds. No third-party custody means enhanced security and privacy for your Bitcoin.</p>
+                    <p>You maintain full control of your Bitcoin</p>
                 </div>
-
                 <div class="feature-card">
-                    <h3>Lightning Ready</h3>
-                    <p>Integrated Lightning Network support for instant, low-fee transactions. Send and receive Bitcoin faster than ever.</p>
+                    <h3>Simple Interface</h3>
+                    <p>User-friendly design for everyone</p>
                 </div>
-
                 <div class="feature-card">
-                    <h3>Hardware Wallet Support</h3>
-                    <p>Connect your hardware wallet in watch-only mode for enhanced security and peace of mind.</p>
+                    <h3>Secure</h3>
+                    <p>Built with security as a priority</p>
                 </div>
-
                 <div class="feature-card">
-                    <h3>Advanced Features</h3>
-                    <p>Batch transactions, coin control, and replace-by-fee capabilities for power users who need more control.</p>
-                </div>
-
-                <div class="feature-card">
-                    <h3>Easy Recovery</h3>
-                    <p>Simple backup and recovery process with 12-word seed phrase. Your funds are always accessible when you need them.</p>
+                    <h3>Open Source</h3>
+                    <p>Transparent and community-driven development</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="download-section">
-            <h2 class="section-title">Ready to Get Started?</h2>
-            <p class="section-subtitle">Download Valet today and experience the future of Bitcoin wallets</p>
+    <section class="earn-section" id="earn">
+        <div class="earn-content">
+            <h2>Why Choose Valet</h2>
+            <div class="earn-grid">
+                <div class="earn-card">
+                    <h3>Accessibility</h3>
+                    <p>Works everywhere, even in challenging conditions</p>
+                </div>
+                <div class="earn-card">
+                    <h3>Simplicity</h3>
+                    <p>Easy to use for everyone</p>
+                </div>
+                <div class="earn-card">
+                    <h3>Reliability</h3>
+                    <p>Consistent performance you can count on</p>
+                </div>
+                <div class="earn-card">
+                    <h3>Community</h3>
+                    <p>Join our growing user base</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-content">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Valet has been a game-changer for me. It works perfectly even with my basic phone."</p>
+                    <p>- User from Rural Area</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Finally, a wallet that understands the needs of users in developing regions."</p>
+                    <p>- Bitcoin Enthusiast</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The simplicity and reliability of Valet is unmatched."</p>
+                    <p>- Long-time User</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="faq-content">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What makes Valet different from other wallets?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Valet is specifically designed to work in challenging conditions where other wallets fail. It's lightweight, works offline, and maintains a simple interface while ensuring security.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is Valet secure?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Valet is built with security as a top priority. It's non-custodial, meaning you maintain full control of your Bitcoin.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I use Valet offline?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Valet is designed to work in areas with poor or no internet connectivity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section">
+        <div class="download-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Download Valet today and experience the future of Bitcoin wallets</p>
             <a href="https://f-droid.org/en/packages/finance.valet/" class="download-button">Download Now</a>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <a href="#" class="back-to-top" id="backToTop">↑</a>
-
-    <script>
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Valet</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#earn">Why Choose Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">Discord</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html> 
