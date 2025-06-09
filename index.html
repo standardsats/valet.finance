@@ -92,32 +92,67 @@
             line-height: 1.4;
         }
 
-        .challenge-box {
+        .features-section {
+            padding: 4rem 0;
             background: white;
-            padding: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin: 2rem auto;
-            max-width: 1000px;
+            transition: transform 0.3s ease;
         }
 
-        .challenge-box h2 {
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            text-align: center;
             color: var(--primary-color);
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .challenge-box p {
+        .section-subtitle {
+            text-align: center;
+            color: #666;
             font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: #555;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
         }
 
         .download-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
+            background: white;
+            color: var(--primary-color);
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
@@ -185,16 +220,12 @@
                 font-size: 1.4rem;
             }
 
-            .challenge-box {
-                padding: 2rem;
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
-            .challenge-box h2 {
+            .section-title {
                 font-size: 2rem;
-            }
-
-            .challenge-box p {
-                font-size: 1.1rem;
             }
         }
     </style>
@@ -215,16 +246,47 @@
             <p>A lightweight non-custodial Bitcoin wallet, built to work where others don't</p>
         </section>
 
-        <section class="challenge-box">
-            <h2>THE CHALLENGE</h2>
-            <p>A significant portion of the world's population, approximately 1.7 billion adults, remains unbanked globally. This is usually because traditional banking infrastructures are inaccessible in many regions. Individuals are also often discouraged from opening bank accounts because it's usually a tedious task, especially the Know Your Customer (KYC) procedures.</p>
+        <section class="features-section">
+            <h2 class="section-title">Why Choose Valet?</h2>
+            <p class="section-subtitle">Experience the power of a truly lightweight and efficient Bitcoin wallet</p>
             
-            <p>Bitcoin, as an inclusive financial technology, has solved this problem. However, there is still a challenge: Bitcoin is quite technical, and a majority of people lack the technical know-how to navigate traditional command-line Bitcoin usage. Progressively, Bitcoin developers have built many end-user solutions (wallets), but a majority of these solutions often require high system and internet resources, have poor UI/UX designs, resulting in slow/limited adoption of Bitcoin.</p>
-            
-            <p>This is why we have build Valet, a Simple Bitcoin Wallet that simplifies the use of Bitcoin and can work in conditions where others cannot!</p>
-            
-            <p>Join us today!!!</p>
-            <a href="https://f-droid.org/en/packages/finance.valet/" class="download-button">Start here</a>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Lightweight & Efficient</h3>
+                    <p>Built to work in conditions where other wallets fail. Minimal resource usage means you can use Bitcoin even with limited internet connectivity.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Non-Custodial</h3>
+                    <p>You're in complete control of your funds. No third-party custody means enhanced security and privacy for your Bitcoin.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Lightning Ready</h3>
+                    <p>Integrated Lightning Network support for instant, low-fee transactions. Send and receive Bitcoin faster than ever.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Hardware Wallet Support</h3>
+                    <p>Connect your hardware wallet in watch-only mode for enhanced security and peace of mind.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Advanced Features</h3>
+                    <p>Batch transactions, coin control, and replace-by-fee capabilities for power users who need more control.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Easy Recovery</h3>
+                    <p>Simple backup and recovery process with 12-word seed phrase. Your funds are always accessible when you need them.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <h2 class="section-title">Ready to Get Started?</h2>
+            <p class="section-subtitle">Download Valet today and experience the future of Bitcoin wallets</p>
+            <a href="https://f-droid.org/en/packages/finance.valet/" class="download-button">Download Now</a>
         </section>
     </div>
 
