@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Business - Valet</title>
+    <title>BNB Chain - Valet.finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6B46C1;  /* Rich purple */
-            --secondary-color: #ffffff; /* White */
-            --accent-color: #F7FAFC;   /* Light gray */
-            --text-color: #2D3748;     /* Dark gray for text */
-            --text-light: #718096;     /* Medium gray for secondary text */
-            --background-light: #F7FAFC; /* Light gray background */
-            --background-dark: #2D3748; /* Dark background for contrast */
-            --success-color: #48BB78;   /* Green for success states */
-            --error-color: #F56565;     /* Red for error states */
-            --border-color: #E2E8F0;    /* Light gray for borders */
+            --primary-color: #6B46C1;
+            --secondary-color: #ffffff;
+            --accent-color: #F7FAFC;
+            --text-color: #2D3748;
+            --text-light: #718096;
+            --background-light: #F7FAFC;
+            --background-dark: #2D3748;
+            --success-color: #48BB78;
+            --error-color: #F56565;
+            --border-color: #E2E8F0;
         }
 
         * {
@@ -28,19 +29,8 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
+            background-color: var(--secondary-color);
             min-height: 100vh;
-            overflow-y: auto;
-        }
-
-        main {
-            padding-top: 5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
             overflow-y: auto;
         }
 
@@ -86,29 +76,69 @@
             font-size: 1.43rem;
             padding: 0.65rem 1.3rem;
             border-radius: 4px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
-            background-color: rgba(128, 90, 213, 0.1);
         }
 
-        .nav-links a.active {
+        main {
+            padding-top: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            overflow-y: auto;
+        }
+
+        .bnb-section {
+            padding: 4rem 0;
+        }
+
+        .bnb-section h2 {
+            text-align: center;
             color: var(--primary-color);
-            font-weight: 600;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
         }
 
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--primary-color);
+        .bnb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .bnb-card {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .bnb-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bnb-card h3 {
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .bnb-logo {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--background-dark);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
         }
 
         @media (max-width: 768px) {
@@ -116,163 +146,7 @@
                 display: none;
             }
         }
-
-        .blog-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .blog-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .blog-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .blog-header p {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .blog-card {
-            background: var(--secondary-color);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-
-        .blog-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-card-content {
-            padding: 1.5rem;
-        }
-
-        .blog-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .blog-card p {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .category-tag {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .read-more {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
-        .read-more:hover {
-            text-decoration: underline;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-            cursor: pointer;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--primary-dark);
-        }
-
-        @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .blog-header h1 {
-                font-size: 2rem;
-            }
-        }
     </style>
-    <script>
-        // Back to top button functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTopButton = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            });
-
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -283,86 +157,37 @@
                     <a href="index.html">Valet</a>
                     <a href="features.html">Features</a>
                     <a href="user-guide.html">User Guide</a>
-                    <a href="bnb.html">BnB</a>
+                    <a href="bnb.html" class="active">BnB</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="blog-container">
-        <section class="blog-header">
-            <h1>Blog & Business</h1>
-            <p>Stay updated with the latest news, business insights, and technological advancements in the Bitcoin and Lightning Network ecosystem.</p>
+    <main>
+        <section class="bnb-section">
+            <h2>BNB Chain Integration</h2>
+            <div class="bnb-grid">
+                <div class="bnb-card">
+                    <img src="images/img5.jpg" alt="BNB Chain" class="bnb-logo">
+                    <h3>BNB Chain Integration</h3>
+                    <p>Seamlessly interact with the BNB Chain ecosystem</p>
+                </div>
+                <div class="bnb-card">
+                    <img src="images/img6.jpg" alt="DeFi Protocols" class="bnb-logo">
+                    <h3>DeFi Protocols</h3>
+                    <p>Access popular DeFi protocols on BNB Chain</p>
+                </div>
+                <div class="bnb-card">
+                    <img src="images/img7.jpg" alt="Low Fees" class="bnb-logo">
+                    <h3>Low Fees</h3>
+                    <p>Enjoy minimal transaction costs on BNB Chain</p>
+                </div>
+            </div>
         </section>
-
-        <div class="content-grid">
-            <!-- News Section -->
-            <article class="blog-card">
-                <img src="img1.jpg" alt="Bitcoin News">
-                <div class="blog-card-content">
-                    <span class="category-tag">News</span>
-                    <h3>Latest Bitcoin Adoption Trends</h3>
-                    <p>Exploring the growing adoption of Bitcoin in emerging markets and how Valet is contributing to this movement.</p>
-                    <div class="blog-meta">
-                        <span>January 15, 2024</span>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Business Section -->
-            <article class="blog-card">
-                <img src="img2.png" alt="Business Insights">
-                <div class="blog-card-content">
-                    <span class="category-tag">Business</span>
-                    <h3>Merchant Adoption Guide</h3>
-                    <p>How businesses can integrate Bitcoin payments using Valet's Lightning Network capabilities.</p>
-                    <div class="blog-meta">
-                        <span>January 10, 2024</span>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Technology Section -->
-            <article class="blog-card">
-                <img src="img3.jpg" alt="Technology Update">
-                <div class="blog-card-content">
-                    <span class="category-tag">Technology</span>
-                    <h3>Lightning Network Updates</h3>
-                    <p>Latest developments in Lightning Network technology and how Valet implements these improvements.</p>
-                    <div class="blog-meta">
-                        <span>January 5, 2024</span>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- BNB Section -->
-            <div class="bnb-card">
-                <img src="images/img5.jpg" alt="BNB Chain" class="bnb-logo">
-                <h3>BNB Chain Integration</h3>
-                <p>Seamlessly interact with the BNB Chain ecosystem</p>
-            </div>
-            <div class="bnb-card">
-                <img src="images/img6.jpg" alt="DeFi Protocols" class="bnb-logo">
-                <h3>DeFi Protocols</h3>
-                <p>Access popular DeFi protocols on BNB Chain</p>
-            </div>
-            <div class="bnb-card">
-                <img src="images/img7.jpg" alt="Low Fees" class="bnb-logo">
-                <h3>Low Fees</h3>
-                <p>Enjoy minimal transaction costs on BNB Chain</p>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Valet.finance. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 Valet.finance. All rights reserved.</p>
     </footer>
-
-    <a href="#" class="back-to-top" aria-label="Back to top">↑</a>
 </body>
 </html> 
