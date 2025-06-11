@@ -186,8 +186,8 @@
         }
 
         .social-links {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
@@ -197,6 +197,7 @@
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s ease;
+            display: inline-block;
         }
 
         .social-link:hover {
@@ -308,13 +309,13 @@
                 <h4>Connect with Us</h4>
                 <div class="social-links">
                     <a href="#" class="social-link">X(Twitter)</a>
-                    <a href="#" class="social-link">GitHub</a>
                     <a href="#" class="social-link">YouTube</a>
                     <a href="#" class="social-link">StackerNews</a>
+                    <a href="#" class="social-link">GitHub</a>
                 </div>
                 <div class="community-buttons">
-                    <a href="#" class="community-button" style="width: 100%;">Join Our Telegram Community</a>
-                    <a href="#" class="community-button" style="width: 100%;">Join Our Discord Community</a>
+                    <a href="#" class="community-button" style="width: 100%; min-width: 250px;">Join Our Telegram Community</a>
+                    <a href="#" class="community-button" style="width: 100%; min-width: 250px;">Join Our Discord Community</a>
                 </div>
             </div>
         </div>
