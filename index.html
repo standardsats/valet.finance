@@ -7,13 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #FF6B00;
-            --secondary-color: #1A1A1A;
-            --text-color: #333333;
-            --background-light: #FFFFFF;
-            --background-dark: #1A1A1A;
-            --accent-color: #FF6B00;
-            --border-color: #E5E5E5;
+            --primary-color: #6B46C1;  /* Main purple */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #2D3748;     /* Dark gray for text */
+            --background-light: #F7FAFC; /* Light gray background */
+            --background-dark: #2D3748;  /* Dark gray for footer */
+            --accent-color: #805AD5;    /* Lighter purple for accents */
+            --border-color: #E2E8F0;    /* Light gray for borders */
+            --gradient-start: #6B46C1;   /* Purple gradient start */
+            --gradient-end: #805AD5;     /* Purple gradient end */
         }
 
         * {
@@ -75,7 +77,7 @@
         .hero-section {
             padding: 8rem 2rem 4rem;
             text-align: center;
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8F00 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             color: white;
         }
 
@@ -100,7 +102,7 @@
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background-color: white;
+            background-color: var(--secondary-color);
             color: var(--primary-color);
             text-decoration: none;
             border-radius: 8px;
@@ -109,7 +111,7 @@
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            background-color: var(--background-light);
         }
 
         .features-section {
@@ -121,7 +123,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         .features-grid {
@@ -205,7 +207,7 @@
         }
 
         .earn-button:hover {
-            background-color: #E55C00;
+            background-color: var(--accent-color);
         }
 
         .testimonials-section {
@@ -344,7 +346,7 @@
         }
 
         .store-button:hover {
-            background-color: #E55C00;
+            background-color: var(--accent-color);
         }
 
         footer {
@@ -400,7 +402,7 @@
         }
 
         .social-link:hover {
-            opacity: 1;
+            color: var(--accent-color);
         }
 
         .community-buttons {
@@ -422,7 +424,7 @@
         }
 
         .community-button:hover {
-            background-color: #E55C00;
+            background-color: var(--accent-color);
         }
 
         .footer-bottom {
