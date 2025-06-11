@@ -168,8 +168,9 @@
         }
 
         .guide-image-container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 1.5rem auto;
+            text-align: center;
         }
 
         .guide-image-container img {
@@ -177,6 +178,13 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .guide-image-caption {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
         .tip-box {
@@ -287,20 +295,20 @@
                     <h3>Step 2: Create Your Wallet</h3>
                     <ol>
                         <li>Launch the Valet app: On your home screen, locate the Valet app icon and tap on it to launch.</li>
-                        <li>Click on Create New Wallet: Once you click **Create New Wallet**, a new home screen will appear. It is that fast and simple to create a wallet.</li>
+                        <li>Click on Create New Wallet: Once you click <strong><em>Create New Wallet</em></strong>, a new home screen will appear. It is that fast and simple to create a wallet.</li>
                     </ol>
 
                     <div class="guide-image-container">
-                        <img src="images/img1.jpg" alt="Create New Wallet Screen" class="guide-image">
+                        <img src="images/img1.jpg" alt="Create New Wallet Screen">
                     </div>
 
                     <ol start="3">
-                        <li>Write down your 12-word recovery phrases: On the home screen, you'll see a short message in a green card: **Tap to save your recovery phrase...**. Click on that card and write down the 12 words in order, from left to right, with the word at the top left position as number 1.</li>
+                        <li>Write down your 12-word recovery phrases: On the home screen, you'll see a short message in a green card: <strong><em>Tap to save your recovery phrase...</em></strong>. Click on that card and write down the 12 words in order, from left to right, with the word at the top left position as number 1.</li>
                     </ol>
 
                     <div class="note-box">
                         <h4>What is the 12-word recovery phrase?</h4>
-                        <p>Valet wallet is a *non-custodial* Bitcoin wallet. The term non-custodial or self-custodial means that you do not rely on any company/third party to protect your wallet and prevent unauthorized access. With Valet, you have full control of your wallet's private keys represented by 12 random English words. Hence, you can use your wallet as you see fit.</p>
+                        <p>Valet wallet is a <strong>non-custodial</strong> Bitcoin wallet. The term non-custodial or self-custodial means that you do not rely on any company/third party to protect your wallet and prevent unauthorized access. With Valet, you have full control of your wallet's private keys represented by 12 random English words. Hence, you can use your wallet as you see fit.</p>
                         <ul>
                             <li>This 12-word recovery phrase is your wallet backup.</li>
                             <li>Do not share or store it online. You're to write it down and keep it in a safe and secure place.</li>
@@ -308,12 +316,12 @@
                     </div>
 
                     <div class="guide-image-container">
-                        <img src="images/img2.png" alt="Recovery Phrase Screen" class="guide-image">
+                        <img src="images/img2.png" alt="Recovery Phrase Screen">
                     </div>
 
                     <ol start="4">
                         <li>Confirm the recovery phrase to complete the setup: After writing down your 12-word recovery phrase, confirm you copied it correctly by entering it in the space provided on the app.</li>
-                        <li>Set a wallet PIN: This is optional, but recommended to prevent unauthorized access to your wallet application on your device. (You can do this from the *Settings* page. Keep reading to learn how to set up a PIN for your app.)</li>
+                        <li>Set a wallet PIN: This is optional, but recommended to prevent unauthorized access to your wallet application on your device. (You can do this from the <strong>Settings</strong> page. Keep reading to learn how to set up a PIN for your app.)</li>
                     </ol>
 
                     <div class="tip-box">
@@ -332,60 +340,60 @@
                     <h4>Buy From LNBig or BitRefill:</h4>
                     <p>This method is relatively more straightforward. On your home screen:</p>
                     <ul>
-                        <li>On the home screen, tap on *Lightning*</li>
-                        <li>Select any of the options *Purchase at LNBIG.com* or *Purchase at BITREFILL.COM*</li>
+                        <li>On the home screen, tap on <strong>Lightning</strong></li>
+                        <li>Select any of the options <strong>Purchase at LNBIG.com</strong> or <strong>Purchase at BITREFILL.COM</strong></li>
                         <li>You'll be redirected to your browser, where you'll complete the remaining process, and an Inbound Channel will be opened to your node.</li>
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img3.jpg" alt="Lightning Purchase Options" class="guide-image">
+                        <img src="images/img3.jpg" alt="Lightning Purchase Options">
                     </div>
 
                     <div class="tip-box">
-                        <p><strong>Tip:</strong> In Lightning Technology, there's something called **Inbound Liquidity Capacity** and **Outbound Liquidity Capacity**. This means the amount of Sats you can receive at your lightning node and the amount you can send out of your lightning node, respectively. Since you do not currently have any Bitcoin in your wallet, you can only create inbound channels.</p>
+                        <p><strong>Tip:</strong> In Lightning Technology, there's something called <strong><em>Inbound Liquidity Capacity</em></strong> and <strong><em>Outbound Liquidity Capacity</em></strong>. This means the amount of Sats you can receive at your lightning node and the amount you can send out of your lightning node, respectively. Since you do not currently have any Bitcoin in your wallet, you can only create inbound channels.</p>
                     </div>
 
                     <h4>Manual Channel Opening:</h4>
                     <p>As the name implies, this process involves manually opening a channel to another known Lightning Bitcoin node. Just follow the few steps below:</p>
                     <ul>
-                        <li>On your home screen, tap on *Lightning*.</li>
-                        <li>Select *Scan Node QR* and scan. - At this point, you should have requested and gotten the QR code of the node you want to open a channel to.</li>
-                        <li>Click *Share Node ID* to share your node ID with the person you're opening the channel with.</li>
-                        <li>Please *keep the screen open* until the node connection has been established - You will receive a prompt when the connection is established.</li>
+                        <li>On your home screen, tap on <strong>Lightning</strong>.</li>
+                        <li>Select <strong>Scan Node QR</strong> and scan. - At this point, you should have requested and gotten the QR code of the node you want to open a channel to.</li>
+                        <li>Click <strong>Share Node ID</strong> to share your node ID with the person you're opening the channel with.</li>
+                        <li>Please <strong>keep the screen open</strong> until the node connection has been established - You will receive a prompt when the connection is established.</li>
                         <li>Congratulations, you have an inbound channel ready to receive Sats.</li>
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img4.jpg" alt="Manual Channel Opening" class="guide-image">
-                        <img src="images/img5.jpg" alt="Channel Connection" class="guide-image">
+                        <img src="images/img4.jpg" alt="Manual Channel Opening">
+                        <img src="images/img5.jpg" alt="Channel Connection">
                     </div>
 
                     <h3>Step 4: Receiving Bitcoin</h3>
                     <p>Now that you have successfully opened a lightning channel with another node, either manually or via purchase from &LNBig& or &BitRefill&, you're set to receive Bitcoin in Valet.</p>
-                    <p>You can receive Bitcoins in your wallet either through Lightning or through the usual On-Chain wallet. On the home screen, you can either click on the orange Bitcoin card or the purple Lightning card, OR you can also access both options by clicking the Receive button at the bottom.</p>
+                    <p>You can receive Bitcoins in your wallet either through Lightning or through the usual On-Chain wallet. On the home screen, you can either click on the <strong>orange Bitcoin</strong> card or the <strong>purple Lightning</strong> card, OR you can also access both options by clicking the Receive button at the bottom.</p>
 
                     <h4>1. Steps to receive Bitcoin On-Chain:</h4>
                     <ul>
-                        <li>On the home screen, click on the *orange Bitcoin* card.</li>
-                        <li>With the *Edit* button, insert the amount of Bitcoin you'll receive to that address. This is usually important as it makes payment easy since the amount is already filled out. (Note that entering the amount is optional.)</li>
+                        <li>On the home screen, click on the <strong>orange Bitcoin</strong> card.</li>
+                        <li>With the <strong>Edit</strong> button, insert the amount of Bitcoin you'll receive to that address. This is usually important as it makes payment easy since the amount is already filled out. (Note that entering the amount is optional.)</li>
                         <li>Copy the address and send it to the person you're receiving the Bitcoin from, or click on the share button to share the address through other means. You can also send a screenshot of the QR code to the other party, as this can be scanned to make a payment.</li>
                         <li>Alternatively, you can also generate an address by clicking on "Receive" on the home screen and selecting "Receive to Bitcoin address."</li>
                         <li>Click "More Fresh Addresses" to generate a new and different address.</li>
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img6.jpg" alt="On-Chain Receive" class="guide-image">
-                        <img src="images/img7.jpg" alt="Address Generation" class="guide-image">
-                        <img src="images/img8.jpg" alt="QR Code" class="guide-image">
-                        <img src="images/img9.jpg" alt="Fresh Addresses" class="guide-image">
+                        <img src="images/img6.jpg" alt="On-Chain Receive">
+                        <img src="images/img7.jpg" alt="Address Generation">
+                        <img src="images/img8.jpg" alt="QR Code">
+                        <img src="images/img9.jpg" alt="Fresh Addresses">
                     </div>
 
                     <h4>2. Receive Bitcoin through Lightning:</h4>
                     <p>Remember that you opened a channel for an inbound channel? This means that you can receive Bitcoins/Sats. Follow the steps below:</p>
                     <ul>
-                        <li>Click the *Receive* button at the bottom of the home screen</li>
-                        <li>Select *Receive to Lightning Invoice*</li>
-                        <li>Click *Edit* to enter the amount of Bitcoin to be received, or you can proceed to generate the invoice without inputting an amount.</li>
+                        <li>Click the <strong>Receive</strong> button at the bottom of the home screen</li>
+                        <li>Select <strong>Receive to Lightning Invoice</strong></li>
+                        <li>Click <strong>Edit</strong> to enter the amount of Bitcoin to be received, or you can proceed to generate the invoice without inputting an amount.</li>
                         <li>Copy or share the invoice with the other party. You can also share the screenshot of the QR code.</li>
                     </ul>
 
@@ -394,8 +402,8 @@
                     </div>
 
                     <div class="guide-image-container">
-                        <img src="images/img10.jpg" alt="Lightning Receive" class="guide-image">
-                        <img src="images/img11.jpg" alt="Lightning Invoice" class="guide-image">
+                        <img src="images/img10.jpg" alt="Lightning Receive">
+                        <img src="images/img11.jpg" alt="Lightning Invoice">
                     </div>
 
                     <h3>Step 5: Sending Bitcoin</h3>
@@ -406,32 +414,32 @@
                     </div>
 
                     <h4>Sending Bitcoin On Lightning:</h4>
-                    <p>To send Bitcoin on the Lightning network through your Lightning channel, you need to have *Outbound liquidity*, as we mentioned earlier. If you click the *purple Lightning card* on the home screen, you will see *inbound and outbound capacity*. Without outbound capacity, you cannot make payments from your Lightning channel. However, you can only send the amount of Sats shown in your outbound capacity.</p>
+                    <p>To send Bitcoin on the Lightning network through your Lightning channel, you need to have <strong>Outbound liquidity</strong>, as we mentioned earlier. If you click the <strong>purple Lightning card</strong> on the home screen, you will see <strong>inbound and outbound capacity</strong>. Without outbound capacity, you cannot make payments from your Lightning channel. However, you can only send the amount of Sats shown in your outbound capacity.</p>
                     <p>You can increase your outbound capacity by receiving more Sats to that channel you opened, or by opening a new channel with the same node and increasing its outbound liquidity.</p>
                     <p>So when you have outbound liquidity, you can send Sats across Lightning following these few steps:</p>
                     <ul>
-                        <li>On the home screen, click on *Send.*</li>
+                        <li>On the home screen, click on <strong>Send</strong>.</li>
                         <li>Copy and paste the Lightning invoice address.</li>
                         <li>Enter the amount of Sats (in a situation where the invoice does not already have an amount attached)</li>
                         <li>Send Sats. Fees will be deducted alongside the amount sent.</li>
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img12.jpg" alt="Lightning Send" class="guide-image">
+                        <img src="images/img12.jpg" alt="Lightning Send">
                     </div>
 
                     <h4>Sending Bitcoin on-chain:</h4>
                     <p>The ability to send Bitcoin on-chain only requires that you have a sufficient balance in your on-chain wallet. Then proceed with these few steps:</p>
                     <ul>
-                        <li>On the home screen, click on *Send.*</li>
-                        <li>Paste the Bitcoin address and press *OK.*</li>
+                        <li>On the home screen, click on <strong>Send</strong>.</li>
+                        <li>Paste the Bitcoin address and press <strong>OK</strong>.</li>
                         <li>Enter the amount in Dollars or Satoshi (Sats)</li>
-                        <li>Choose a fee rate. - While sending Bitcoin on-chain, you can choose the fee you want to pay for your transaction. You can adjust this from the green **fee rate** button</li>
+                        <li>Choose a fee rate. - While sending Bitcoin on-chain, you can choose the fee you want to pay for your transaction. You can adjust this from the green <strong><em>fee rate</em></strong> button</li>
                         <li>Broadcast your payment and sign it.</li>
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img13.jpg" alt="On-Chain Send" class="guide-image">
+                        <img src="images/img13.jpg" alt="On-Chain Send">
                     </div>
 
                     <div class="tip-box">
@@ -454,7 +462,7 @@
                     <p>You can access the settings feature by clicking the *gear icon* in the top right corner of your home screen. Below is a brief explanation of every setting parameter you will see in the Valet app.</p>
 
                     <div class="guide-image-container">
-                        <img src="images/img14.jpg" alt="Settings Menu" class="guide-image">
+                        <img src="images/img14.jpg" alt="Settings Menu">
                     </div>
 
                     <ul class="settings-list">
@@ -462,7 +470,7 @@
                             <strong>Local Channel Backup</strong>
                             <p>This is always automatically set to **Enabled**; however, if it is disabled, kindly set it to *Enabled*. This backup helps restore your Lightning Channel states if you uninstall your wallet or lose your device.</p>
                             <div class="guide-image-container">
-                                <img src="images/img15.jpg" alt="Local Channel Backup" class="guide-image">
+                                <img src="images/img15.jpg" alt="Local Channel Backup">
                             </div>
                         </li>
 
@@ -470,7 +478,7 @@
                             <strong>Where to store local Backup</strong>
                             <p>This is always set to your download folder. You may assign this to any folder of your choice that you'll remember. This is where the wallet backup files will be saved, and should be handy whenever you want to recover your wallet on your mobile.</p>
                             <div class="guide-image-container">
-                                <img src="images/img16.jpg" alt="Backup Storage" class="guide-image">
+                                <img src="images/img16.jpg" alt="Backup Storage">
                             </div>
                         </li>
 
@@ -478,7 +486,7 @@
                             <strong>Manage Chain Wallet</strong>
                             <p>This is automatically set to **BIP84 Modern Wallet**. You can leave it there.</p>
                             <div class="guide-image-container">
-                                <img src="images/img17.jpg" alt="Chain Wallet" class="guide-image">
+                                <img src="images/img17.jpg" alt="Chain Wallet">
                             </div>
                         </li>
 
@@ -521,7 +529,7 @@
                             <strong>Usage Statistics</strong>
                             <p>You can view the number of people who trust and use Valet for its robustness and flexible features.</p>
                             <div class="guide-image-container">
-                                <img src="images/img18.jpg" alt="Usage Statistics" class="guide-image">
+                                <img src="images/img18.jpg" alt="Usage Statistics">
                             </div>
                         </li>
                     </ul>
@@ -561,9 +569,9 @@
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img13.jpg" alt="Restore Wallet" class="guide-image">
-                        <img src="images/img14.jpg" alt="Recovery Phrase" class="guide-image">
-                        <img src="images/img15.jpg" alt="Wallet Restored" class="guide-image">
+                        <img src="images/img13.jpg" alt="Restore Wallet">
+                        <img src="images/img14.jpg" alt="Recovery Phrase">
+                        <img src="images/img15.jpg" alt="Wallet Restored">
                     </div>
 
                     <h3>2. UNINSTALLED VALET FROM THE DEVICE</h3>
@@ -590,9 +598,9 @@
                     </ul>
 
                     <div class="guide-image-container">
-                        <img src="images/img16.jpg" alt="Backup File" class="guide-image">
-                        <img src="images/img17.jpg" alt="Restore Process" class="guide-image">
-                        <img src="images/img18.jpg" alt="Restore Complete" class="guide-image">
+                        <img src="images/img16.jpg" alt="Backup File">
+                        <img src="images/img17.jpg" alt="Restore Process">
+                        <img src="images/img18.jpg" alt="Restore Complete">
                     </div>
 
                     <div class="tip-box">
@@ -651,6 +659,32 @@
 
     <footer>
         <div class="footer-content">
+            <div class="footer-section">
+                <h4>Wallet</h4>
+                <ul>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">APK File</a></li>
+                    <li><a href="#">Telegram Bot</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="#">Lightning Network</a></li>
+                    <li><a href="#">Non-Custodial</a></li>
+                    <li><a href="#">Offline Mode</a></li>
+                    <li><a href="#">Multi-Device</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>BnB</h4>
+                <ul>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
             <div class="footer-section">
                 <h4>Connect with Us</h4>
                 <div class="social-links">
