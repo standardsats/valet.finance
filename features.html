@@ -107,6 +107,82 @@
             color: var(--primary-color);
         }
 
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
         main {
             padding-top: 5rem;
             max-width: 1200px;
@@ -167,6 +243,14 @@
             .nav-links {
                 display: none;
             }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -187,9 +271,55 @@
                     <a href="build.html">Build</a>
                     <a href="bnb.html">BnB</a>
                 </div>
+                <div class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
             </div>
         </nav>
     </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <span class="close-menu">&times;</span>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html">Valet</a>
+            <a href="features.html">Features</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="build.html">Build</a>
+            <a href="bnb.html">BnB</a>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const closeMenu = document.querySelector('.close-menu');
+        const overlay = document.querySelector('.overlay');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    </script>
 
     <main>
         <section class="features-section">
