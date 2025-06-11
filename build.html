@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build - Valet.finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6B46C1;  /* Main purple */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #2D3748;     /* Dark gray for text */
+            --background-light: #F7FAFC; /* Light gray background */
+            --background-dark: #2D3748;  /* Dark gray for footer */
+            --accent-color: #805AD5;    /* Lighter purple for accents */
+            --border-color: #E2E8F0;    /* Light gray for borders */
+            --gradient-start: #6B46C1;   /* Purple gradient start */
+            --gradient-end: #805AD5;     /* Purple gradient end */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .nav-container {
+            background-color: var(--background-light);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 2rem;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .logo-separator {
+            color: #718096;
+            margin: 0 0.5rem;
+        }
+
+        .wallet-text {
+            color: #718096;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        main {
+            padding-top: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .build-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .build-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .build-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .build-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="images/valet_logo_white.png" alt="Valet Logo">
+                <span class="logo-text">VALET</span>
+                <span class="logo-separator">|</span>
+                <span class="wallet-text">Wallet</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Valet</a>
+                <a href="features.html">Features</a>
+                <a href="user-guide.html">User Guide</a>
+                <a href="build.html">Build</a>
+                <a href="bnb.html">BnB</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="build-section">
+            <h2 class="section-title">Build with Valet</h2>
+            <div class="build-grid">
+                <div class="build-card">
+                    <h3>Developer Documentation</h3>
+                    <p>Access our comprehensive API documentation and start building with Valet's powerful features.</p>
+                </div>
+                <div class="build-card">
+                    <h3>Integration Guides</h3>
+                    <p>Step-by-step guides to integrate Valet into your applications and services.</p>
+                </div>
+                <div class="build-card">
+                    <h3>SDK & Tools</h3>
+                    <p>Download our SDKs and development tools to streamline your integration process.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

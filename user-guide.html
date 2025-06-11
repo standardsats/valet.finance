@@ -58,9 +58,33 @@
         }
 
         .logo {
-            font-size: 1.95rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 2rem;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .logo-separator {
+            color: #718096;
+            margin: 0 0.5rem;
+        }
+
+        .wallet-text {
+            color: #718096;
+            font-weight: 500;
+            font-size: 1.2rem;
         }
 
         .nav-links {
@@ -148,11 +172,17 @@
     <header>
         <nav class="nav-container">
             <div class="nav-content">
-                <div class="logo">VALET</div>
+                <div class="logo">
+                    <img src="images/valet_logo_white.png" alt="Valet Logo">
+                    <span class="logo-text">VALET</span>
+                    <span class="logo-separator">|</span>
+                    <span class="wallet-text">Wallet</span>
+                </div>
                 <div class="nav-links">
                     <a href="index.html">Valet</a>
                     <a href="features.html">Features</a>
-                    <a href="user-guide.html" class="active">User Guide</a>
+                    <a href="user-guide.html">User Guide</a>
+                    <a href="build.html">Build</a>
                     <a href="bnb.html">BnB</a>
                 </div>
             </div>
