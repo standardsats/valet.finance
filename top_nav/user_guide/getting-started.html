@@ -420,23 +420,23 @@
 <body>
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Valet Logo">
-                <span class="logo-text">Valet</span>
+            <a href="/index.html" class="logo">
+                <img src="../../images/valet_logo_white.png" alt="Valet Logo">
+                <span class="logo-text">VALET</span>
                 <span class="logo-separator">|</span>
-                <span class="wallet-text">wallet</span>
+                <span class="wallet-text">Wallet</span>
             </a>
             <div class="nav-links">
-                <a href="../valet/index.html">Valet</a>
+                <a href="/index.html">Valet</a>
                 <a href="../features/features.html">Features</a>
                 <div class="dropdown">
-                    <a>User Guide</a>
+                    <a href="#" onclick="return false;">User Guide</a>
                     <div class="dropdown-content">
-                        <a href="./getting-started.html">Getting Started</a>
-                        <a href="./wallet-settings.html">Wallet Settings</a>
-                        <a href="./restoring-wallet.html">Restoring Your Valet Wallet</a>
-                        <a href="./security-tips.html">General Security Tips</a>
-                        <a href="./contribute.html">Contribute and Support</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="wallet-settings.html">Wallet Settings</a>
+                        <a href="restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="security-tips.html">General Security Tips</a>
+                        <a href="contribute.html">Contribute and Support</a>
                     </div>
                 </div>
                 <a href="../build/build.html">Build</a>
@@ -456,11 +456,11 @@
             <span class="close-menu">&times;</span>
         </div>
         <div class="mobile-nav-links">
-            <a href="index.html">Valet</a>
-            <a href="features.html">Features</a>
-            <a href="user-guide.html">User Guide</a>
-            <a href="build.html">Build</a>
-            <a href="bnb.html">BnB</a>
+            <a href="/index.html">Valet</a>
+            <a href="../features/features.html">Features</a>
+            <a href="#" onclick="return false;">User Guide</a>
+            <a href="../build/build.html">Build</a>
+            <a href="../bnb/bnb.html">BnB</a>
         </div>
     </div>
 
@@ -692,25 +692,27 @@
     </footer>
 
     <script>
-        // Mobile menu functionality
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.overlay');
         const closeMenu = document.querySelector('.close-menu');
+        const overlay = document.querySelector('.overlay');
 
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
         closeMenu.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
         overlay.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     </script>
 </body>
