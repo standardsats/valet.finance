@@ -6,30 +6,484 @@
     <title>Restoring Your Valet Wallet - Valet.finance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Copy all styles from getting-started.html */
-        /* ... (same styles as getting-started.html) ... */
+        :root {
+            --primary-color: #6B46C1;  /* Main purple */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #2D3748;     /* Dark gray for text */
+            --background-light: #F7FAFC; /* Light gray background */
+            --background-dark: #2D3748;  /* Dark gray for footer */
+            --accent-color: #805AD5;    /* Lighter purple for accents */
+            --border-color: #E2E8F0;    /* Light gray for borders */
+            --gradient-start: #6B46C1;   /* Purple gradient start */
+            --gradient-end: #805AD5;     /* Purple gradient end */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .nav-container {
+            background-color: var(--background-light);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 3rem;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .logo-separator {
+            color: #718096;
+            margin: 0 0.5rem;
+        }
+
+        .wallet-text {
+            color: #718096;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-light);
+        }
+
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Content Styles */
+        .content-container {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .guide-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .guide-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .guide-section ul, .guide-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .guide-section strong {
+            font-weight: 600;
+        }
+
+        .guide-section em {
+            font-style: italic;
+        }
+
+        .guide-section a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .guide-section a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .tip-box {
+            background-color: #EBF8FF;
+            border-left: 4px solid #4299E1;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .tip-box p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tip-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .note-box {
+            background-color: #FFFAF0;
+            border-left: 4px solid #ED8936;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .note-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .guide-image-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .guide-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        /* Back to Top Button Styles */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 24px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--secondary-color);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .social-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+        }
+
+        .community-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .community-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .community-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .content-container {
+                margin-top: 5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .guide-section {
+                padding: 1.5rem;
+            }
+
+            .guide-section h2 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Valet Logo">
-                <span class="logo-text">Valet</span>
+            <a href="../../index.html" class="logo">
+                <img src="../../images/valet_logo_white.png" alt="Valet Logo">
+                <span class="logo-text">VALET</span>
                 <span class="logo-separator">|</span>
-                <span class="wallet-text">wallet</span>
+                <span class="wallet-text">Wallet</span>
             </a>
             <div class="nav-links">
-                <a href="../valet/index.html">Valet</a>
+                <a href="../../index.html">Valet</a>
                 <a href="../features/features.html">Features</a>
                 <div class="dropdown">
-                    <a>User Guide</a>
+                    <a href="#" onclick="return false;">User Guide</a>
                     <div class="dropdown-content">
-                        <a href="../user_guide/getting-started.html">Getting Started</a>
-                        <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
-                        <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
-                        <a href="../user_guide/security-tips.html">General Security Tips</a>
-                        <a href="../user_guide/contribute.html">Contribute and Support</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="wallet-settings.html">Wallet Settings</a>
+                        <a href="restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="security-tips.html">General Security Tips</a>
+                        <a href="contribute.html">Contribute and Support</a>
                     </div>
                 </div>
                 <a href="../build/build.html">Build</a>
@@ -45,67 +499,119 @@
 
     <div class="mobile-menu">
         <div class="mobile-menu-header">
-            <h3>Menu</h3>
             <span class="close-menu">&times;</span>
         </div>
         <div class="mobile-nav-links">
-            <a href="index.html">Valet</a>
-            <a href="features.html">Features</a>
-            <a href="user-guide.html">User Guide</a>
-            <a href="build.html">Build</a>
-            <a href="bnb.html">BnB</a>
+            <a href="../../index.html">Valet</a>
+            <a href="../features/features.html">Features</a>
+            <a href="#" onclick="return false;">User Guide</a>
+            <a href="../build/build.html">Build</a>
+            <a href="../bnb/bnb.html">BnB</a>
         </div>
     </div>
-
     <div class="overlay"></div>
 
     <div class="content-container">
         <h1 class="page-title">Restoring Your Valet Wallet</h1>
         
         <div class="guide-section">
-            <h2>Restoring from Recovery Phrase</h2>
-            <p>If you need to restore your Valet wallet on a new device or after reinstalling the app, you can do so using your 12-word recovery phrase. Here's how:</p>
+            <p>Two distinct situations could lead to losing access to your wallet. But the good news is that you can always regain complete access by following the few steps below.</p>
 
-            <ol>
-                <li>Launch the Valet app on your device</li>
-                <li>Click on <strong>Restore Wallet</strong> instead of creating a new one</li>
-                <li>Enter your 12-word recovery phrase in the correct order</li>
-                <li>Click <strong>Restore</strong> to complete the process</li>
-            </ol>
+            <p>These two situations are:</p>
+            <ul>
+                <li>The event of loss or damage to your mobile phone</li>
+                <li>The event of uninstalling Valet from your phone for whatever reason.</li>
+            </ul>
 
-            <div class="guide-image-container">
-                <img src="images/img13.jpg" alt="Restore Wallet">
-                <img src="images/img14.jpg" alt="Recovery Phrase">
-                <img src="images/img15.jpg" alt="Wallet Restored">
-            </div>
-
-            <div class="tip-box">
-                <p><strong>Tip:</strong> Make sure you enter the recovery phrase exactly as you wrote it down, including the correct order of words. Any mistake in the order or spelling will prevent the wallet from being restored.</p>
+            <div class="note-box">
+                <p><strong>NOTE:</strong> We cannot overemphasize the importance of writing down your <strong>12-word recovery phrases</strong> on paper and keeping them in a safe and private location. This is the ultimate tool for restoring your wallet, whether you lost, damaged, or uninstalled Valet from your device.</p>
             </div>
         </div>
 
         <div class="guide-section">
-            <h2>Restoring from Backup File</h2>
-            <p>If you have a backup file from your previous wallet, you can restore your wallet using that file. Here's how:</p>
+            <h2>1. LOSS OR DAMAGE OF DEVICE</h2>
+            <p>If you lose your mobile device or it gets damaged, you can restore your wallet and regain access to your funds by following these simple steps below:</p>
 
-            <ol>
-                <li>Launch the Valet app on your device</li>
-                <li>Click on <strong>Restore from Backup</strong></li>
-                <li>Select your backup file from the storage location</li>
-                <li>Follow the on-screen instructions to complete the restoration</li>
-            </ol>
+            <ul>
+                <li>Download Valet on your new device <a href="#">here</a></li>
+                <li>Tap install to install the app</li>
+                <li>Open the Valet app from your device's home screen</li>
+                <li>Select <strong><em>Restore Existing Wallet.</em></strong></li>
+                <li>Select <strong><em>Recovery Phrase Only.</em></strong></li>
+                <li>Enter your <strong>12-word recovery phrase</strong> in the correct order (1 to 12), and click <strong>OK.</strong></li>
+                <li>Congratulations, you're set!!</li>
+            </ul>
 
             <div class="guide-image-container">
-                <img src="images/img16.jpg" alt="Backup File">
-                <img src="images/img17.jpg" alt="Restore Process">
-                <img src="images/img18.jpg" alt="Restore Complete">
+                <img src="../../images/img13.jpg" alt="Restore Wallet Steps 1">
+                <img src="../../images/img14.jpg" alt="Restore Wallet Steps 2">
+                <img src="../../images/img15.jpg" alt="Restore Wallet Steps 3">
             </div>
+        </div>
 
-            <div class="note-box">
-                <p><strong>Note:</strong> The backup file contains sensitive information about your wallet. Make sure to keep it secure and never share it with anyone.</p>
+        <div class="guide-section">
+            <h2>2. UNINSTALLED VALET FROM THE DEVICE</h2>
+            <p>If you uninstalled Valet from your device and want to get back to using Valet on the same device or a new device, you may need two important tools. These tools are</p>
+
+            <p>A. Your <strong>12-word recovery phrase</strong> (compulsory)<br>
+            B. Your wallet Backup file</p>
+
+            <p>Whenever you create a new wallet on Valet, your wallet data and information are automatically backed up and saved locally on your device. This wallet data usually saves your Lightning Channel state and transaction history.</p>
+
+            <p>With this backup file, you will not lose connection to any Lightning channel(s) you have open before the app uninstallation. By default, this wallet backup data is usually stored in the <strong><em>Downloads folder</em></strong> of your device's file manager. You can change it through the app settings. Refer to the <strong><em>Settings Section</em></strong> above.</p>
+
+            <p>However, if you want to use Valet on another device, send this backup file to the new device. Note where it is saved on the new device so you can properly locate it when needed.</p>
+
+            <p>Follow the steps below to restore your wallet with the backup file:</p>
+
+            <ul>
+                <li>Download Valet on your device or the new device <a href="#">here</a></li>
+                <li>Tap <strong><em>Install</em></strong> to install the app</li>
+                <li>Open the Valet app from your device's home screen</li>
+                <li>Select <strong><em>Restore Existing Wallet.</em></strong></li>
+                <li>Select <strong><em>Backup + recovery phrase</em></strong></li>
+                <li>Navigate to the location of the backup file on your device and select it.</li>
+                <li>Enter your <strong>12-word recovery phrase</strong> in the correct order (1 to 12), and click <strong><em>OK.</em></strong></li>
+                <li>Congratulations! You have restored your wallets and funds, including any open Lightning channels and transaction history.</li>
+            </ul>
+
+            <div class="guide-image-container">
+                <img src="../../images/img16.jpg" alt="Restore with Backup 1">
+                <img src="../../images/img17.jpg" alt="Restore with Backup 2">
+                <img src="../../images/img18.jpg" alt="Restore with Backup 3">
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <div class="tip-box">
+                <p><strong>Tip:</strong> With only your <strong>12-word recovery phrase</strong>, you can restore your wallet on any other Bitcoin wallet that supports the 12-word recovery phrase.</p>
+                <p>But this will only restore the funds on your on-chain balance without restoring any lightning channels. The lightning channels will be force-closed, and any balance on them will be returned to your on-chain balance.</p>
+                <p>If a wallet supports a 12-word recovery phrase, it is compatible with BIP-39. <strong><em>BIP" means "Bitcoin Improvement Proposal</em></strong>. Read more about that <a href="#">here</a></p>
             </div>
         </div>
     </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 
     <footer>
         <div class="footer-content">
@@ -150,7 +656,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Valet.finance. All rights reserved.</p>
+            <p>&copy; 2025 Valet.finance. All rights reserved.</p>
         </div>
     </footer>
 
