@@ -582,6 +582,43 @@
         .back-to-top:hover {
             background-color: var(--accent-color);
         }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -596,7 +633,16 @@
             <div class="nav-links">
                 <a href="index.html">Valet</a>
                 <a href="features.html">Features</a>
-                <a href="user-guide.html">User Guide</a>
+                <div class="dropdown">
+                    <a href="user-guide.html">User Guide</a>
+                    <div class="dropdown-content">
+                        <a href="user-guide.html#getting-started">Getting Started</a>
+                        <a href="user-guide.html#wallet-settings">Wallet Settings</a>
+                        <a href="user-guide.html#restoring-wallet">Restoring Your Valet Wallet</a>
+                        <a href="user-guide.html#security-tips">General Security Tips</a>
+                        <a href="user-guide.html#contribute">Contribute and Support</a>
+                    </div>
+                </div>
                 <a href="build.html">Build</a>
                 <a href="bnb.html">BnB</a>
             </div>
