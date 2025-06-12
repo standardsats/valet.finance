@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Settings - Valet.finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Copy all styles from getting-started.html */
+        :root {
+            --primary-color: #6B46C1;  /* Main purple */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #2D3748;     /* Dark gray for text */
+            --background-light: #F7FAFC; /* Light gray background */
+            --background-dark: #2D3748;  /* Dark gray for footer */
+            --accent-color: #805AD5;    /* Lighter purple for accents */
+            --border-color: #E2E8F0;    /* Light gray for borders */
+            --gradient-start: #6B46C1;   /* Purple gradient start */
+            --gradient-end: #805AD5;     /* Purple gradient end */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .nav-container {
+            background-color: var(--background-light);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 3rem;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .logo-separator {
+            color: #718096;
+            margin: 0 0.5rem;
+        }
+
+        .wallet-text {
+            color: #718096;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown > a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Content Styles */
+        .content-container {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .guide-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .guide-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-section p {
+            margin-bottom: 1rem;
+        }
+
+        .guide-section ul, .guide-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-box {
+            background-color: #EBF8FF;
+            border-left: 4px solid #4299E1;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .note-box {
+            background-color: #FFFAF0;
+            border-left: 4px solid #ED8936;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .guide-image-container {
+            max-width: 500px;
+            margin: 1.5rem auto;
+            text-align: center;
+        }
+
+        .guide-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .guide-image-caption {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--secondary-color);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .social-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+        }
+
+        .community-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .community-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .community-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .content-container {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .guide-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Valet Logo">
+                <span class="logo-text">Valet</span>
+                <span class="logo-separator">|</span>
+                <span class="wallet-text">wallet</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Valet</a>
+                <a href="features.html">Features</a>
+                <div class="dropdown">
+                    <a href="../user_guide/getting-started.html">User Guide</a>
+                    <div class="dropdown-content">
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="wallet-settings.html">Wallet Settings</a>
+                        <a href="restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="security-tips.html">General Security Tips</a>
+                        <a href="contribute.html">Contribute and Support</a>
+                    </div>
+                </div>
+                <a href="build.html">Build</a>
+                <a href="bnb.html">BnB</a>
+            </div>
+            <div class="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <span class="close-menu">&times;</span>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html">Valet</a>
+            <a href="features.html">Features</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="build.html">Build</a>
+            <a href="bnb.html">BnB</a>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <h1 class="page-title">Wallet Settings</h1>
+        
+        <div class="guide-section">
+            <h2>Accessing Settings</h2>
+            <p>To access your wallet settings, click on the <strong>Settings</strong> icon at the top right corner of your home screen. This will take you to the Settings page, where you can customize various aspects of your wallet.</p>
+
+            <div class="guide-image-container">
+                <img src="images/img14.jpg" alt="Settings Menu">
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>Available Settings</h2>
+            <p>In the Settings page, you'll find several options to customize your wallet experience:</p>
+
+            <ol>
+                <li>
+                    <strong>Local Channel Backup</strong>
+                    <p>This is always automatically set to <strong><em>Enabled</em></strong>; however, if it is disabled, kindly set it to <strong>Enabled</strong>. This backup helps restore your Lightning Channel states if you uninstall your wallet or lose your device.</p>
+                    <div class="guide-image-container">
+                        <img src="images/img15.jpg" alt="Local Channel Backup">
+                    </div>
+                </li>
+
+                <li>
+                    <strong>Backup Storage</strong>
+                    <p>This is always set to your download folder. You may assign this to any folder of your choice that you'll remember. This is where the wallet backup files will be saved, and should be handy whenever you want to recover your wallet on your mobile.</p>
+                    <div class="guide-image-container">
+                        <img src="images/img16.jpg" alt="Backup Storage">
+                    </div>
+                </li>
+
+                <li>
+                    <strong>Chain Wallet</strong>
+                    <p>This is automatically set to <strong><em>BIP84 Modern Wallet</em></strong>. You can leave it there.</p>
+                    <div class="guide-image-container">
+                        <img src="images/img17.jpg" alt="Chain Wallet">
+                    </div>
+                </li>
+
+                <li>
+                    <strong>Usage Statistics</strong>
+                    <p>You can view the number of people who trust and use Valet for its robustness and flexible features.</p>
+                    <div class="guide-image-container">
+                        <img src="images/img18.jpg" alt="Usage Statistics">
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Wallet</h4>
+                <ul>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">APK File</a></li>
+                    <li><a href="#">Telegram Bot</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="#">Lightning Network</a></li>
+                    <li><a href="#">Non-Custodial</a></li>
+                    <li><a href="#">Offline Mode</a></li>
+                    <li><a href="#">Multi-Device</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>BnB</h4>
+                <ul>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect with Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">X(Twitter)</a>
+                    <a href="#" class="social-link">YouTube</a>
+                    <a href="#" class="social-link">StackerNews</a>
+                    <a href="#" class="social-link">GitHub</a>
+                </div>
+                <div class="community-buttons">
+                    <a href="#" class="community-button" style="width: 100%; min-width: 250px;">Join us on Telegram</a>
+                    <a href="#" class="community-button" style="width: 100%; min-width: 250px;">Join us on Discord</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Valet.finance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+        const closeMenu = document.querySelector('.close-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html> 
