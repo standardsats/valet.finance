@@ -471,53 +471,104 @@
         <h1 class="page-title">Wallet Settings</h1>
         
         <div class="guide-section">
-            <h2>Accessing Settings</h2>
-            <p>To access your wallet settings, click on the <strong>Settings</strong> icon at the top right corner of your home screen. This will take you to the Settings page, where you can customize various aspects of your wallet.</p>
+            <p>You can access the settings feature by clicking the <strong>gear icon</strong> in the top right corner of your home screen. Below is a brief explanation of every setting parameter you will see in the Valet app.</p>
 
             <div class="guide-image-container">
-                <img src="../../images/img14.jpg" alt="Settings Menu">
+                <img src="../../images/img12.jpg" alt="Settings Menu">
             </div>
         </div>
 
         <div class="guide-section">
-            <h2>Available Settings</h2>
-            <p>In the Settings page, you'll find several options to customize your wallet experience:</p>
-
-            <ol>
+            <ul>
                 <li>
-                    <strong>Local Channel Backup</strong>
-                    <p>This is always automatically set to <strong><em>Enabled</em></strong>; however, if it is disabled, kindly set it to <strong>Enabled</strong>. This backup helps restore your Lightning Channel states if you uninstall your wallet or lose your device.</p>
-                    <div class="guide-image-container">
-                        <img src="../../images/img15.jpg" alt="Local Channel Backup">
-                    </div>
+                    <strong>Local Channel Backup</strong> — This is always automatically set to <strong>Enabled</strong>; however, if it is disabled, kindly set it to <em>Enabled</em>. This backup helps restore your Lightning Channel states if you uninstall your wallet or lose your device.
                 </li>
 
                 <li>
-                    <strong>Backup Storage</strong>
-                    <p>This is always set to your download folder. You may assign this to any folder of your choice that you'll remember. This is where the wallet backup files will be saved, and should be handy whenever you want to recover your wallet on your mobile.</p>
-                    <div class="guide-image-container">
-                        <img src="../../images/img16.jpg" alt="Backup Storage">
-                    </div>
+                    <strong>Where to store local Backup</strong> — This is always set to your download folder. You may assign this to any folder of your choice that you'll remember. This is where the wallet backup files will be saved, and should be handy whenever you want to recover your wallet on your mobile.
                 </li>
 
                 <li>
-                    <strong>Chain Wallet</strong>
-                    <p>This is automatically set to <strong><em>BIP84 Modern Wallet</em></strong>. You can leave it there.</p>
-                    <div class="guide-image-container">
-                        <img src="../../images/img17.jpg" alt="Chain Wallet">
-                    </div>
+                    <strong>Manage Chain Wallet</strong> — This is automatically set to <strong>BIP84 Modern Wallet</strong>. You can leave it there.
                 </li>
 
                 <li>
-                    <strong>Usage Statistics</strong>
-                    <p>You can view the number of people who trust and use Valet for its robustness and flexible features.</p>
-                    <div class="guide-image-container">
-                        <img src="../../images/img18.jpg" alt="Usage Statistics">
-                    </div>
+                    <strong>Add Hardware Wallet</strong> — Hardware wallets are physical Bitcoin wallets that may exist as a USB drive or specialized devices designed to store Bitcoin. If you have one, you can link these devices to your Valet wallet in a Watch-Only mode, creating an extra layer of safety. Just scan the wallet and follow the prompts.
                 </li>
-            </ol>
+
+                <li>
+                    <strong>Set Custom Electrum Node</strong> — By default, your wallet will be connected to random Electrum nodes. But you can connect to private Electrum servers (if you have any) for easy access to the on-chain Bitcoin blockchain. Electrum servers are servers that connect Electrum wallets and the Bitcoin network, removing the hurdles of downloading and synchronizing the full blockchain. More on Electrum servers <a href="#">here</a>
+                </li>
+
+                <li>
+                    <strong>Fiat Currency</strong> — By default, your wallet balance will be displayed in USD. However, other popular local currencies, including the British Pound Sterling, the Euro, the Japanese Yen, etc, are supported.
+                </li>
+
+                <li>
+                    <strong>Bitcoin Units</strong> — This is the format in which your Bitcoin balance will be displayed. There are two formats: the Satoshi <strong>(SAT)</strong> and Bitcoin <strong>(BTC)</strong>.
+                </li>
+
+                <li>
+                    <strong>Use PIN Authentication</strong> — This security feature helps protect your mobile wallet application from unauthorized access. You can choose to use a PIN or your fingerprint (if your device has fingerprint technology)
+                </li>
+
+                <li>
+                    <strong>Use Tor Connection</strong> — Although Valet doesn't work with Tor natively, it is possible to use it with the popular Orbot app, working as a VPN or Tor proxy on the smartphone.
+                </li>
+
+                <li>
+                    <strong>View BIP Recovery Phrase</strong> — This is where you can view and copy your 12-word recovery phrases to recover your wallet if you uninstall the Valet app or lose your device. Note that with the 12-word recovery phrase, you can recover your wallet on any other Bitcoin wallet application. So, it doesn't necessarily have to be the Valet app. However, you may not get the same features you get in Valet on other applications.
+                </li>
+
+                <li>
+                    <strong>Usage Statistics</strong> — You can view the number of people who trust and use Valet for its robustness and flexible features.
+                </li>
+            </ul>
         </div>
     </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+        const closeMenu = document.querySelector('.close-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 
     <footer>
         <div class="footer-content">
@@ -565,28 +616,5 @@
             <p>&copy; 2024 Valet.finance. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu functionality
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.overlay');
-        const closeMenu = document.querySelector('.close-menu');
-
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-    </script>
 </body>
 </html> 
