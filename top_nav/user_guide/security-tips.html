@@ -6,30 +6,352 @@
     <title>General Security Tips - Valet.finance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Copy all styles from getting-started.html */
-        /* ... (same styles as getting-started.html) ... */
+        :root {
+            --primary-color: #6B46C1;  /* Main purple */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #2D3748;     /* Dark gray for text */
+            --background-light: #F7FAFC; /* Light gray background */
+            --background-dark: #2D3748;  /* Dark gray for footer */
+            --accent-color: #805AD5;    /* Lighter purple for accents */
+            --border-color: #E2E8F0;    /* Light gray for borders */
+            --gradient-start: #6B46C1;   /* Purple gradient start */
+            --gradient-end: #805AD5;     /* Purple gradient end */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .nav-container {
+            background-color: var(--background-light);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 3rem;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .logo-separator {
+            color: #718096;
+            margin: 0 0.5rem;
+        }
+
+        .wallet-text {
+            color: #718096;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown > a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Content Styles */
+        .content-container {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .guide-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .guide-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-section p {
+            margin-bottom: 1rem;
+        }
+
+        .guide-section ul, .guide-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-box {
+            background-color: #EBF8FF;
+            border-left: 4px solid #4299E1;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .note-box {
+            background-color: #FFFAF0;
+            border-left: 4px solid #ED8936;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .guide-section strong {
+            font-weight: 600;
+        }
+
+        .guide-section em {
+            font-style: italic;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--secondary-color);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .social-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+        }
+
+        .community-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .community-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .community-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .content-container {
+                margin-top: 5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .guide-section {
+                padding: 1.5rem;
+            }
+
+            .guide-section h2 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Valet Logo">
-                <span class="logo-text">Valet</span>
+            <a href="../../index.html" class="logo">
+                <img src="../../images/valet_logo_white.png" alt="Valet Logo">
+                <span class="logo-text">VALET</span>
                 <span class="logo-separator">|</span>
-                <span class="wallet-text">wallet</span>
+                <span class="wallet-text">Wallet</span>
             </a>
             <div class="nav-links">
-                <a href="../valet/index.html">Valet</a>
+                <a href="../../index.html">Valet</a>
                 <a href="../features/features.html">Features</a>
                 <div class="dropdown">
-                    <a>User Guide</a>
+                    <a href="#" onclick="return false;">User Guide</a>
                     <div class="dropdown-content">
-                        <a href="../user_guide/getting-started.html">Getting Started</a>
-                        <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
-                        <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
-                        <a href="../user_guide/security-tips.html">General Security Tips</a>
-                        <a href="../user_guide/contribute.html">Contribute and Support</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="wallet-settings.html">Wallet Settings</a>
+                        <a href="restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="security-tips.html">General Security Tips</a>
+                        <a href="contribute.html">Contribute and Support</a>
                     </div>
                 </div>
                 <a href="../build/build.html">Build</a>
@@ -45,71 +367,69 @@
 
     <div class="mobile-menu">
         <div class="mobile-menu-header">
-            <h3>Menu</h3>
             <span class="close-menu">&times;</span>
         </div>
         <div class="mobile-nav-links">
-            <a href="index.html">Valet</a>
-            <a href="features.html">Features</a>
-            <a href="user-guide.html">User Guide</a>
-            <a href="build.html">Build</a>
-            <a href="bnb.html">BnB</a>
+            <a href="../../index.html">Valet</a>
+            <a href="../features/features.html">Features</a>
+            <a href="#" onclick="return false;">User Guide</a>
+            <a href="../build/build.html">Build</a>
+            <a href="../bnb/bnb.html">BnB</a>
         </div>
     </div>
-
     <div class="overlay"></div>
 
     <div class="content-container">
         <h1 class="page-title">General Security Tips</h1>
         
         <div class="guide-section">
-            <h2>Protecting Your Recovery Phrase</h2>
-            <p>Your 12-word recovery phrase is the key to your Bitcoin wallet. Here are essential tips to keep it secure:</p>
+            <h2>1. Protecting Your Recovery Phrase</h2>
+            <p>Your 12-word recovery phrase is your ultimate access to your wallet if you lose your device or uninstall the Valet app. Here are essential tips to keep it secure:</p>
 
             <ul>
-                <li>Write it down on paper and store it in a secure location</li>
-                <li>Never store it digitally (no photos, screenshots, or cloud storage)</li>
-                <li>Don't share it with anyone, not even Valet support</li>
-                <li>Consider using a metal backup solution for long-term storage</li>
+                <li>Write your recovery phrase on paper and store it in a secure location.</li>
+                <li>Never store it digitally (no photos, screenshots, or cloud storage) as these technologies are susceptible to hacks.</li>
+                <li>Do not share your recovery phrase with anyone. <strong><em>VALET SUPPORT WILL NEVER ASK FOR YOUR RECOVERY PHRASE</em></strong></li>
+                <li>Consider using a metal backup solution for long-term storage. Learn more about this <a href="#">here</a></li>
                 <li>Keep multiple copies in different secure locations</li>
             </ul>
 
-            <div class="note-box">
-                <p><strong>Important:</strong> Anyone with access to your recovery phrase can access your Bitcoin. Treat it like the key to your physical wallet.</p>
+            <div class="tip-box">
+                <p><strong>Tip:</strong> Anyone with access to your recovery phrase can access your Bitcoin. Treat it like the key to your physical wallet.</p>
             </div>
         </div>
 
         <div class="guide-section">
-            <h2>Device Security</h2>
-            <p>Keep your device and wallet secure with these practices:</p>
+            <h2>2. Device Security</h2>
+            <p>The Valet app on your device is as important as your traditional bank app. So keep your device and Valet app secure with these practices:</p>
 
             <ul>
-                <li>Set up a PIN or biometric authentication for your device</li>
-                <li>Keep your device's operating system updated</li>
-                <li>Install apps only from trusted sources</li>
-                <li>Use a secure internet connection when making transactions</li>
-                <li>Consider using a dedicated device for your Bitcoin wallet</li>
+                <li>Set up a PIN or biometric authentication for your device. Check out the <a href="wallet-settings.html">Wallet Settings</a> section to learn more.</li>
+                <li>Ensure that your device's operating system is up to date.</li>
+                <li>Install apps only from trusted sources. Only install the Valet app from our <a href="#">website</a>.</li>
+                <li>Use a secure internet connection when making transactions. <strong><em>It is best not to access your Valet app when connected to a public Wi-Fi</em></strong></li>
+                <li>Consider using a dedicated device for your Bitcoin wallet. This may not be convenient, but it is safer.</li>
             </ul>
 
             <div class="tip-box">
-                <p><strong>Tip:</strong> Regularly backup your wallet and test the recovery process to ensure you can access your funds if needed.</p>
+                <p><strong>Tip:</strong> Regularly back up your wallet and test the recovery process to ensure you can access your funds if needed. Learn more about Backups <a href="#">here</a></p>
             </div>
         </div>
 
         <div class="guide-section">
-            <h2>Transaction Security</h2>
-            <p>When making transactions, follow these security practices:</p>
+            <h2>3. Transaction Security</h2>
+            <p>When making transactions, follow these security practices to ensure you don't lose your funds:</p>
 
             <ul>
-                <li>Double-check all addresses before sending Bitcoin</li>
-                <li>Start with small amounts when testing new features</li>
-                <li>Verify transaction details before confirming</li>
-                <li>Be cautious of phishing attempts and scams</li>
-                <li>Keep your backup files secure and encrypted</li>
+                <li>Double-check all addresses before sending Bitcoin. Ensure that you have copied the Bitcoin address correctly to avoid losing your Bitcoin. If you send Bitcoin to an incomplete/invalid address or the wrong address, you cannot recover it.</li>
+                <li>Start with small amounts when testing new features. If you're not sure about the functions of a new feature, test them with only small amounts of Bitcoin.</li>
+                <li>Verify transaction details before confirming. At the last stage before you sign a transaction, verify that every detail is correct, including the Bitcoin address and the amount of Bitcoin you want to send.</li>
+                <li>Be cautious of phishing attempts and scams. <strong><em>Valet Customer Support will never email you asking for donations or support!!!</em></strong></li>
+                <li>Keep your backup files secure and encrypted.</li>
             </ul>
 
-            <div class="note-box">
-                <p><strong>Remember:</strong> Bitcoin transactions are irreversible. Always verify the recipient's address and amount before sending.</p>
+            <div class="tip-box">
+                <p><strong>Tip:</strong> Bitcoin transactions are irreversible. Always verify the recipient's address and amount before sending.</p>
             </div>
         </div>
     </div>
