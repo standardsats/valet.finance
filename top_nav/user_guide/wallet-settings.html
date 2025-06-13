@@ -265,20 +265,22 @@
         }
 
         .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .social-link {
-            color: var(--secondary-color);
+            color: white;
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s ease;
+            display: inline-block;
         }
 
         .social-link:hover {
-            opacity: 1;
+            color: var(--accent-color);
         }
 
         .community-buttons {
@@ -437,7 +439,6 @@
                         <a href="wallet-settings.html">Wallet Settings</a>
                         <a href="restoring-wallet.html">Restoring Your Valet Wallet</a>
                         <a href="security-tips.html">General Security Tips</a>
-                        <a href="contribute.html">Contribute and Support</a>
                     </div>
                 </div>
                 <a href="../build/build.html">Build</a>

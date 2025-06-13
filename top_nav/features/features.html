@@ -9,7 +9,7 @@
         :root {
             --primary-color: #6B46C1;
             --secondary-color: #ffffff;
-            --accent-color: #F7FAFC;
+            --accent-color: #805AD5;
             --text-color: #2D3748;
             --text-light: #718096;
             --background-light: #F7FAFC;
@@ -107,6 +107,49 @@
             color: var(--primary-color);
         }
 
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown > a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
         /* Mobile Menu Styles */
         .hamburger {
             display: none;
@@ -183,6 +226,30 @@
             display: block;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+        }
+
         main {
             padding-top: 5rem;
             max-width: 1200px;
@@ -195,11 +262,104 @@
             padding: 4rem 0;
         }
 
-        .features-section h2 {
+        .page-title {
             text-align: center;
             color: var(--primary-color);
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .features-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-category {
+            margin-bottom: 4rem;
+        }
+
+        .feature-category h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .feature-item {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .feature-item ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .tip-box {
+            background-color: #EBF8FF;
+            border-left: 4px solid #4299E1;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background-color: #FFF5F5;
+            border-left: 4px solid #F56565;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .tip-box p, .warning-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .feature-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .feature-item a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
         }
 
         .features-grid {
@@ -333,56 +493,86 @@
             .mobile-menu {
                 display: block;
             }
+
+            .features-section {
+                padding: 2rem 0;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+            }
+
+            .feature-category h2 {
+                font-size: 1.75rem;
+            }
+
+            .feature-item {
+                padding: 1.5rem;
+            }
+
+            .feature-item h3 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="nav-container">
-            <div class="nav-content">
-                <a href="index.html" class="logo">
-                    <img src="images/valet_logo_white.png" alt="Valet Logo">
-                    <span class="logo-text">VALET</span>
-                    <span class="logo-separator">|</span>
-                    <span class="wallet-text">Wallet</span>
-                </a>
-                <div class="nav-links">
-                    <a href="index.html">Valet</a>
-                    <a href="features.html">Features</a>
-                    <a href="user-guide.html">User Guide</a>
-                    <a href="build.html">Build</a>
-                    <a href="bnb.html">BnB</a>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../images/valet_logo_white.png" alt="Valet Logo">
+                <span class="logo-text">VALET</span>
+                <span class="logo-separator">|</span>
+                <span class="wallet-text">Wallet</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Valet</a>
+                <a href="features.html">Features</a>
+                <div class="dropdown">
+                    <a href="#" onclick="return false;">User Guide</a>
+                    <div class="dropdown-content">
+                        <a href="../user_guide/getting-started.html">Getting Started</a>
+                        <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
+                        <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="../user_guide/security-tips.html">General Security Tips</a>
+                    </div>
                 </div>
-                <div class="hamburger">
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                </div>
+                <a href="../build/build.html">Build</a>
+                <a href="../bnb/bnb.html">BnB</a>
             </div>
-        </nav>
-    </header>
+            <div class="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </nav>
 
     <div class="mobile-menu">
         <div class="mobile-menu-header">
-            <h3>Menu</h3>
             <span class="close-menu">&times;</span>
         </div>
         <div class="mobile-nav-links">
-            <a href="index.html">Valet</a>
+            <a href="../../index.html">Valet</a>
             <a href="features.html">Features</a>
-            <a href="user-guide.html">User Guide</a>
-            <a href="build.html">Build</a>
-            <a href="bnb.html">BnB</a>
+            <a href="#" onclick="return false;">User Guide</a>
+            <a href="../build/build.html">Build</a>
+            <a href="../bnb/bnb.html">BnB</a>
         </div>
     </div>
-
     <div class="overlay"></div>
 
     <script>
+        // Mobile menu functionality
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
-        const closeMenu = document.querySelector('.close-menu');
         const overlay = document.querySelector('.overlay');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
 
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
@@ -401,35 +591,153 @@
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
+
+        // Handle mobile menu links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (link.getAttribute('href') === '#') {
+                    // Handle User Guide dropdown in mobile menu
+                    const userGuideLinks = document.createElement('div');
+                    userGuideLinks.className = 'mobile-dropdown';
+                    userGuideLinks.innerHTML = `
+                        <a href="../user_guide/getting-started.html">Getting Started</a>
+                        <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
+                        <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="../user_guide/security-tips.html">General Security Tips</a>
+                    `;
+                    link.parentNode.insertBefore(userGuideLinks, link.nextSibling);
+                } else {
+                    // Close menu for other links
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
     </script>
 
     <main>
         <section class="features-section">
-            <h2>Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Lightweight</h3>
-                    <p>Runs smoothly on low-end devices with minimal resource usage</p>
+            <h1 class="page-title">Features</h1>
+            
+            <div class="intro-section">
+                <p class="intro-text">Valet is a unique Bitcoin wallet that gives you full control of your money and your financial life. It was built for beginners and advanced users, offering mobile Lightning node integration, privacy-focused features, and advanced, flexible controls.</p>
+                <p class="intro-text">Think of it like having your bank in your pocket, where you're the only one with the key. There's nothing like waiting for bank approvals, nobody else can access your funds, and you can carry out transactions anywhere, anytime.</p>
+            </div>
+
+            <div class="features-container">
+                <div class="feature-category">
+                    <h2>Basic Features</h2>
+                    
+                    <div class="feature-item">
+                        <h3>Send Bitcoin</h3>
+                        <p>As you should expect, you can send Bitcoin to anyone, anywhere in the world using Valet, and at any time you like. You can send Bitcoin on Valet in several ways:</p>
+                        <ul>
+                            <li><strong>Bitcoin Address:</strong> Here, you send Bitcoin to anyone through their normal Bitcoin address.</li>
+                            <li><strong>Lightning Invoice:</strong> With Lightning technology enabled on Valet, you can send Bitcoin to anyone to their generated Lightning invoice. Lightning Invoices enables the sending of small amounts of Bitcoin that cannot be sent using a standard Bitcoin address, as Lightning transactions are cheaper and faster.</li>
+                            <li><strong>Email:</strong> You can send Bitcoin to anyone whose Bitcoin account is linked to their email address. Such accounts are typically custodial accounts, such as Binance and Bybit.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Receive Bitcoin</h3>
+                        <p>Just like sending Bitcoin, you can also receive Bitcoin on your Valet app anytime, anywhere in the world. You receive Bitcoin from your Valet in these ways:</p>
+                        <ul>
+                            <li><strong>Bitcoin Address:</strong> Here you can generate a Bitcoin address and send it to anyone to pay you Bitcoins. It's straightforward.</li>
+                            <li><strong>Lightning Invoice:</strong> Just as you can send Bitcoin, you can also receive it by generating a lightning invoice. You can receive small amounts of Bitcoin over Lightning.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-box">
+                        <p><strong>Tip:</strong> With lightning technology on Valet, you can pay for services that cost small amounts in Bitcoin, e.g., pay for coffee, send money to friends and family, etc. And if you're a merchant, you can receive any amount in Bitcoin for your services or goods. Refer to our <a href="../user_guide/getting-started.html">User Guide</a> page to learn more about how to send and receive Bitcoin.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Offline Capable</h3>
-                    <p>Works in areas with poor or no internet connectivity</p>
+
+                <div class="feature-category">
+                    <h2>Advanced Features</h2>
+                    
+                    <div class="feature-item">
+                        <h3>Fiat Channels</h3>
+                        <p>Fiat Channels are unique Lightning channels that help Valet users protect themselves against the irregular and unprecedented movement of Bitcoin price, as Bitcoin continues through its adoption phase. This feature was designed to lock in your Bitcoins temporarily at a fixed Bitcoin price when the deposit to the channel was made. This feature is useful for merchants who want to receive payments in Bitcoin via Lightning but do not want the value they receive to fluctuate with Bitcoin's price movement.</p>
+                        <p>If you're a merchant and want to receive payments in Bitcoin, ensuring that the value you receive is intact, Valet is the solution for you.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Custom Node Connection</h3>
+                        <p>This feature enables users to connect their Electrum/Bitcoin nodes to Valet. Valet traditionally runs on random public Electrum nodes from which your wallet interacts with the Bitcoin network. These Electrum nodes push your on-chain transactions to the Bitcoin blockchain.</p>
+                        <p>With this feature, technically knowledgeable persons who run their nodes can connect them to Valet and use their nodes directly for communication with the blockchain. This provides a higher level of privacy as users can run their nodes over the Tor network.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Transaction Batching</h3>
+                        <p>Transaction batching is an advanced feature built into Valet that helps reduce the fees you pay per transaction. As the name implies, when you opt for transaction batching, the Valet app will automatically assemble your transactions and those of other users and send these transactions as a single transaction. The cost of that one transaction will now be split among everybody whose transaction was included.</p>
+                        <p>This feature is particularly applied when you are sending Bitcoin through a Bitcoin address, and it is an important feature because the model through which the Bitcoin transaction fee is calculated, the amount of money (in Bitcoin) that you are sending doesn't determine the fees you pay, instead the size of the transaction data. In most cases, a single Bitcoin transaction is often formed from many UTXOs. Learn more about this <a href="#">here</a></p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Coin Control</h3>
+                        <p>We mentioned transaction construction when we were describing "Transaction batching" above. This feature will help us explain what a Bitcoin transaction looks like. Another name for this feature is <strong>UTXO Control</strong>. UTXO is an acronym for <strong>Unspent Transaction Output</strong>. Your Bitcoin wallet might display a balance of 0.5 BTC on the surface, but this 0.5 BTC could be a combination of three different Bitcoin addresses, each holding 0.166 BTC, or two different addresses, each holding 0.25 BTC. The balances of each of these Bitcoin addresses are UTXOs.</p>
+                        <p>With coin control in Valet, you can choose which addresses you want to use their coin content for a sending transaction. If you have a 0.5 BTC balance of 3 different UTXOs, where 2 addresses each hold 0.16 BTC, and 1 holds 0.25 BTC. If you want to send 0.25BTC, your wallet can automatically decide to combine the balances of the two wallets that hold 0.16BTC each to make 0.25BTC and send, however, with coin control, you will see these addresses and their balances and you can choose which one of them you want to use for the transaction.</p>
+                        <p>This can also help lower the fees you pay, and prevent having what we call <a href="#">Dust</a> balances.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Fee Control</h3>
+                        <p>This feature allows you to choose the amount of fees you want to pay for a transaction. With Fee Control, you may not use Transaction Batching or Coin Control. This feature enables you to choose the least amount possible as the transaction fee or increase the amount to the high side.</p>
+                        <p>Notably, the amount you pay in fees for a transaction can determine how quickly or slowly the transaction gets approved on the blockchain by the <a href="#">Miners</a>. In some cases, if you want your transaction to be prioritized by the Miners and approved faster, you can increase the fees. In the same light, if you're not in a hurry and want to save on fees, you can reduce the fee amount to the lowest and wait whenever the transaction gets picked up and approved on the blockchain. Read more about fees <a href="#">here</a></p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Replace By Fee</h3>
+                        <p>This wonderful feature is similar to the <em>Fee control</em> feature, but applied differently. In a typical <em>Fee Control</em> scenario, you choose the fee you want to pay before <a href="#">broadcasting</a> the transaction to the blockchain. However, in <em>Replace by Fee</em>, you are changing the fee amount of an already broadcast transaction, mostly by increasing it to prioritize it in the <a href="#">mempool</a>.</p>
+                        <p>This can only be done if your transaction has not received any <a href="#">block confirmation</a>. This feature is useful when you want a transaction confirmed faster by the miners. Perhaps you initially paid a small or moderate fee for a transaction while broadcasting it, and the transaction is taking time to get confirmed <strong>(Often because there are a lot of transactions in the <a href="#">mempool</a>, hence the miners are prioritizing transactions with higher fees)</strong>. You can increase the transaction fee using the <strong>Replace By Fee</strong> feature, prioritizing it for miners to pick it.</p>
+                        <p>Other Bitcoin wallets may have this feature; therefore, you should wait for at least one confirmation on any incoming Bitcoin transaction to be sure it has been settled. In other words, if someone sends Bitcoin to you through a Bitcoin address, you MUST wait until the Bitcoin transaction has at least 1 block confirmation, which means that person cannot reverse such a transaction again. If a transaction has not received at least one confirmation and you release your goods and services, the person can reverse such a transaction to another wallet using the <strong>Replace by Fee</strong> feature on Valet.</p>
+                        <div class="warning-box">
+                            <p>So stay alert!!</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Non-Custodial</h3>
-                    <p>You maintain full control of your Bitcoin</p>
+
+                <div class="feature-category">
+                    <h2>Security Features</h2>
+                    
+                    <div class="feature-item">
+                        <h3>Recovery Phrase</h3>
+                        <p>The Valet app is a self-custodial wallet, meaning you are completely in control of your wallet and funds. If you lose access to your wallet, perhaps due to damage or loss to your device, there's nothing like a customer care representative who will help you reset your login credentials and get you back into your wallet.</p>
+                        <p>However, by traditional designs, Valet has a technology that helps you recover your wallet if you lose access to it. This tech ensures you regain access to your wallet by providing 12 or 24 English words when creating your wallet. This phrase helps you regain access to your wallet if you lose or damage your device. Therefore, you must copy these 12 words out and keep them in a private and secure place. This is the key to your wallet; hence, anyone who gets hold of it can enter your wallet from any device and wipe your Bitcoins.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Back Up</h3>
+                        <p>In most Lightning-enabled Bitcoin wallets, whenever you lose access to your wallet or uninstall your app, you'll lose all the Lightning node connections you had on reinstalling it. Whereas with Valet, it is different. The Valet app automatically creates a backup file locally on your mobile device. Hence, if you reinstall Valet, you can easily restore your Lightning channel connections by recovering your wallet using the backup file saved locally on your device and your 12-word phrases.</p>
+                        <p>This gives you the confidence to use Lightning technology on Valet, knowing even if you lose access to your wallet, as long as your wallet backup file is accessible, your Lightning connections are safe. Learn more <a href="#">here</a></p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>PIN / Fingerprint</h3>
+                        <p>Pin/Fingerprint technology is an added security feature designed to help prevent unauthorized access to your Valet app if someone steals your mobile device and somehow gets access to it. With a lock pin or the fingerprint set up on your app, they cannot access the Valet app on your phone.</p>
+                        <p>However, the PIN/Fingerprint is only useful while the app is on your phone. If you install Valet on another device, you will need to set up a new PIN/fingerprint to protect that app.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Hardware Connection</h3>
+                        <p>If you have a hardware wallet like the <a href="#">Trezor</a> or <a href="#">Ledger</a> wallets, you can connect these wallets to your Valet app in <em>Watch-Only</em> mode. This helps you keep an eye on your Hardware wallet to ensure no one tampers with it.</p>
+                        <p>It is a security feature that helps you keep monitor your offline hardware-stored Bitcoin, giving you a heads-up on any security concerns. Importantly, even if someone accesses your Valet app, they cannot move the Bitcoins in your hardware wallet because it is a <em>Watch-only</em> mode.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Simple Interface</h3>
-                    <p>User-friendly design for everyone</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Open Source</h3>
-                    <p>Transparent and community-driven development</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Secure</h3>
-                    <p>Built with security as a priority</p>
+
+                <div class="feature-category">
+                    <h2>Contribute & Support</h2>
+                    
+                    <div class="feature-item">
+                        <h3>Test or Suggest Features</h3>
+                        <p>Please visit our <a href="#">GitHub</a> page and feel free to fork the codebase, submit bug reports, open feature requests, and join roadmap discussions. We are always open to getting your feedback.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Donate</h3>
+                        <p>We have come a long way, but there are other outstanding features we want to introduce in the future, so building never stops. Hence, your financial support means a lot to us. Please donate to Valet's development on <a href="#">Geyser</a>. Please follow us across our <a href="#">socials</a>, and join us in spreading the word.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -481,5 +789,26 @@
             <p>&copy; 2025 Valet.finance. All rights reserved.</p>
         </div>
     </footer>
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html> 
