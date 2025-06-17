@@ -48,6 +48,7 @@
             padding: 1rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            gap: 2rem;
         }
 
         .logo {
@@ -58,6 +59,7 @@
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .logo img {
@@ -85,6 +87,7 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            margin-left: auto;
         }
 
         .nav-links a {
@@ -331,6 +334,34 @@
             .guide-section h2 {
                 font-size: 1.5rem;
             }
+
+            /* Mobile Dropdown Styles */
+            .mobile-dropdown {
+                position: relative;
+                width: 100%;
+            }
+
+            .mobile-dropdown-content {
+                display: none;
+                padding-left: 1rem;
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .mobile-dropdown.active .mobile-dropdown-content {
+                display: block;
+            }
+
+            .mobile-dropdown-content a {
+                padding: 0.75rem 1rem;
+                display: block;
+                color: var(--text-color);
+                text-decoration: none;
+                font-size: 0.9rem;
+            }
+
+            .mobile-dropdown-content a:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
         }
     </style>
 </head>
@@ -355,7 +386,13 @@
                         <a href="security-tips.html">General Security Tips</a>
                     </div>
                 </div>
-                <a href="../build/build.html">Build</a>
+                <div class="dropdown">
+                    <a href="#" onclick="return false;">Build</a>
+                    <div class="dropdown-content">
+                        <a href="../build/team.html">Team</a>
+                        <a href="../build/api.html">API</a>
+                    </div>
+                </div>
                 <div class="dropdown">
                     <a href="#" onclick="return false;">BnB</a>
                     <div class="dropdown-content">
@@ -381,7 +418,7 @@
             <a href="../../index.html">Valet</a>
             <a href="../features/features.html">Features</a>
             <a href="#" onclick="return false;">User Guide</a>
-            <a href="../build/build.html">Build</a>
+            <a href="#" onclick="return false;">Build</a>
             <a href="#" onclick="return false;">BnB</a>
         </div>
     </div>
