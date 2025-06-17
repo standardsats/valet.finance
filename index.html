@@ -180,14 +180,136 @@
 
         .hero-section {
             padding: 8rem 2rem 4rem;
-            text-align: center;
+            text-align: left;
             background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-images {
+            flex: 1;
+            position: relative;
+            max-width: 350px;
+            margin: 0 0 0 -100px;
+            height: 600px;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .hero-image {
+            width: 76%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            transition: all 0.1s linear;
+            opacity: 0;
+            pointer-events: none;
+            object-fit: contain;
+            will-change: transform, filter;
+            transform-origin: center center;
+        }
+
+        .hero-image.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-image.main {
+            z-index: 2;
+            top: 0;
+            left: 0;
+            transform: translateY(0);
+            filter: none;
+        }
+
+        .hero-image.overlay {
+            z-index: 1;
+            top: 45px;
+            left: 210px;
+            transform: translateY(0);
+            opacity: 1;
+            filter: blur(4px);
+        }
+
+        .hero-image.left-overlay {
+            z-index: 1;
+            top: 45px;
+            left: -210px;
+            transform: translateY(0);
+            opacity: 1;
+            filter: blur(4px);
+        }
+
+        .hero-images:hover .hero-image.main {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-images:hover .hero-image.overlay,
+        .hero-images:hover .hero-image.left-overlay {
+            transform: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation classes for circular rotation */
+        .hero-image.slide-right {
+            transform: translateX(210px) translateY(45px) !important;
+            z-index: 1;
+            transition: all 0.1s linear;
+        }
+
+        .hero-image.slide-center {
+            transform: translateX(0) translateY(0) !important;
+            z-index: 2;
+            transition: all 0.1s linear;
+        }
+
+        .hero-image.slide-left {
+            transform: translateX(-210px) translateY(45px) !important;
+            z-index: 1;
+            transition: all 0.1s linear;
+        }
+
+        .hero-image.reset {
+            transform: translateY(0) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+            transition: all 0.1s linear;
+        }
+
+        /* Blur effect for overlay images */
+        .hero-image.overlay,
+        .hero-image.left-overlay {
+            filter: blur(4px);
+        }
+
+        /* Clear image for main position */
+        .hero-image.main {
+            filter: none;
         }
 
         .hero-title {
@@ -561,6 +683,28 @@
             }
         }
 
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-images {
+                max-width: 280px;
+                margin: 0 auto;
+                height: 500px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -717,9 +861,20 @@
 
     <section class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Instant, Secure & Low-fee Bitcoin & USDT payments</h1>
-            <p class="hero-subtitle">Send, receive, swap and buy Bitcoin & USDT securely at lowest fees with Speed Wallet. Sign up today to find out why millions of users trust us.</p>
-            <a href="#" class="cta-button">Download Now</a>
+            <div class="hero-text">
+                <h1 class="hero-title">A Lightweight Non-custodial Bitcoin Wallet, Built To work Where Others Don't</h1>
+                <p class="hero-subtitle">Send, receive, and hedge against Bitcoin's volatile price movement with Valet wallet. Join Our millions of users world wide and take control of your finance.</p>
+                <a href="#" class="cta-button">Download Now</a>
+            </div>
+            <div class="hero-images">
+                <div class="hero-image-container">
+                    <img src="images/index1.jpg" alt="Valet Wallet Interface" class="hero-image main active" data-index="0">
+                    <img src="images/index2.jpg" alt="Valet Wallet Features" class="hero-image overlay active" data-index="1">
+                    <img src="images/img13.jpg" alt="Valet Wallet Feature 3" class="hero-image left-overlay active" data-index="2">
+                    <img src="images/img14.jpg" alt="Valet Wallet Feature 4" class="hero-image" data-index="3">
+                    <img src="images/img15.jpg" alt="Valet Wallet Feature 5" class="hero-image" data-index="4">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -917,6 +1072,102 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Image shuffle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroImages = document.querySelectorAll('.hero-image');
+            let currentIndex = 0;
+            let isAnimating = false;
+            const heroImagesContainer = document.querySelector('.hero-images');
+            let resetTimeout;
+
+            function getNextIndex(current, total) {
+                return (current + 1) % total;
+            }
+
+            function resetImages() {
+                if (isAnimating) return;
+                
+                const mainImage = document.querySelector('.hero-image.main');
+                const rightOverlay = document.querySelector('.hero-image.overlay');
+                const leftOverlay = document.querySelector('.hero-image.left-overlay');
+                
+                // Reset to original positions using classes
+                mainImage.classList.add('reset');
+                rightOverlay.classList.add('reset');
+                leftOverlay.classList.add('reset');
+
+                // Remove reset classes after transition
+                setTimeout(() => {
+                    mainImage.classList.remove('reset');
+                    rightOverlay.classList.remove('reset');
+                    leftOverlay.classList.remove('reset');
+                }, 100);
+            }
+
+            function shuffleImages() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                // Clear any pending reset
+                clearTimeout(resetTimeout);
+
+                // Get current elements
+                const mainImage = document.querySelector('.hero-image.main');
+                const rightOverlay = document.querySelector('.hero-image.overlay');
+                const leftOverlay = document.querySelector('.hero-image.left-overlay');
+
+                // Add transition classes for circular rotation
+                requestAnimationFrame(() => {
+                    mainImage.classList.add('slide-right');
+                    leftOverlay.classList.add('slide-center');
+                    rightOverlay.classList.add('slide-left');
+                });
+
+                setTimeout(() => {
+                    // Update indices for next rotation
+                    const totalImages = heroImages.length;
+                    currentIndex = getNextIndex(currentIndex, totalImages);
+                    const nextRightIndex = getNextIndex(currentIndex, totalImages);
+                    const nextLeftIndex = getNextIndex(nextRightIndex, totalImages);
+
+                    // Update image sources
+                    mainImage.src = heroImages[currentIndex].src;
+                    rightOverlay.src = heroImages[nextRightIndex].src;
+                    leftOverlay.src = heroImages[nextLeftIndex].src;
+
+                    // Remove transition classes
+                    mainImage.classList.remove('slide-right');
+                    leftOverlay.classList.remove('slide-center');
+                    rightOverlay.classList.remove('slide-left');
+
+                    // Update classes to reflect new positions
+                    mainImage.classList.remove('main');
+                    leftOverlay.classList.remove('left-overlay');
+                    rightOverlay.classList.remove('overlay');
+
+                    // Reassign classes based on new positions
+                    leftOverlay.classList.add('main');
+                    mainImage.classList.add('overlay');
+                    rightOverlay.classList.add('left-overlay');
+
+                    isAnimating = false;
+
+                    // Set timeout to reset after 2 seconds of no interaction
+                    resetTimeout = setTimeout(resetImages, 2000);
+                }, 100);
+            }
+
+            // Add click event listener
+            heroImagesContainer.addEventListener('click', shuffleImages);
+
+            // Reset on mouse leave
+            heroImagesContainer.addEventListener('mouseleave', function() {
+                if (!isAnimating) {
+                    resetImages();
+                }
             });
         });
     </script>
