@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed - Instant, Secure & Low-fee Bitcoin & USDT payments</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #6B46C1;  /* Main purple */
@@ -16,6 +16,7 @@
             --border-color: #E2E8F0;    /* Light gray for borders */
             --gradient-start: #6B46C1;   /* Purple gradient start */
             --gradient-end: #805AD5;     /* Purple gradient end */
+            --highlight-color: #FFA726;  /* Vibrant orange for highlights */
         }
 
         * {
@@ -247,6 +248,42 @@
             filter: none;
         }
 
+        /* Video Section Styles */
+        .video-section {
+            padding: 4rem 2rem;
+            background-color: var(--background-light);
+            margin-top: 3rem;
+        }
+
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-content {
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            max-width: 920px;
+            margin: 2rem auto 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
         .hero-image.overlay {
             z-index: 1;
             top: 45px;
@@ -328,21 +365,21 @@
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
+            background-color: var(--highlight-color);
+            color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            transition: transform 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .cta-button:hover {
-            background-color: var(--background-light);
+            background-color: #fb8c00; /* Slightly darker orange */
         }
 
         .features-section {
             padding: 4rem 2rem;
-            background-color: var(--background-light);
+            background-color: #F3EEFC;
         }
 
         .section-title {
@@ -361,15 +398,35 @@
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            background: #fff;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(128,90,213,0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+            transition: transform 0.25s, box-shadow 0.25s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(128,90,213,0.18), 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .feature-image {
+            width: 324px;
+            height: 324px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 8px rgba(128,90,213,0.18);
+            border: 5px solid #fff;
+            background: linear-gradient(135deg, #f7fafc 60%, #e9d8fd 100%);
+            transition: box-shadow 0.25s;
+        }
+
+        .feature-card:hover .feature-image {
+            box-shadow: 0 4px 16px rgba(128,90,213,0.28);
         }
 
         .feature-card h3 {
@@ -441,31 +498,79 @@
             background-color: var(--background-light);
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .testimonials-section .section-title {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-size: 2.7rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonials-slider {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            position: relative;
+            background: var(--accent-color);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            padding: 3.5rem 2.5rem;
+            color: #fff;
+            min-height: 260px;
+            overflow: hidden;
         }
 
         .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: opacity 0.5s, transform 0.5s;
+            background: linear-gradient(135deg, #a084e8 60%, #fff 100%);
+            color: #2D3748;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 2.5rem 2rem;
+            margin: 0 auto;
+            max-width: 500px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-card.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .testimonial-card.slide-out {
+            opacity: 0;
+            transform: translateX(100%);
+            z-index: 1;
         }
 
         .testimonial-text {
-            font-size: 1.1rem;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            font-style: italic;
             line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 1rem;
+            text-shadow: 0 2px 8px rgba(128,90,213,0.08);
         }
 
         .testimonial-author {
-            color: var(--primary-color);
-            font-weight: 600;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
         }
 
         .faq-section {
@@ -473,27 +578,104 @@
             background-color: var(--background-light);
         }
 
+        .faq-section .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            margin-left: 0;
+        }
+
         .faq-container {
             max-width: 1200px;
             margin: 0 auto;
+            text-align: left;
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .faq-left {
+            flex: 1;
+            border-right: 5px solid #E2E8F0;
+            padding-right: 2rem;
+        }
+
+        .faq-right {
+            flex: 0 0 300px;
         }
 
         .faq-item {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .faq-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .faq-question {
+            background: var(--accent-color);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 18px 18px 4px 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(128,90,213,0.2);
+            width: 90%;
+            margin-left: 0;
+            position: relative;
         }
-
-        .faq-item p {
+        .faq-question::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid var(--accent-color);
+        }
+        .faq-question:hover::after {
+            border-top-color: var(--primary-color);
+        }
+        .faq-question:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(128,90,213,0.3);
+        }
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            background: #FFF3E0;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .faq-answer.active {
+            padding: 1.5rem 2rem;
+            max-height: 200px;
+        }
+        .faq-answer p {
+            margin: 0;
             color: var(--text-color);
+            line-height: 1.6;
         }
 
         .news-section {
             padding: 4rem 2rem;
-            background-color: var(--background-light);
+            background-color: #F3EEFC;
         }
 
         .news-grid {
@@ -534,17 +716,30 @@
 
         .ratings-section {
             padding: 4rem 2rem;
-            background-color: var(--background-light);
+            background-color: #F3EEFC;
         }
-
+        .ratings-testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
         .ratings-grid {
+            flex: 1;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-
+        .testimonials-section {
+            flex: 1;
+            padding: 0;
+            background-color: transparent;
+        }
+        .testimonials-section .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
         .rating-card {
             background: white;
             padding: 2rem;
@@ -552,14 +747,12 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
         }
-
         .rating {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-
         .store-button {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -570,17 +763,14 @@
             font-weight: 500;
             transition: background-color 0.3s ease;
         }
-
         .store-button:hover {
             background-color: var(--accent-color);
         }
-
         footer {
             background-color: var(--background-dark);
             color: white;
             padding: 4rem 2rem;
         }
-
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -588,38 +778,31 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
-
         .footer-section h4 {
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-
         .footer-section ul {
             list-style: none;
         }
-
         .footer-section ul li {
             margin-bottom: 0.5rem;
         }
-
         .footer-section ul li a {
             color: white;
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s ease;
         }
-
         .footer-section ul li a:hover {
             opacity: 1;
         }
-
         .social-links {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-
         .social-link {
             color: white;
             text-decoration: none;
@@ -627,17 +810,14 @@
             transition: opacity 0.3s ease;
             display: inline-block;
         }
-
         .social-link:hover {
             color: var(--accent-color);
         }
-
         .community-buttons {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-
         .community-button {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -649,62 +829,50 @@
             transition: background-color 0.3s ease;
             text-align: center;
         }
-
         .community-button:hover {
             background-color: var(--accent-color);
         }
-
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             margin-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-
         .footer-bottom p {
             color: rgba(255,255,255,0.6);
         }
-
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
             .hamburger {
                 display: block;
             }
-
             .mobile-menu {
                 display: block;
             }
-
             .hero-title {
                 font-size: 2.5rem;
             }
         }
-
         @media (max-width: 1024px) {
             .hero-content {
                 flex-direction: column;
                 text-align: center;
                 gap: 2rem;
             }
-
             .hero-text {
                 max-width: 100%;
             }
-
             .hero-images {
                 max-width: 280px;
                 margin: 0 auto;
                 height: 500px;
             }
-
             .hero-title {
                 font-size: 2.5rem;
             }
         }
-
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -724,23 +892,19 @@
             line-height: 40px;
             text-align: center;
         }
-
         .back-to-top:hover {
             background-color: var(--accent-color);
         }
-
         /* Dropdown styles */
         .dropdown {
             position: relative;
             display: inline-block;
             vertical-align: middle;
         }
-
         .dropdown > a {
             display: inline-block;
             vertical-align: middle;
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -753,11 +917,9 @@
             top: 100%;
             left: 0;
         }
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
         .dropdown-content a {
             color: var(--text-color);
             padding: 12px 16px;
@@ -766,10 +928,49 @@
             transition: background-color 0.3s ease;
             font-size: 0.9rem;
         }
-
         .dropdown-content a:hover {
             background-color: var(--background-light);
             color: var(--primary-color);
+        }
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(128,90,213,0.15), 0 4px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            position: sticky;
+            top: 2rem;
+            border: 2px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(128,90,213,0.2), 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .contact-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .contact-card p {
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--highlight-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .contact-button:hover {
+            background: #fb8c00;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -816,7 +1017,7 @@
                 <div class="hamburger-line"></div>
             </div>
         </div>
-    </nav>
+     </nav>
 
     <div class="mobile-menu">
         <div class="mobile-menu-header">
@@ -862,8 +1063,8 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">A Lightweight Non-custodial Bitcoin Wallet, Built To work Where Others Don't</h1>
-                <p class="hero-subtitle">Send, receive, and hedge against Bitcoin's volatile price movement with Valet wallet. Join Our millions of users world wide and take control of your finance.</p>
+                <h1 class="hero-title">A Lightweight Non-custodial Bitcoin Wallet, Built To Work Where Others Don't!</h1>
+                <p class="hero-subtitle">Take control of your finance with valet. Send, receive, pay, and hedge against Bitcoin's volatile price.</p>
                 <a href="#" class="cta-button">Download Now</a>
             </div>
             <div class="hero-images">
@@ -878,88 +1079,78 @@
         </div>
     </section>
 
+    <section class="video-section">
+        <div class="video-container">
+            <div class="video-content">
+                <h2 class="section-title">Watch Valet in action</h2>
+                <p class="section-subtitle">Checkout a simple video on how Valet makes Bitcoin usage simple, safe and secure.</p>
+                <div class="video-wrapper">
+                    <iframe 
+                        id="valet-video"
+                        src="https://www.youtube.com/embed/7bvFbpivc0E?enablejsapi=1&mute=1"
+                        title="Valet Wallet Introduction"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="features-section">
-        <h2 class="section-title">Send, Receive, Shop, with Speed Wallet</h2>
+        <h2 class="section-title">Do more in simple steps with Valet.</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <h3>Send & Receive</h3>
-                <p>Send Bitcoin to your friends to split bills, and shared activities. Pay our daily necessities with a zap, no more waiting for approvals.</p>
+                <img src="images/send.jpg" alt="Send and Receive" class="feature-image" />
+                <h3>Send and Receive</h3>
+                <p>Send and receive Bitcoin anywhere anytime and anywhere in the world. No approvals, no paper works! Valet gives you the control in your palm!</p>
             </div>
             <div class="feature-card">
-                <h3>Shop</h3>
-                <p>From fashion to tech, electronics to home goods, Shop directly from the app instantly with Bitcoin.</p>
+                <img src="images/micro-payments.jpg" alt="Swift Micro Payments" class="feature-image" />
+                <h3>Swift Micro Payments</h3>
+                <p>Harness the power of the Lightning technology with Valet. Make micro payments while still retaining full control</p>
             </div>
             <div class="feature-card">
-                <h3>Earn Rewards</h3>
-                <p>Earn up to 5x Speed Rewards for spending Bitcoin via Speed Wallet. Whether you are paying a friend or buying a new iPhone, you get Speed Rewards on ALL Bitcoin payments.</p>
+                <img src="images/hedge.png" alt="Stay Protected" class="feature-image" />
+                <h3>Stay Protected</h3>
+                <p>Explore the power of Lightning fiat channels with Valet, and stay protected against the Bitcoin price flustuations.</p>
             </div>
         </div>
     </section>
 
-    <section class="earn-section">
-        <h2 class="section-title">Earn with Speed</h2>
-        <p class="section-subtitle">Speed offers ample opportunities to earn Bitcoin SATS, bonuses and cashback rewards for using the wallet for your everyday payments.</p>
-        <div class="earn-grid">
-            <div class="earn-card">
-                <h3>Play & Win</h3>
-                <p>We have partnered with industry-leading casino platforms to bring you choicest games that are highly entertaining and offer great rewards.</p>
-                <a href="#" class="earn-button">Download Now</a>
+    <section class="ratings-section">
+        <div class="ratings-testimonials-container">
+            <div class="ratings-grid">
+                <div class="rating-card">
+                    <div class="rating">5.0</div>
+                    <a href="#" class="store-button">Download App</a>
+                </div>
+                <div class="rating-card">
+                    <div class="rating">4.8</div>
+                    <a href="#" class="store-button">Download App</a>
+                </div>
+                <div class="rating-card">
+                    <div class="rating">4.6</div>
+                    <a href="#" class="store-button">Download Extension</a>
+                </div>
             </div>
-            <div class="earn-card">
-                <h3>Exclusive Giveaways</h3>
-                <p>Use Speed Wallet for your daily payments and enter our exciting contests for a chance to win exclusive prizes, Bitcoin SATS, and much more.</p>
-                <a href="#" class="earn-button">Earn Big with Speed</a>
-            </div>
-            <div class="earn-card">
-                <h3>Refer & Earn</h3>
-                <p>Invite your friends to join Speed Wallet, and when they complete their first transaction, you both earn SATS! There's no limit to your rewards.</p>
-                <a href="#" class="earn-button">Download Now</a>
-            </div>
-            <div class="earn-card">
-                <h3>Speed Rewards</h3>
-                <p>Earn up to 5x Speed Rewards for spending Bitcoin via Speed Wallet. Whether you are paying a friend or buying a new iPhone, you get Speed Rewards on ALL Bitcoin payments.</p>
-                <a href="#" class="earn-button">Earn SATS Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials-section">
-        <h2 class="section-title">Trusted by happy customers</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Wonderful experience with Speed wallet. It's user friendly, efficient, fast, safe and reliable. Download and use speed wallet."</p>
-                <p class="testimonial-author">- Simon Winn</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Best app for sats Excellent customer support Works very fast less charges"</p>
-                <p class="testimonial-author">- Alison</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"It works great! Transferring my satoshis from multiple apps have been seamless."</p>
-                <p class="testimonial-author">- Paul</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <h2 class="section-title">Frequently asked questions</h2>
-        <p class="section-subtitle">Everything you need to know about Speed.</p>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3>Do Speed users need KYC verification?</h3>
-                <p>Speed has implemented KYC for its users in the United States to ensure compliance. At Speed, we deeply value our user community and are dedicated to ensuring that our services meet the highest standards of user experience and business continuity. Your information will be handled confidentially and according to data protection regulations.</p>
-            </div>
-            <div class="faq-item">
-                <h3>How to install Speed Wallet?</h3>
-                <p>Speed Bitcoin Lightning Wallet can be downloaded from the Google Play Store on Android and the App Store on iOS. Speed Wallet is also available on the Chrome Web Store on Desktop.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Why is Speed Wallet the best Bitcoin Wallet?</h3>
-                <p>Speed Wallet is one of the fastest-growing and highly rated Bitcoin wallet. It is highly secure and offers instant Bitcoin transactions at low cost. You can create your personalized LN address to receive Bitcoins, and shop gift cards. Earn Speed points with every transaction and redeem them for Bitcoin rewards. Fast, easy, and rewarding - that's Speed Wallet for you!</p>
-            </div>
-            <div class="faq-item">
-                <h3>Can I shop using Bitcoin through Speed Wallet?</h3>
-                <p>Absolutely! With Speed Wallet, you can shop gift cards using Bitcoin seamlessly. We have integrated with Bitrefill, offering gift cards from popular brands like Amazon, Starbucks, Uber, and more. You can pay directly using the Bitcoins in your Speed Wallet.</p>
+            <div class="testimonials-section">
+                <h2 class="section-title">What users think about Valet</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-card active">
+                        <p class="testimonial-text">"Wonderful experience with Speed wallet. It's user friendly, efficient, fast, safe and reliable. Download and use speed wallet."</p>
+                        <p class="testimonial-author">- Simon Winn</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Best app for sats Excellent customer support Works very fast less charges"</p>
+                        <p class="testimonial-author">- Alison</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"It works great! Transferring my satoshis from multiple apps have been seamless."</p>
+                        <p class="testimonial-author">- Paul</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -991,19 +1182,49 @@
         </div>
     </section>
 
-    <section class="ratings-section">
-        <div class="ratings-grid">
-            <div class="rating-card">
-                <div class="rating">5.0</div>
-                <a href="#" class="store-button">Download App</a>
+    <section class="faq-section">
+        <h2 class="section-title">Few question users often ask:</h2>
+        <div class="faq-container">
+            <div class="faq-left">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Do Speed users need KYC verification?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Speed has implemented KYC for its users in the United States to ensure compliance. At Speed, we deeply value our user community and are dedicated to ensuring that our services meet the highest standards of user experience and business continuity. Your information will be handled confidentially and according to data protection regulations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How to install Speed Wallet?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Speed Bitcoin Lightning Wallet can be downloaded from the Google Play Store on Android and the App Store on iOS. Speed Wallet is also available on the Chrome Web Store on Desktop.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Why is Speed Wallet the best Bitcoin Wallet?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Speed Wallet is one of the fastest-growing and highly rated Bitcoin wallet. It is highly secure and offers instant Bitcoin transactions at low cost. You can create your personalized LN address to receive Bitcoins, and shop gift cards. Earn Speed points with every transaction and redeem them for Bitcoin rewards. Fast, easy, and rewarding - that's Speed Wallet for you!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I shop using Bitcoin through Speed Wallet?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! With Speed Wallet, you can shop gift cards using Bitcoin seamlessly. We have integrated with Bitrefill, offering gift cards from popular brands like Amazon, Starbucks, Uber, and more. You can pay directly using the Bitcoins in your Speed Wallet.</p>
+                    </div>
+                </div>
             </div>
-            <div class="rating-card">
-                <div class="rating">4.8</div>
-                <a href="#" class="store-button">Download App</a>
-            </div>
-            <div class="rating-card">
-                <div class="rating">4.6</div>
-                <a href="#" class="store-button">Download Extension</a>
+            <div class="faq-right">
+                <div class="contact-card">
+                    <h3>Got specific questions? Ask us</h3>
+                    <p>Reach out to our team to answer any questions you have that we have not covered</p>
+                    <a href="#" class="contact-button">Get in touch</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1191,6 +1412,71 @@
                 }
             });
         });
+
+        // YouTube IFrame API for hover-to-play
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('valet-video');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var wrapper = document.querySelector('.video-wrapper');
+            wrapper.addEventListener('mouseenter', function() {
+                if (player && player.playVideo) player.playVideo();
+            });
+            wrapper.addEventListener('mouseleave', function() {
+                if (player && player.pauseVideo) player.pauseVideo();
+            });
+        });
+
+        // Testimonial slider logic with slide in/out animation
+        (function() {
+            const testimonials = document.querySelectorAll('.testimonials-slider .testimonial-card');
+            let current = 0;
+            let prev = 0;
+            function showTestimonial(idx) {
+                testimonials.forEach((el, i) => {
+                    el.classList.remove('active', 'slide-out');
+                    if (i === idx) {
+                        el.classList.add('active');
+                    } else if (i === prev) {
+                        el.classList.add('slide-out');
+                    }
+                });
+                prev = idx;
+            }
+            function nextTestimonial() {
+                let next = (current + 1) % testimonials.length;
+                showTestimonial(next);
+                current = next;
+            }
+            setInterval(nextTestimonial, 5000); // Change every 5 seconds
+            showTestimonial(current);
+        })();
+
+        // FAQ Accordion functionality
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const isActive = element.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.classList.remove('active');
+                question.parentElement.querySelector('.faq-answer').classList.remove('active');
+            });
+            
+            // Toggle current FAQ item
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html> 
