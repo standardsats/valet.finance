@@ -868,11 +868,11 @@
             </div>
             <div class="hero-images">
                 <div class="hero-image-container">
-                    <img src="images/index1.jpg" alt="Valet Wallet Interface" class="hero-image main active" data-index="0">
-                    <img src="images/index2.jpg" alt="Valet Wallet Features" class="hero-image overlay active" data-index="1">
-                    <img src="images/img13.jpg" alt="Valet Wallet Feature 3" class="hero-image left-overlay active" data-index="2">
-                    <img src="images/img14.jpg" alt="Valet Wallet Feature 4" class="hero-image" data-index="3">
-                    <img src="images/img15.jpg" alt="Valet Wallet Feature 5" class="hero-image" data-index="4">
+                    <img src="images/index.jpg?v=2" alt="Valet Wallet Interface" class="hero-image main active" data-index="0">
+                    <img src="images/index1.jpg" alt="Valet Wallet Features" class="hero-image left-overlay active" data-index="1">
+                    <img src="images/index4.jpg" alt="Valet Wallet Feature 3" class="hero-image overlay active" data-index="4">
+                    <img src="images/index2.jpg" alt="Valet Wallet Feature 4" class="hero-image" data-index="2">
+                    <img src="images/index3.jpg" alt="Valet Wallet Feature 5" class="hero-image" data-index="3">
                 </div>
             </div>
         </div>
@@ -1078,14 +1078,26 @@
         // Image shuffle functionality
         document.addEventListener('DOMContentLoaded', function() {
             const heroImages = document.querySelectorAll('.hero-image');
-            let currentIndex = 0;
             let isAnimating = false;
             const heroImagesContainer = document.querySelector('.hero-images');
             let resetTimeout;
 
-            function getNextIndex(current, total) {
-                return (current + 1) % total;
-            }
+            // Define the image sequence: index4 -> index3 -> index2 -> index1 -> index
+            const imageSequence = [
+                'images/index.jpg',    // 0: index
+                'images/index1.jpg',   // 1: index1
+                'images/index2.jpg',   // 2: index2
+                'images/index3.jpg',   // 3: index3
+                'images/index4.jpg'    // 4: index4
+            ];
+
+            // Initial positions: center=index, left=index1, right=index4
+            // Queue: index2, index3
+            let currentPositions = {
+                center: 0,  // index
+                left: 1,    // index1
+                right: 4    // index4
+            };
 
             function resetImages() {
                 if (isAnimating) return;
@@ -1119,7 +1131,7 @@
                 const rightOverlay = document.querySelector('.hero-image.overlay');
                 const leftOverlay = document.querySelector('.hero-image.left-overlay');
 
-                // Add transition classes for circular rotation
+                // Add transition classes for anti-clockwise rotation
                 requestAnimationFrame(() => {
                     mainImage.classList.add('slide-right');
                     leftOverlay.classList.add('slide-center');
@@ -1127,16 +1139,14 @@
                 });
 
                 setTimeout(() => {
-                    // Update indices for next rotation
-                    const totalImages = heroImages.length;
-                    currentIndex = getNextIndex(currentIndex, totalImages);
-                    const nextRightIndex = getNextIndex(currentIndex, totalImages);
-                    const nextLeftIndex = getNextIndex(nextRightIndex, totalImages);
-
-                    // Update image sources
-                    mainImage.src = heroImages[currentIndex].src;
-                    rightOverlay.src = heroImages[nextRightIndex].src;
-                    leftOverlay.src = heroImages[nextLeftIndex].src;
+                    // Anti-clockwise rotation logic
+                    // Current: center=index, left=index1, right=index4
+                    // After rotation: center=index1, left=index2, right=index
+                    
+                    // Update image sources based on new positions
+                    mainImage.src = imageSequence[currentPositions.left];  // index1 becomes center
+                    leftOverlay.src = imageSequence[(currentPositions.left + 1) % 5];  // index2 becomes left
+                    rightOverlay.src = imageSequence[currentPositions.center];  // index becomes right
 
                     // Remove transition classes
                     mainImage.classList.remove('slide-right');
@@ -1152,6 +1162,17 @@
                     leftOverlay.classList.add('main');
                     mainImage.classList.add('overlay');
                     rightOverlay.classList.add('left-overlay');
+
+                    // Update position tracking
+                    const newCenter = currentPositions.left;
+                    const newLeft = (currentPositions.left + 1) % 5;
+                    const newRight = currentPositions.center;
+                    
+                    currentPositions = {
+                        center: newCenter,
+                        left: newLeft,
+                        right: newRight
+                    };
 
                     isAnimating = false;
 
