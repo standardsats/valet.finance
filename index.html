@@ -578,6 +578,30 @@
             letter-spacing: 0.5px;
         }
 
+        .testimonial-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 12px rgba(128,90,213,0.2);
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .faq-section {
             padding: 4rem 2rem;
             background-color: var(--background-light);
@@ -1455,16 +1479,20 @@
             <div class="testimonials-section">
                 <div class="testimonials-slider">
                     <div class="testimonial-card active">
-                        <p class="testimonial-text">"Wonderful experience with Speed wallet. It's user friendly, efficient, fast, safe and reliable. Download and use speed wallet."</p>
+                        <p class="testimonial-text">"Wonderful experience with Valet. It's user friendly, efficient, fast, safe and reliable. Download and use Valet wallet."</p>
                         <p class="testimonial-author">- Simon Winn</p>
                     </div>
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"Best app for sats Excellent customer support Works very fast less charges"</p>
+                        <p class="testimonial-text">"Best app for self custodial micro payments. I was able to set up my wallet with just a few clicks, and yeah, it has excellent and simple UI design. I strongly recommend!"</p>
                         <p class="testimonial-author">- Alison</p>
                     </div>
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"It works great! Transferring my satoshis from multiple apps have been seamless."</p>
+                        <p class="testimonial-text">"i loved the ability to recover my wallet and all my lightning channel connections were still intact. Saves a lot of time and stress."</p>
                         <p class="testimonial-author">- Paul</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Great wallet for easy self custody. No ambiguity!"</p>
+                        <p class="testimonial-author">- Wills</p>
                     </div>
                 </div>
             </div>
