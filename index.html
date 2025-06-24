@@ -1116,36 +1116,209 @@
         }
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: none !important;
             }
             .hamburger {
-                display: block;
+                display: block !important;
+                z-index: 1002;
             }
             .mobile-menu {
                 display: block;
             }
-            .hero-title {
-                font-size: 2.5rem;
+            .nav-content {
+                padding: 0.75rem 1rem;
             }
-        }
-        @media (max-width: 1024px) {
+            .logo img {
+                height: 2.5rem;
+            }
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            .wallet-text {
+                font-size: 1rem;
+            }
+
+            /* Force back-to-top button visibility on mobile */
+            .back-to-top {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            /* Hero Section Mobile */
+            .hero-section {
+                padding: 6rem 1rem 3rem;
+                text-align: center;
+            }
             .hero-content {
                 flex-direction: column;
-                text-align: center;
                 gap: 2rem;
+                text-align: center;
             }
             .hero-text {
                 max-width: 100%;
+                order: 2;
             }
             .hero-images {
                 max-width: 280px;
                 margin: 0 auto;
-                height: 500px;
+                height: 400px;
+                order: 1;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Video Section Mobile */
+            .video-section {
+                padding: 3rem 1rem;
+            }
+            .video-container {
+                padding: 0 1rem;
+            }
+            .video-wrapper {
+                width: 100%;
+                height: 200px;
+            }
+
+            /* Features Section Mobile */
+            .features-section {
+                padding: 3rem 1rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .feature-card {
+                padding: 1.5rem;
+                text-align: center;
+            }
+            .feature-card img {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 1rem;
+            }
+            .feature-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            .feature-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* Testimonials Section Mobile */
+            .testimonials-section {
+                padding: 3rem 1rem;
+            }
+            .testimonials-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .testimonials-block {
+                width: 100%;
+            }
+            .testimonial-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .testimonial-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .testimonial-author {
+                font-size: 0.9rem;
+            }
+            .ratings-block {
+                width: 100%;
+            }
+            .rating-item {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            .rating-score {
+                font-size: 1.5rem;
+            }
+            .rating-text {
+                font-size: 0.9rem;
+            }
+
+            /* FAQ Section Mobile */
+            .faq-section {
+                padding: 3rem 1rem;
+            }
+            .faq-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .faq-left {
+                border-right: none;
+                border-bottom: 5px solid #E2E8F0;
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+            .faq-right {
+                flex: none;
+            }
+            .faq-question {
+                width: 100%;
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+
+            /* News Section Mobile */
+            .news-section {
+                padding: 3rem 1rem;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .news-card {
+                padding: 1.5rem;
+            }
+            .news-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            .news-card p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            /* Footer Mobile */
+            .footer {
+                padding: 3rem 1rem 2rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .footer-section h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            .footer-section p,
+            .footer-section a {
+                font-size: 0.9rem;
+            }
+            .footer-bottom {
+                padding-top: 1.5rem;
+                margin-top: 1.5rem;
             }
         }
+
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1168,6 +1341,7 @@
         .back-to-top:hover {
             background-color: var(--accent-color);
         }
+
         /* Dropdown styles */
         .dropdown {
             position: relative;
@@ -1205,6 +1379,7 @@
             background-color: var(--background-light);
             color: var(--primary-color);
         }
+
         .contact-card {
             background: white;
             padding: 2.5rem;
@@ -1242,6 +1417,38 @@
         .contact-button:hover {
             background: #fb8c00;
             transform: scale(1.05);
+        }
+
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-dropdown-content a:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
@@ -1298,9 +1505,36 @@
         <div class="mobile-nav-links">
             <a href="/index.html">Valet</a>
             <a href="top_nav/features/features.html">Features</a>
-            <a href="#" onclick="return false;">User Guide</a>
-            <a href="#" onclick="return false;">Build</a>
-            <a href="#" onclick="return false;">BnB</a>
+            
+            <!-- User Guide Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">User Guide ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="top_nav/user_guide/getting-started.html">Getting Started</a>
+                    <a href="top_nav/user_guide/wallet-settings.html">Wallet Settings</a>
+                    <a href="top_nav/user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
+                    <a href="top_nav/user_guide/security-tips.html">General Security Tips</a>
+                </div>
+            </div>
+            
+            <!-- Build Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Build ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="top_nav/build/team.html">Team</a>
+                    <a href="top_nav/build/api.html">API</a>
+                </div>
+            </div>
+            
+            <!-- BnB Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">BnB ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="top_nav/bnb/blog.html">Blog</a>
+                    <a href="top_nav/bnb/business.html">Business</a>
+                    <a href="top_nav/bnb/contact.html">Contact Us</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1328,6 +1562,26 @@
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
+        });
+
+        // Mobile dropdown functionality
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown-toggle');
+        mobileDropdowns.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.parentElement;
+                const isActive = dropdown.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+                
+                // Toggle current dropdown
+                if (!isActive) {
+                    dropdown.classList.add('active');
+                }
+            });
         });
     </script>
 
