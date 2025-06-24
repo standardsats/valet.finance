@@ -248,6 +248,12 @@
             filter: none;
         }
 
+        .hero-image.overlay,
+        .hero-image.left-overlay {
+            z-index: 1;
+            opacity: 0.7 !important;
+        }
+
         /* Video Section Styles */
         .video-section {
             padding: 4rem 2rem;
@@ -1164,6 +1170,9 @@
                 margin: 0 auto;
                 height: 400px;
                 order: 1;
+                position: relative;
+                z-index: 1;
+                cursor: pointer;
             }
             .hero-title {
                 font-size: 2rem;
@@ -1583,6 +1592,289 @@
                 }
             });
         });
+
+        // Image shuffle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroImages = document.querySelectorAll('.hero-image');
+            let isAnimating = false;
+            const heroImagesContainer = document.querySelector('.hero-images');
+            let resetTimeout;
+
+            // Define the image sequence: index4 -> index3 -> index2 -> index1 -> index
+            const imageSequence = [
+                'images/index.jpg',    // 0: index
+                'images/index1.jpg',   // 1: index1
+                'images/index2.jpg',   // 2: index2
+                'images/index3.jpg',   // 3: index3
+                'images/index4.jpg'    // 4: index4
+            ];
+
+            // Initial positions: center=index, left=index1, right=index4
+            // Queue: index2, index3
+            let currentPositions = {
+                center: 0,  // index
+                left: 1,    // index1
+                right: 4    // index4
+            };
+
+            function resetImages() {
+                if (isAnimating) return;
+                
+                const mainImage = document.querySelector('.hero-image.main');
+                const rightOverlay = document.querySelector('.hero-image.overlay');
+                const leftOverlay = document.querySelector('.hero-image.left-overlay');
+                
+                // Reset to original positions using classes
+                mainImage.classList.add('reset');
+                rightOverlay.classList.add('reset');
+                leftOverlay.classList.add('reset');
+
+                // Remove reset classes after transition
+                setTimeout(() => {
+                    mainImage.classList.remove('reset');
+                    rightOverlay.classList.remove('reset');
+                    leftOverlay.classList.remove('reset');
+                }, 100);
+            }
+
+            function shuffleImages() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                // Clear any pending reset
+                clearTimeout(resetTimeout);
+
+                // Get current elements
+                const mainImage = document.querySelector('.hero-image.main');
+                const rightOverlay = document.querySelector('.hero-image.overlay');
+                const leftOverlay = document.querySelector('.hero-image.left-overlay');
+
+                // Add transition classes for anti-clockwise rotation
+                requestAnimationFrame(() => {
+                    mainImage.classList.add('slide-right');
+                    leftOverlay.classList.add('slide-center');
+                    rightOverlay.classList.add('slide-left');
+                });
+
+                setTimeout(() => {
+                    // Anti-clockwise rotation logic
+                    // Current: center=index, left=index1, right=index4
+                    // After rotation: center=index1, left=index2, right=index
+                    
+                    // Update image sources based on new positions
+                    mainImage.src = imageSequence[currentPositions.left];  // index1 becomes center
+                    leftOverlay.src = imageSequence[(currentPositions.left + 1) % 5];  // index2 becomes left
+                    rightOverlay.src = imageSequence[currentPositions.center];  // index becomes right
+
+                    // Remove transition classes
+                    mainImage.classList.remove('slide-right');
+                    leftOverlay.classList.remove('slide-center');
+                    rightOverlay.classList.remove('slide-left');
+
+                    // Update classes to reflect new positions
+                    mainImage.classList.remove('main');
+                    leftOverlay.classList.remove('left-overlay');
+                    rightOverlay.classList.remove('overlay');
+
+                    // Reassign classes based on new positions
+                    leftOverlay.classList.add('main');
+                    mainImage.classList.add('overlay');
+                    rightOverlay.classList.add('left-overlay');
+
+                    // Update position tracking
+                    const newCenter = currentPositions.left;
+                    const newLeft = (currentPositions.left + 1) % 5;
+                    const newRight = currentPositions.center;
+                    
+                    currentPositions = {
+                        center: newCenter,
+                        left: newLeft,
+                        right: newRight
+                    };
+
+                    isAnimating = false;
+
+                    // Set timeout to reset after 2 seconds of no interaction
+                    resetTimeout = setTimeout(resetImages, 2000);
+                }, 100);
+            }
+
+            // Add click event listener
+            heroImagesContainer.addEventListener('click', shuffleImages);
+
+            // Reset on mouse leave
+            heroImagesContainer.addEventListener('mouseleave', function() {
+                if (!isAnimating) {
+                    resetImages();
+                }
+            });
+
+            // Touch support for mobile devices
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            heroImagesContainer.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            heroImagesContainer.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - shuffle images
+                        shuffleImages();
+                    } else {
+                        // Swipe right - could add reverse shuffle if needed
+                        shuffleImages();
+                    }
+                }
+            }
+
+            // Auto-advance carousel on mobile (every 3 seconds)
+            let autoAdvanceInterval;
+            
+            function startAutoAdvance() {
+                if (window.innerWidth <= 768) {
+                    autoAdvanceInterval = setInterval(() => {
+                        if (!isAnimating) {
+                            shuffleImages();
+                        }
+                    }, 3000);
+                }
+            }
+
+            function stopAutoAdvance() {
+                if (autoAdvanceInterval) {
+                    clearInterval(autoAdvanceInterval);
+                    autoAdvanceInterval = null;
+                }
+            }
+
+            // Start auto-advance on mobile
+            if (window.innerWidth <= 768) {
+                startAutoAdvance();
+            }
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    startAutoAdvance();
+                } else {
+                    stopAutoAdvance();
+                }
+            });
+
+            // Pause auto-advance when user interacts
+            heroImagesContainer.addEventListener('touchstart', stopAutoAdvance);
+            heroImagesContainer.addEventListener('click', stopAutoAdvance);
+            
+            // Resume auto-advance after 5 seconds of no interaction
+            let resumeTimeout;
+            function scheduleResume() {
+                clearTimeout(resumeTimeout);
+                resumeTimeout = setTimeout(() => {
+                    if (window.innerWidth <= 768) {
+                        startAutoAdvance();
+                    }
+                }, 5000);
+            }
+
+            heroImagesContainer.addEventListener('touchend', scheduleResume);
+            heroImagesContainer.addEventListener('click', scheduleResume);
+        });
+
+        // YouTube IFrame API for hover-to-play
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('valet-video');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var wrapper = document.querySelector('.video-wrapper');
+            wrapper.addEventListener('mouseenter', function() {
+                if (player && player.playVideo) player.playVideo();
+            });
+            wrapper.addEventListener('mouseleave', function() {
+                if (player && player.pauseVideo) player.pauseVideo();
+            });
+        });
+
+        // Testimonial slider logic with slide in/out animation
+        (function() {
+            const testimonials = document.querySelectorAll('.testimonials-slider .testimonial-card');
+            let current = 0;
+            let prev = 0;
+            function showTestimonial(idx) {
+                testimonials.forEach((el, i) => {
+                    el.classList.remove('active', 'slide-out');
+                    if (i === idx) {
+                        el.classList.add('active');
+                    } else if (i === prev) {
+                        el.classList.add('slide-out');
+                    }
+                });
+                prev = idx;
+            }
+            function nextTestimonial() {
+                let next = (current + 1) % testimonials.length;
+                showTestimonial(next);
+                current = next;
+            }
+            setInterval(nextTestimonial, 5000); // Change every 5 seconds
+            showTestimonial(current);
+        })();
+
+        // FAQ Accordion functionality
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const isActive = element.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.classList.remove('active');
+                question.parentElement.querySelector('.faq-answer').classList.remove('active');
+            });
+            
+            // Toggle current FAQ item
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Image shuffle functionality
     </script>
 
     <section class="hero-section">
@@ -1853,207 +2145,5 @@
         </div>
     </footer>
     <a href="#" class="back-to-top" id="backToTop">↑</a>
-    <script>
-        // Back to top button functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Image shuffle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroImages = document.querySelectorAll('.hero-image');
-            let isAnimating = false;
-            const heroImagesContainer = document.querySelector('.hero-images');
-            let resetTimeout;
-
-            // Define the image sequence: index4 -> index3 -> index2 -> index1 -> index
-            const imageSequence = [
-                'images/index.jpg',    // 0: index
-                'images/index1.jpg',   // 1: index1
-                'images/index2.jpg',   // 2: index2
-                'images/index3.jpg',   // 3: index3
-                'images/index4.jpg'    // 4: index4
-            ];
-
-            // Initial positions: center=index, left=index1, right=index4
-            // Queue: index2, index3
-            let currentPositions = {
-                center: 0,  // index
-                left: 1,    // index1
-                right: 4    // index4
-            };
-
-            function resetImages() {
-                if (isAnimating) return;
-                
-                const mainImage = document.querySelector('.hero-image.main');
-                const rightOverlay = document.querySelector('.hero-image.overlay');
-                const leftOverlay = document.querySelector('.hero-image.left-overlay');
-                
-                // Reset to original positions using classes
-                mainImage.classList.add('reset');
-                rightOverlay.classList.add('reset');
-                leftOverlay.classList.add('reset');
-
-                // Remove reset classes after transition
-                setTimeout(() => {
-                    mainImage.classList.remove('reset');
-                    rightOverlay.classList.remove('reset');
-                    leftOverlay.classList.remove('reset');
-                }, 100);
-            }
-
-            function shuffleImages() {
-                if (isAnimating) return;
-                isAnimating = true;
-
-                // Clear any pending reset
-                clearTimeout(resetTimeout);
-
-                // Get current elements
-                const mainImage = document.querySelector('.hero-image.main');
-                const rightOverlay = document.querySelector('.hero-image.overlay');
-                const leftOverlay = document.querySelector('.hero-image.left-overlay');
-
-                // Add transition classes for anti-clockwise rotation
-                requestAnimationFrame(() => {
-                    mainImage.classList.add('slide-right');
-                    leftOverlay.classList.add('slide-center');
-                    rightOverlay.classList.add('slide-left');
-                });
-
-                setTimeout(() => {
-                    // Anti-clockwise rotation logic
-                    // Current: center=index, left=index1, right=index4
-                    // After rotation: center=index1, left=index2, right=index
-                    
-                    // Update image sources based on new positions
-                    mainImage.src = imageSequence[currentPositions.left];  // index1 becomes center
-                    leftOverlay.src = imageSequence[(currentPositions.left + 1) % 5];  // index2 becomes left
-                    rightOverlay.src = imageSequence[currentPositions.center];  // index becomes right
-
-                    // Remove transition classes
-                    mainImage.classList.remove('slide-right');
-                    leftOverlay.classList.remove('slide-center');
-                    rightOverlay.classList.remove('slide-left');
-
-                    // Update classes to reflect new positions
-                    mainImage.classList.remove('main');
-                    leftOverlay.classList.remove('left-overlay');
-                    rightOverlay.classList.remove('overlay');
-
-                    // Reassign classes based on new positions
-                    leftOverlay.classList.add('main');
-                    mainImage.classList.add('overlay');
-                    rightOverlay.classList.add('left-overlay');
-
-                    // Update position tracking
-                    const newCenter = currentPositions.left;
-                    const newLeft = (currentPositions.left + 1) % 5;
-                    const newRight = currentPositions.center;
-                    
-                    currentPositions = {
-                        center: newCenter,
-                        left: newLeft,
-                        right: newRight
-                    };
-
-                    isAnimating = false;
-
-                    // Set timeout to reset after 2 seconds of no interaction
-                    resetTimeout = setTimeout(resetImages, 2000);
-                }, 100);
-            }
-
-            // Add click event listener
-            heroImagesContainer.addEventListener('click', shuffleImages);
-
-            // Reset on mouse leave
-            heroImagesContainer.addEventListener('mouseleave', function() {
-                if (!isAnimating) {
-                    resetImages();
-                }
-            });
-        });
-
-        // YouTube IFrame API for hover-to-play
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('valet-video');
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var wrapper = document.querySelector('.video-wrapper');
-            wrapper.addEventListener('mouseenter', function() {
-                if (player && player.playVideo) player.playVideo();
-            });
-            wrapper.addEventListener('mouseleave', function() {
-                if (player && player.pauseVideo) player.pauseVideo();
-            });
-        });
-
-        // Testimonial slider logic with slide in/out animation
-        (function() {
-            const testimonials = document.querySelectorAll('.testimonials-slider .testimonial-card');
-            let current = 0;
-            let prev = 0;
-            function showTestimonial(idx) {
-                testimonials.forEach((el, i) => {
-                    el.classList.remove('active', 'slide-out');
-                    if (i === idx) {
-                        el.classList.add('active');
-                    } else if (i === prev) {
-                        el.classList.add('slide-out');
-                    }
-                });
-                prev = idx;
-            }
-            function nextTestimonial() {
-                let next = (current + 1) % testimonials.length;
-                showTestimonial(next);
-                current = next;
-            }
-            setInterval(nextTestimonial, 5000); // Change every 5 seconds
-            showTestimonial(current);
-        })();
-
-        // FAQ Accordion functionality
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const isActive = element.classList.contains('active');
-            
-            // Close all other FAQ items
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.classList.remove('active');
-                question.parentElement.querySelector('.faq-answer').classList.remove('active');
-            });
-            
-            // Toggle current FAQ item
-            if (!isActive) {
-                element.classList.add('active');
-                answer.classList.add('active');
-            }
-        }
-    </script>
 </body>
 </html> 
