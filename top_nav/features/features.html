@@ -211,6 +211,38 @@
             padding: 0.5rem 0;
         }
 
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
         .overlay {
             display: none;
             position: fixed;
@@ -484,15 +516,46 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: none !important;
             }
 
             .hamburger {
-                display: block;
+                display: block !important;
+                z-index: 1002;
             }
 
             .mobile-menu {
                 display: block;
+            }
+
+            .nav-content {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo img {
+                height: 2.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .wallet-text {
+                font-size: 1rem;
+            }
+
+            /* Force back-to-top button visibility on mobile */
+            .back-to-top {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            /* Main content mobile adjustments */
+            main {
+                padding-top: 4rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
 
             .features-section {
@@ -501,22 +564,152 @@
 
             .page-title {
                 font-size: 2rem;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .intro-section {
+                margin-bottom: 2rem;
             }
 
             .intro-text {
                 font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .feature-category {
+                margin-bottom: 3rem;
             }
 
             .feature-category h2 {
                 font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
             }
 
             .feature-item {
                 padding: 1.5rem;
+                margin-bottom: 1.5rem;
             }
 
             .feature-item h3 {
                 font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-item p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .feature-item ul {
+                margin-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-item li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 0.5rem;
+            }
+
+            .tip-box {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .tip-box p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .warning-box {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .warning-box p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            /* Footer mobile adjustments */
+            .footer {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-section h4 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-section a {
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .community-buttons {
+                gap: 0.75rem;
+            }
+
+            .community-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            /* Mobile dropdown enhancements */
+            .mobile-dropdown-toggle {
+                font-size: 1.2rem;
+                font-weight: 600;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .mobile-dropdown-content {
+                padding-left: 1.5rem;
+                margin-top: 0.5rem;
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .mobile-dropdown-content a {
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                display: block;
+                color: var(--text-color);
+                text-decoration: none;
+            }
+
+            .mobile-dropdown-content a:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            /* Mobile menu header */
+            .mobile-menu-header h3 {
+                font-size: 1.5rem;
+                color: var(--text-color);
+                margin: 0;
             }
         }
     </style>
@@ -568,14 +761,42 @@
 
     <div class="mobile-menu">
         <div class="mobile-menu-header">
+            <h3>Menu</h3>
             <span class="close-menu">&times;</span>
         </div>
         <div class="mobile-nav-links">
             <a href="../../index.html">Valet</a>
             <a href="features.html">Features</a>
-            <a href="#" onclick="return false;">User Guide</a>
-            <a href="#" onclick="return false;">Build</a>
-            <a href="#" onclick="return false;">BnB</a>
+            
+            <!-- User Guide Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">User Guide ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="../user_guide/getting-started.html">Getting Started</a>
+                    <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
+                    <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
+                    <a href="../user_guide/security-tips.html">General Security Tips</a>
+                </div>
+            </div>
+            
+            <!-- Build Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Build ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="../build/team.html">Team</a>
+                    <a href="../build/api.html">API</a>
+                </div>
+            </div>
+            
+            <!-- BnB Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">BnB ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="../bnb/blog.html">Blog</a>
+                    <a href="../bnb/business.html">Business</a>
+                    <a href="../bnb/contact.html">Contact Us</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="overlay"></div>
@@ -586,7 +807,7 @@
         const mobileMenu = document.querySelector('.mobile-menu');
         const overlay = document.querySelector('.overlay');
         const closeMenu = document.querySelector('.close-menu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
@@ -606,26 +827,41 @@
             document.body.style.overflow = '';
         });
 
-        // Handle mobile menu links
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (link.getAttribute('href') === '#') {
-                    // Handle User Guide dropdown in mobile menu
-                    const userGuideLinks = document.createElement('div');
-                    userGuideLinks.className = 'mobile-dropdown';
-                    userGuideLinks.innerHTML = `
-                        <a href="../user_guide/getting-started.html">Getting Started</a>
-                        <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
-                        <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
-                        <a href="../user_guide/security-tips.html">General Security Tips</a>
-                    `;
-                    link.parentNode.insertBefore(userGuideLinks, link.nextSibling);
-                } else {
-                    // Close menu for other links
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
+        // Handle mobile dropdowns
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.parentElement;
+                const isActive = dropdown.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+                
+                // Toggle current dropdown
+                if (!isActive) {
+                    dropdown.classList.add('active');
                 }
+            });
+        });
+
+        // Back to top functionality
+        const backToTop = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
     </script>

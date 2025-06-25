@@ -307,6 +307,138 @@
             opacity: 0.8;
         }
 
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+        }
+
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Back to Top Button Styles */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 24px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -363,6 +495,178 @@
             .mobile-dropdown-content a:hover {
                 background-color: rgba(0, 0, 0, 0.1);
             }
+
+            /* Enhanced mobile styles */
+            .nav-content {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo img {
+                height: 2.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .wallet-text {
+                font-size: 1rem;
+            }
+
+            /* Force back-to-top button visibility on mobile */
+            .back-to-top {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            .content-container {
+                padding: 1rem;
+                margin-top: 5rem;
+            }
+
+            .page-title {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .guide-section {
+                margin-bottom: 1.5rem;
+            }
+
+            .guide-section p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .guide-section ul, .guide-section ol {
+                margin-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .guide-section li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 0.75rem;
+            }
+
+            .tip-box, .note-box {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+
+            .tip-box p, .note-box p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .note-box h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .note-box ul {
+                margin-left: 1.5rem;
+            }
+
+            .note-box li {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .guide-image-container {
+                margin: 1.5rem 0;
+            }
+
+            .guide-image-container img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .guide-section h4 {
+                font-size: 1.2rem;
+                margin: 1.5rem 0 1rem;
+            }
+
+            .guide-section a {
+                color: var(--primary-color);
+                text-decoration: underline;
+            }
+
+            /* Mobile dropdown enhancements */
+            .mobile-dropdown-toggle {
+                font-size: 1.2rem;
+                font-weight: 600;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .mobile-dropdown-content {
+                padding-left: 1.5rem;
+                margin-top: 0.5rem;
+            }
+
+            .mobile-dropdown-content a {
+                font-size: 1rem;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+
+            .mobile-dropdown-content a:last-child {
+                border-bottom: none;
+            }
+
+            /* Mobile menu header */
+            .mobile-menu-header h3 {
+                font-size: 1.5rem;
+                color: var(--text-color);
+                margin: 0;
+            }
+
+            /* Footer mobile adjustments */
+            .footer {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-section h4 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-section a {
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .community-buttons {
+                gap: 0.75rem;
+            }
+
+            .community-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+                margin-top: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -413,14 +717,42 @@
 
     <div class="mobile-menu">
         <div class="mobile-menu-header">
+            <h3>Menu</h3>
             <span class="close-menu">&times;</span>
         </div>
         <div class="mobile-nav-links">
             <a href="../../index.html">Valet</a>
             <a href="../features/features.html">Features</a>
-            <a href="#" onclick="return false;">User Guide</a>
-            <a href="#" onclick="return false;">Build</a>
-            <a href="#" onclick="return false;">BnB</a>
+            
+            <!-- User Guide Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">User Guide ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="getting-started.html">Getting Started</a>
+                    <a href="wallet-settings.html">Wallet Settings</a>
+                    <a href="restoring-wallet.html">Restoring Your Valet Wallet</a>
+                    <a href="security-tips.html">General Security Tips</a>
+                </div>
+            </div>
+            
+            <!-- Build Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Build ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="../build/team.html">Team</a>
+                    <a href="../build/api.html">API</a>
+                </div>
+            </div>
+            
+            <!-- BnB Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">BnB ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="../bnb/blog.html">Blog</a>
+                    <a href="../bnb/business.html">Business</a>
+                    <a href="../bnb/contact.html">Contact Us</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="overlay"></div>
@@ -480,6 +812,8 @@
         </div>
     </div>
 
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -531,21 +865,65 @@
         const mobileMenu = document.querySelector('.mobile-menu');
         const overlay = document.querySelector('.overlay');
         const closeMenu = document.querySelector('.close-menu');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
         closeMenu.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
         overlay.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
+
+        // Handle mobile dropdowns
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.parentElement;
+                const isActive = dropdown.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+                
+                // Toggle current dropdown
+                if (!isActive) {
+                    dropdown.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        if (backToTopButton) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
     </script>
 </body>
 </html> 

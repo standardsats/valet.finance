@@ -1444,6 +1444,7 @@
             display: none;
             padding-left: 1rem;
             margin-top: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         .mobile-dropdown.active .mobile-dropdown-content {
@@ -1452,12 +1453,15 @@
 
         .mobile-dropdown-content a {
             font-size: 1rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
         }
 
-        .mobile-dropdown-content a:last-child {
-            border-bottom: none;
+        .mobile-dropdown-content a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
