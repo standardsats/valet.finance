@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Valet.finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6B46C1;  /* Main purple */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #2D3748;     /* Dark gray for text */
+            --background-light: #F7FAFC; /* Light gray background */
+            --background-dark: #2D3748;  /* Dark gray for footer */
+            --accent-color: #805AD5;    /* Lighter purple for accents */
+            --border-color: #E2E8F0;    /* Light gray for borders */
+            --gradient-start: #6B46C1;   /* Purple gradient start */
+            --gradient-end: #805AD5;     /* Purple gradient end */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .nav-container {
+            background-color: var(--background-light);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 3rem;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .logo-separator {
+            color: #718096;
+            margin: 0 0.5rem;
+        }
+
+        .wallet-text {
+            color: #718096;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown > a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+        }
+
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .mobile-dropdown-content a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Content Styles */
+        .content-container {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .info-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .info-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background-color: var(--background-dark);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .social-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: inline-block;
+        }
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+        .community-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .community-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .community-button:hover {
+            background-color: var(--accent-color);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom p {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-container {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../images/Valet_logo.svg" alt="Valet Logo">
+                <span class="logo-text">VALET</span>
+                <span class="logo-separator">|</span>
+                <span class="wallet-text">WALLET</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Valet</a>
+                <a href="../features/features.html">Features</a>
+                <div class="dropdown">
+                    <a href="#" onclick="return false;">User Guide</a>
+                    <div class="dropdown-content">
+                        <a href="../user_guide/getting-started.html">Getting Started</a>
+                        <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
+                        <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
+                        <a href="../user_guide/security-tips.html">General Security Tips</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#" onclick="return false;">BnB</a>
+                    <div class="dropdown-content">
+                        <a href="blog.html">Blog</a>
+                        <a href="business.html">Business</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <span class="close-menu">&times;</span>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="../../index.html">Valet</a>
+            <a href="../features/features.html">Features</a>
+            
+            <!-- User Guide Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">User Guide ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="../user_guide/getting-started.html">Getting Started</a>
+                    <a href="../user_guide/wallet-settings.html">Wallet Settings</a>
+                    <a href="../user_guide/restoring-wallet.html">Restoring Your Valet Wallet</a>
+                    <a href="../user_guide/security-tips.html">General Security Tips</a>
+                </div>
+            </div>
+            
+            <!-- BnB Dropdown -->
+            <div class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">BnB ▼</a>
+                <div class="mobile-dropdown-content">
+                    <a href="blog.html">Blog</a>
+                    <a href="business.html">Business</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <h1 class="page-title">Contact Us</h1>
+        
+        <div class="info-section">
+            <h2>Get in Touch</h2>
+            <p>We're here to help! Whether you have questions about Valet, need technical support, want to discuss business opportunities, or just want to say hello, we'd love to hear from you.</p>
+            <p>Our team is committed to providing excellent support and building strong relationships with our community.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email Support</h3>
+                <p>For general inquiries, technical support, and feedback</p>
+                <a href="mailto:valet.donations@pm.me" class="contact-link">Send Email</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>Business Inquiries</h3>
+                <p>For partnerships, integrations, and business opportunities</p>
+                <a href="mailto:ilya@satsbridge.com" class="contact-link">Contact Business</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🐛</div>
+                <h3>Bug Reports</h3>
+                <p>Found a bug? Help us improve by reporting it</p>
+                <a href="https://github.com/standardsats/valet/issues" class="contact-link" target="_blank">GitHub Issues</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Community</h3>
+                <p>Join our community for discussions and updates</p>
+                <a href="https://t.me/StandardSatsCommunity" class="contact-link" target="_blank">Telegram</a>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send us a Message</h2>
+            <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+            
+            <form action="mailto:valet.donations@pm.me" method="POST" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="business">Business Partnership</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Please describe your inquiry in detail..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        <div class="contact-section">
+            <h2>Response Time</h2>
+            <p>We strive to respond to all inquiries within 24-48 hours during business days. For urgent technical issues, please consider:</p>
+            <ul>
+                <li>Checking our <a href="../user_guide/getting-started.html">User Guide</a> for common questions</li>
+                <li>Visiting our <a href="https://github.com/standardsats/valet" target="_blank">GitHub repository</a> for technical documentation</li>
+                <li>Joining our <a href="https://t.me/StandardSatsCommunity" target="_blank">Telegram community</a> for immediate help</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Wallet</h4>
+                <ul>
+                    <li><a href="https://f-droid.org/en/packages/finance.valet/" target="_blank">Mobile Apps</a></li>
+                    <li><a href="https://github.com/standardsats/valet/releases/tag/4.4.4" target="_blank">APK File</a></li>
+                    <li><a href="#">Telegram Bot</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="../features/features.html#basic">Basic</a></li>
+                    <li><a href="../features/features.html#advanced">Advanced</a></li>
+                    <li><a href="../features/features.html#security">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>BnB</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect with Us</h4>
+                <div class="social-links">
+                    <a href="https://x.com/standard_sats" class="social-link" target="_blank">X(Twitter)</a>
+                    <a href="https://www.youtube.com/@standardsats" class="social-link" target="_blank">YouTube</a>
+                    <a href="https://stacker.news/standard_sats" class="social-link" target="_blank">StackerNews</a>
+                    <a href="https://github.com/standardsats/valet" class="social-link" target="_blank">GitHub</a>
+                </div>
+                <div class="community-buttons">
+                    <a href="https://t.me/StandardSatsCommunity" class="community-button" style="width: 100%; min-width: 250px;" target="_blank">Join us on Telegram</a>
+                    <a href="#" class="community-button" style="width: 100%; min-width: 250px;">Join us on Discord</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Valet.finance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Handle mobile dropdowns
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.parentElement;
+                const isActive = dropdown.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+                
+                // Toggle current dropdown
+                if (!isActive) {
+                    dropdown.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form form');
+        contactForm.addEventListener('submit', function(e) {
+            // Get form data
+            const name = this.querySelector('#name').value;
+            const email = this.querySelector('#email').value;
+            const subject = this.querySelector('#subject').value;
+            const message = this.querySelector('#message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Allow form to submit to email
+            // The form will open the user's default email client
+            // with the form data pre-filled
+        });
+    </script>
+</body>
+</html>
