@@ -1,0 +1,37 @@
+{
+  "updates": [
+    {
+      "id": "1",
+      "title": "Valet Partners with Major Financial Institutions",
+      "excerpt": "Strategic partnerships to expand Bitcoin adoption in traditional finance and bring Lightning Network technology to mainstream banking.",
+      "content": "Full business update content will go here...",
+      "category": "Partnerships",
+      "date": "2025-01-20",
+      "readTime": "3 min read",
+      "image": "images/Locker.jpg",
+      "slug": "valet-financial-institutions-partnership"
+    },
+    {
+      "id": "2",
+      "title": "Valet Expands to European Markets",
+      "excerpt": "Launching services across key European countries with regulatory compliance and local payment integrations.",
+      "content": "Full business update content will go here...",
+      "category": "Expansion",
+      "date": "2025-01-18",
+      "readTime": "4 min read",
+      "image": "images/Locker.jpg",
+      "slug": "valet-european-expansion"
+    },
+    {
+      "id": "3",
+      "title": "New Lightning Network Integration Features",
+      "excerpt": "Introducing advanced Lightning Network capabilities including automated channel management and instant payment routing.",
+      "content": "Full business update content will go here...",
+      "category": "Product",
+      "date": "2025-01-12",
+      "readTime": "5 min read",
+      "image": "images/Locker.jpg",
+      "slug": "lightning-network-integration-features"
+    }
+  ]
+} 

@@ -774,10 +774,10 @@
         }
         .news-date {
             color: var(--accent-color);
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 0.5rem;
             display: block;
-            font-size: 0.9rem;
+            font-size: 1.8rem;
         }
         .news-card h3 {
             color: var(--text-color);
@@ -794,24 +794,72 @@
         .read-more {
             color: var(--highlight-color);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.2rem;
             transition: color 0.3s ease;
             display: inline-block;
         }
         .read-more:hover {
             color: var(--accent-color);
         }
-        .business-card {
-            border-left: 4px solid var(--accent-color);
+        /* Industry News Card (Technology) */
+        .industry-card {
+            border-left: 6px solid #FED7AA;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
         }
-        .blog-card {
-            border-left: 4px solid var(--highlight-color);
+        .industry-card::before {
+            background: linear-gradient(90deg, #FED7AA, #FDE68A);
+        }
+        .industry-card:hover {
+            border-left-color: #F59E0B;
+            box-shadow: 0 16px 40px rgba(254, 215, 170, 0.3);
+            transform: translateY(-12px) scale(1.02);
+        }
+        .industry-card .news-icon {
+            color: #E67E22;
+        }
+        .industry-card .news-date {
+            color: #A78BFA;
+        }
+
+        /* Business News Card */
+        .business-card {
+            border-left: 6px solid #E9D5FF;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        }
+        .business-card::before {
+            background: linear-gradient(90deg, #E9D5FF, #DDD6FE);
         }
         .business-card:hover {
-            border-left-color: var(--primary-color);
+            border-left-color: #8B5CF6;
+            box-shadow: 0 16px 40px rgba(233, 213, 255, 0.3);
+            transform: translateY(-12px) scale(1.02);
         }
-        .blog-card:hover {
-            border-left-color: #fb8c00;
+        .business-card .news-icon {
+            color: #8B5CF6;
+        }
+        .business-card .news-date {
+            color: #A78BFA;
+        }
+
+        /* Education Card */
+        .education-card {
+            border-left: 6px solid #FEF3C7;
+            background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+        }
+        .education-card::before {
+            background: linear-gradient(90deg, #FEF3C7, #FDE68A);
+        }
+        .education-card:hover {
+            border-left-color: #F59E0B;
+            box-shadow: 0 16px 40px rgba(254, 243, 199, 0.3);
+            transform: translateY(-12px) scale(1.02);
+        }
+        .education-card .news-icon {
+            color: #F59E0B;
+        }
+        .education-card .news-date {
+            color: #A78BFA;
         }
 
         .ratings-section {
@@ -1555,6 +1603,113 @@
         .mobile-dropdown-content a:hover {
             background-color: rgba(0, 0, 0, 0.1);
         }
+
+        /* Lazy loading styles for index page */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+
+        .lazy-image-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .lazy-loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e5e7eb;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Featured post styles for index page */
+        .news-card.featured {
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 8px 32px rgba(107, 70, 193, 0.2);
+            transform: scale(1.02);
+            position: relative;
+        }
+
+        .news-card.featured::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 1;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(107, 70, 193, 0.3);
+        }
+
+        .featured-badge::before {
+            content: '⭐ ';
+            margin-right: 0.25rem;
+        }
+
+        .news-card.featured h3 {
+            color: var(--primary-color);
+        }
+
+        .news-card.featured:hover {
+            transform: scale(1.03) translateY(-12px);
+            box-shadow: 0 16px 48px rgba(107, 70, 193, 0.25);
+        }
+
+        /* Industry News Card (Technology) */
+        .industry-card {
+            border-left: 6px solid #FED7AA;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        .industry-card::before {
+            background: linear-gradient(90deg, #FED7AA, #FDE68A);
+        }
+        .industry-card:hover {
+            border-left-color: #F59E0B;
+            box-shadow: 0 16px 40px rgba(254, 215, 170, 0.3);
+            transform: translateY(-12px) scale(1.02);
+        }
+        .industry-card .news-icon {
+            color: #E67E22;
+        }
+        .industry-card .news-date {
+            color: #A78BFA;
+        }
     </style>
 </head>
 <body>
@@ -1579,18 +1734,10 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a href="#" onclick="return false;">Build</a>
-                    <div class="dropdown-content">
-                        <a href="index.html">Team</a>
-                        <a href="index.html">API</a>
-                    </div>
-                </div>
-                <div class="dropdown">
                     <a href="#" onclick="return false;">BnB</a>
                     <div class="dropdown-content">
-                        <a href="index.html">Blog</a>
-                        <a href="index.html">Business</a>
-                        <a href="index.html">Contact Us</a>
+                        <a href="top_nav/bnb/blog.html">Blog and Business</a>
+                        <a href="top_nav/bnb/contact.html">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -1622,22 +1769,12 @@
                 </div>
             </div>
             
-            <!-- Build Dropdown -->
-            <div class="mobile-dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Build ▼</a>
-                <div class="mobile-dropdown-content">
-                    <a href="index.html">Team</a>
-                    <a href="index.html">API</a>
-                </div>
-            </div>
-            
             <!-- BnB Dropdown -->
             <div class="mobile-dropdown">
                 <a href="#" class="mobile-dropdown-toggle">BnB ▼</a>
                 <div class="mobile-dropdown-content">
-                    <a href="index.html">Blog</a>
-                    <a href="index.html">Business</a>
-                    <a href="index.html">Contact Us</a>
+                    <a href="top_nav/bnb/blog.html">Blog and Business</a>
+                    <a href="top_nav/bnb/contact.html">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -1645,6 +1782,7 @@
 
     <div class="overlay"></div>
 
+    <script src="js/content-loader.js"></script>
     <script>
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -2060,42 +2198,7 @@
     <section class="news-section">
         <h2 class="section-title">Industry Trends and Business</h2>
         <div class="news-grid">
-            <div class="news-card business-card">
-                <div class="news-image">
-                    <img src="images/business-1.jpg" alt="Business Partnership" onerror="this.style.display='none'">
-                </div>
-                <div class="news-content">
-                    <div class="news-icon">💼</div>
-                    <span class="news-date">Latest Business</span>
-                    <h3>Valet Partners with Major Financial Institutions</h3>
-                    <p>Strategic partnerships to expand Bitcoin adoption in traditional finance</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-            </div>
-            <div class="news-card business-card">
-                <div class="news-image">
-                    <img src="images/business-2.jpg" alt="European Expansion" onerror="this.style.display='none'">
-                </div>
-                <div class="news-content">
-                    <div class="news-icon">📈</div>
-                    <span class="news-date">Business Update</span>
-                    <h3>Valet Expands to European Markets</h3>
-                    <p>Launching services across key European countries with regulatory compliance</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-            </div>
-            <div class="news-card blog-card">
-                <div class="news-image">
-                    <img src="images/blog-1.jpg" alt="Lightning Network Future" onerror="this.style.display='none'">
-                </div>
-                <div class="news-content">
-                    <div class="news-icon">📝</div>
-                    <span class="news-date">Latest Blog</span>
-                    <h3>The Future of Lightning Network in 2025</h3>
-                    <p>Exploring upcoming developments and innovations in Bitcoin's Lightning Network</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-            </div>
+            <!-- Dynamic content will be loaded here by JavaScript -->
         </div>
     </section>
 
@@ -2238,9 +2341,8 @@
             <div class="footer-section">
                 <h4>BnB</h4>
                 <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Business</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="top_nav/bnb/blog.html">Blog and Business</a></li>
+                    <li><a href="top_nav/bnb/contact.html">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-section">
