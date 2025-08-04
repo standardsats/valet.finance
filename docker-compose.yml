@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  valet-website:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"  # For HTTPS if needed
+    restart: unless-stopped
+    container_name: valet-finance-website
+
+    # Optional: Add health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Optional: Add SSL termination with Let's Encrypt
+  # nginx-proxy:
+  #   image: nginxproxy/nginx-proxy
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #     - certs:/etc/nginx/certs
+  #     - vhost:/etc/nginx/vhost.d
+  #     - html:/usr/share/nginx/html
+  #   restart: unless-stopped
+
+# volumes:
+#   certs:
+#   vhost:
+#   html:
