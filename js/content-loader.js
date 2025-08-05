@@ -15,14 +15,25 @@ class ContentLoader {
     // Load blog posts from JSON
     async loadBlogPosts() {
         try {
-            // Determine the correct path based on current page
+            // Determine the correct path based on current page and environment
             const currentPage = window.location.pathname;
-            const basePath = currentPage.includes('top_nav/') ? '../../' : '../';
+            const isGitHubPages = window.location.hostname.includes('github.io') || window.location.hostname.includes('github.com');
+            
+            let basePath;
+            if (isGitHubPages) {
+                // GitHub Pages: use absolute paths from repository root
+                basePath = currentPage.includes('top_nav/') ? '../../' : './';
+            } else {
+                // Local development: use relative paths
+                basePath = currentPage.includes('top_nav/') ? '../../' : '../';
+            }
+            
             const timestamp = new Date().getTime(); // Cache busting
             const jsonPath = basePath + 'data/blog-posts.json?t=' + timestamp;
             console.log('Loading blog posts from:', jsonPath);
             console.log('Current page path:', currentPage);
             console.log('Base path:', basePath);
+            console.log('Is GitHub Pages:', isGitHubPages);
             
             const response = await fetch(jsonPath);
             const data = await response.json();
@@ -38,9 +49,19 @@ class ContentLoader {
     // Load business updates from JSON
     async loadBusinessUpdates() {
         try {
-            // Determine the correct path based on current page
+            // Determine the correct path based on current page and environment
             const currentPage = window.location.pathname;
-            const basePath = currentPage.includes('top_nav/') ? '../../' : '../';
+            const isGitHubPages = window.location.hostname.includes('github.io') || window.location.hostname.includes('github.com');
+            
+            let basePath;
+            if (isGitHubPages) {
+                // GitHub Pages: use absolute paths from repository root
+                basePath = currentPage.includes('top_nav/') ? '../../' : './';
+            } else {
+                // Local development: use relative paths
+                basePath = currentPage.includes('top_nav/') ? '../../' : '../';
+            }
+            
             const response = await fetch(basePath + 'data/business-updates.json');
             const data = await response.json();
             this.businessUpdates = data.updates.sort((a, b) => new Date(b.date) - new Date(a.date));
