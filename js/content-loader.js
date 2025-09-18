@@ -201,7 +201,9 @@ class ContentLoader {
                         <span>${post.readTime}</span>
                     </div>
                     <h2 class="blog-post-title">${this.renderHTML(post.title)}</h2>
-                    <p class="blog-post-excerpt">${this.renderHTML(post.excerpt)}</p>
+                    <div class="blog-post-excerpt-container">
+                        <p class="blog-post-excerpt">${this.renderHTML(post.excerpt)}</p>
+                    </div>
                     <a href="#" class="blog-post-link" data-post-id="${post.id}" onclick="openArticleModal('${post.id}')">Read More →</a>
                 </div>
             </article>
