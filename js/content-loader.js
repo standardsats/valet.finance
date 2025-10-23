@@ -201,7 +201,9 @@ class ContentLoader {
                         <span>${post.readTime}</span>
                     </div>
                     <h2 class="blog-post-title">${this.renderHTML(post.title)}</h2>
-                    <p class="blog-post-excerpt">${this.renderHTML(post.excerpt)}</p>
+                    <div class="blog-post-excerpt-container">
+                        <p class="blog-post-excerpt">${this.renderHTML(post.excerpt)}</p>
+                    </div>
                     <a href="#" class="blog-post-link" data-post-id="${post.id}" onclick="openArticleModal('${post.id}')">Read More →</a>
                 </div>
             </article>
@@ -1009,10 +1011,9 @@ class ContentLoader {
                 <img src="../../${author.avatar}" alt="${author.name}" class="author-avatar" onerror="this.style.display='none'">
                 <div class="author-info">
                     <div class="author-name">${this.escapeHtml(author.name)}</div>
-                    <div class="author-title">Product Growth Lead at Standard Sats</div>
+                    <div class="author-title">${author.title ? this.escapeHtml(author.title) : this.escapeHtml(author.bio)}</div>
                 </div>
             </div>
-            <div class="author-bio">${this.escapeHtml(author.bio)}</div>
             <div class="author-social">
                 ${author.social.twitter ? `
                     <a href="https://twitter.com/${author.social.twitter.replace('@', '')}" target="_blank" class="social-link twitter">
@@ -1027,7 +1028,7 @@ class ContentLoader {
                     </a>
                 ` : ''}
                 ${author.social.github ? `
-                    <a href="https://github.com/${author.social.github}" target="_blank" class="social-link github">
+                    <a href="${author.social.github.startsWith('http') ? author.social.github : `https://github.com/${author.social.github}`}" target="_blank" class="social-link github">
                         <span>📦</span>
                         <span>GitHub</span>
                     </a>
