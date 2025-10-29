@@ -4,6 +4,7 @@ text_docs
 # Blog content directories (source files for content management)
 blog_files/
 blog_img/
+CONTENT_MANAGEMENT.md
 
 # System files
 .DS_Store
