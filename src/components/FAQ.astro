@@ -1,0 +1,19 @@
+---
+import { faqSection, faqItems } from '../data/faq.ts';
+---
+
+<section id="faq" class="wrap faq">
+  <h2 class="section">{faqSection.heading}</h2>
+
+  <div class="faq-list">
+    {faqItems.map((item) => (
+      <details class="q" open={item.open || false}>
+        <summary>
+          {item.question}
+          <span class="plus">+</span>
+        </summary>
+        <div class="a" set:html={item.answerHtml} />
+      </details>
+    ))}
+  </div>
+</section>

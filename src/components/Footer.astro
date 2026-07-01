@@ -1,0 +1,26 @@
+---
+import { site, footer } from '../data/site.ts';
+---
+
+<footer class="wrap foot">
+  <div class="foot-row">
+    <a class="brand" href="#">
+      <img class="logo" src="/assets/valet-icon.png" alt="Valet">
+      <span class="word foot-mark">{site.nav.brand}</span>
+    </a>
+    <div class="foot-cols">
+      {footer.cols.map((col) => (
+        <div class="foot-col">
+          <h4>{col.heading}</h4>
+          {col.links.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>{footer.legal}</span>
+    <span>{footer.disclaimer}</span>
+  </div>
+</footer>

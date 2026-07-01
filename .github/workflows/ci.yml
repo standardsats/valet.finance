@@ -1,0 +1,40 @@
+# CI for Valet Landing Page
+#
+# Cloudflare Pages deployment note:
+# This workflow only handles CI (type checking + build verification).
+# Actual deployment to Cloudflare Pages is handled automatically by
+# Cloudflare's GitHub integration — connect the repo in the CF Pages
+# dashboard, set build command "npm run build" and output dir "dist".
+# No wrangler or CF_API_TOKEN secrets needed for a basic static site.
+
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  ci:
+    name: Type-check & build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript check (astro check)
+        run: npx astro check
+
+      - name: Build
+        run: npm run build

@@ -1,0 +1,20 @@
+---
+import { sovereigntySection, sovereigntyCells } from '../data/sovereignty.ts';
+---
+
+<section id="sovereignty" class="wrap sov">
+  <h2 class="section">{sovereigntySection.heading}</h2>
+  <p class="lede" style="margin-top: 24px; max-width: 62ch;">
+    {sovereigntySection.lede}
+  </p>
+
+  <div class="sov-grid">
+    {sovereigntyCells.map((cell) => (
+      <div class="sov-cell">
+        <span class={`tag tag-${cell.tagType}`}>{cell.tag}</span>
+        <h3>{cell.title}</h3>
+        <p>{cell.body}</p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import { hero } from '../data/hero.ts';
+---
+
+<section class="wrap hero">
+  <svg class="hero-orn tl ornament ornament-extra" width="64" height="64" aria-hidden="true">
+    <use href="#orn-corner"/>
+  </svg>
+  <svg class="hero-orn br ornament ornament-extra" width="64" height="64" aria-hidden="true">
+    <use href="#orn-corner"/>
+  </svg>
+
+  <div class="hero-copy">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      {hero.eyebrow}
+    </div>
+    <h1 class="display">
+      {hero.headline.pre} <em>{hero.headline.em}</em>
+    </h1>
+    <p class="lede">{hero.lede}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href={hero.cta.primary.href}>
+        {hero.cta.primary.label}
+      </a>
+      <a class="btn btn-secondary" href={hero.cta.secondary.href}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18"/>
+          <path d="M12 3a14 14 0 0 1 0 18"/>
+          <path d="M12 3a14 14 0 0 0 0 18"/>
+        </svg>
+        {hero.cta.secondary.label}
+      </a>
+    </div>
+  </div>
+
+  <div class="phone-stage">
+    <div class="phone-bg ornament"></div>
+    <div class="phone-fan">
+      {hero.phones.map((phone) => (
+        <div class={`phone ${phone.position}`}>
+          <div class="phone-screen">
+            <img src={phone.src} alt={phone.alt}>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
