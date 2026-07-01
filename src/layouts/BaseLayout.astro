@@ -14,7 +14,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-scheme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,13 +25,8 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Apply saved theme before first paint to avoid flash -->
   <script is:inline>
     (function () {
-      var saved = localStorage.getItem('valet-scheme');
-      if (saved && saved !== 'parchment') {
-        document.documentElement.setAttribute('data-scheme', saved);
-      }
       var orn = localStorage.getItem('valet-orn') || 'minimal';
       document.documentElement.setAttribute('data-orn', orn);
     })();
@@ -63,32 +58,6 @@ const {
 </svg>
 
 <slot />
-
-<!-- Theme switcher script -->
-<script>
-  const schemes = ['parchment', 'modern', 'dark'] as const;
-  type Scheme = typeof schemes[number];
-
-  function applyScheme(scheme: Scheme) {
-    const root = document.documentElement;
-    root.setAttribute('data-scheme', scheme === 'parchment' ? '' : scheme);
-    localStorage.setItem('valet-scheme', scheme);
-    document.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((btn) => {
-      btn.setAttribute('aria-pressed', String(btn.dataset.scheme === scheme));
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const saved = (localStorage.getItem('valet-scheme') as Scheme) || 'parchment';
-    applyScheme(saved);
-
-    document.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        applyScheme(btn.dataset.scheme as Scheme);
-      });
-    });
-  });
-</script>
 
 </body>
 </html>

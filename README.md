@@ -41,10 +41,8 @@ npm run preview    # serve the built site
 
 ## Theming
 
-Three color schemes — **Parchment** (default), **Modern**, **Dark** — selectable
-from the switcher in the nav. The choice is stored in `localStorage` and applied
-before first paint (inline script in `BaseLayout.astro`) to avoid a flash. Schemes
-are defined as CSS custom properties under `[data-scheme]` in `global.css`.
+Single dark color scheme is used by default. Theming is defined via CSS custom
+properties in `global.css` and wired in `BaseLayout.astro` via `data-scheme="dark"`.
 
 ## CI/CD
 
