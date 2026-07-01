@@ -1,5 +1,4 @@
 export const hero = {
-  eyebrow: 'Bitcoin Lightning Wallet · Android',
   headline: {
     pre: 'A Lightning wallet that',
     em: 'serves only you.',
