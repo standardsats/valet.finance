@@ -2,13 +2,13 @@ export const ossSection = {
   heading: 'Open source, reproducible, audit-friendly.',
   body: 'Every line that handles your keys is on GitHub. Builds are reproducible — you can verify the APK we ship matches the source you read. Issues are public. Releases are signed.',
   stats: [
-    { value: 'GPL-3.0', label: 'License' },
-    { value: 'v0.9.2', label: 'Latest release' },
-    { value: 'Yes', label: 'Reproducible' },
+    { value: 'Apache License 2.0', label: 'License' },
+    { value: 'v5.0.1', label: 'Latest release' },
+    { value: 'Testnets', label: 'Testnet3, Testnet4, Regtest' },
   ],
   cta: {
-    primary: { label: 'GitHub', href: '#' },
-    secondary: { label: 'Verify a build', href: '#' },
+    primary: { label: 'GitHub', href: 'https://github.com/standardsats/valet' },
+    secondary: { label: 'Join on Telegram', href: 'https://t.me/StandardSatsCommunity' },
   },
   repoBlock: {
     lines: [

@@ -37,7 +37,7 @@ export const features: Feature[] = [
     ],
   },
   {
-    num: '03 / No reuse',
+    num: '03 / No address reuse',
     title: 'Address reuse, avoided.',
     body: 'Every receive surfaces a fresh address. Old ones expire. Your on-chain history stops being a heatmap.',
   },

@@ -1,5 +1,5 @@
 export const site = {
-  title: 'Valet — A Lightning wallet that serves only you',
+  title: 'Valet is a Lightning wallet that serves only you',
   description:
     'Valet runs a real Lightning node in your pocket. No custodian, no vendor lock-in, no intermediary.',
   nav: {
@@ -15,8 +15,8 @@ export const site = {
 };
 
 export const footer = {
-  legal: '© 2026 Valet · Bitcoin only · Lightning enabled',
-  disclaimer: "Not financial advice. Not your wallet's problem — it's yours.",
+  legal: '© 2026 Valet · Bitcoin only · Lightning enabled · Hardware wallets enabled',
+  disclaimer: "Not financial advice. We do not ask for seed phrases.",
   cols: [
     {
       heading: 'Product',
@@ -29,17 +29,16 @@ export const footer = {
     {
       heading: 'Code',
       links: [
-        { label: 'GitHub', href: '#' },
-        { label: 'IMMORTAN', href: '#' },
-        { label: 'Reproducible builds', href: '#' },
+        { label: 'GitHub', href: 'https://github.com/standardsats/valet' },
+        { label: 'IMMORTAN', href: 'https://github.com/standardsats/immortan' },
       ],
     },
     {
       heading: 'Get it',
       links: [
-        { label: 'APK release', href: '#' },
-        { label: 'F-Droid', href: '#' },
-        { label: 'PGP signing keys', href: '#' },
+        { label: 'APK releases', href: 'https://github.com/standardsats/valet/releases' },
+        { label: 'F-Droid', href: 'https://f-droid.org/packages/finance.valet' },
+        { label: 'Join Community', href: 'https://t.me/StandardSatsCommunity' },
       ],
     },
   ],
