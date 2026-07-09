@@ -5,8 +5,8 @@ export const hero = {
   },
   lede: 'Valet runs a real Lightning node in your pocket. No custodian, no vendor lock-in, no “Lightning-flavored” intermediary holding your keys behind a friendly UI. Your sats, your channels, your peers.',
   cta: {
-    primary: { label: 'Download Release v0.9 · APK', href: '#download' },
-    secondary: { label: 'Get on F-Droid', href: '#download' },
+    primary: { label: 'Download from GitHub', href: 'https://github.com/standardsats/valet/releases' },
+    secondary: { label: 'Get on F-Droid', href: 'https://f-droid.org/packages/finance.valet' },
   },
   phones: [
     {
