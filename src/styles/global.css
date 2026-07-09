@@ -68,16 +68,18 @@ section { position: relative; z-index: 1; }
 }
 .nav-links { display: flex; gap: 28px; align-items: center; }
 .nav-links a {
-  color: var(--ink-2); text-decoration: none; font-size: 14px;
-  font-weight: 500; letter-spacing: 0.01em;
+  color: var(--ink); text-decoration: none; font-size: 14px;
+  font-weight: 600; letter-spacing: 0.02em;
 }
 .nav-links a:hover { color: var(--ink); }
 .nav-cta {
-  padding: 8px 14px; border-radius: 999px;
+  padding: 10px 16px; border-radius: 999px;
   background: var(--primary); color: oklch(1 0 0);
-  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.03em;
+  text-transform: uppercase;
   text-decoration: none;
-  border: 0.5px solid transparent;
+  border: 1px solid oklch(1 0 0 / 0.12);
+  box-shadow: 0 1px 0 oklch(1 0 0 / 0.08) inset;
 }
 .nav-cta:hover { background: var(--ink); color: var(--bg); }
 
